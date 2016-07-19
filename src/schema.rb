@@ -1,11 +1,7 @@
-require_relative './collections'
-
 class Schema
-  attr_reader :collections
 
   def initialize config
     puts "creating schema : #{config.to_s}"
-    @collections =  Collections.new
   end
 
   def load(path)
