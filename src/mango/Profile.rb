@@ -1,12 +1,11 @@
 require 'pathname'
+require_relative 'mapper'
 
 class Profile
-
 
   def initialize path
     @path = path
   end
-
 
   def all
     profiles =  []
@@ -19,10 +18,10 @@ class Profile
   def find name
     each_profile(){|profile|
       if(profile["name"] == name)
-        return {
-            "name"        => profile["name"],
-            "description" => profile["description"]
-        }
+        return Mapper.parse({
+                "name"        => profile["name"],
+                "description" => profile["description"]}
+        )
       end
     }
     nil

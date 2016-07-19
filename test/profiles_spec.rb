@@ -30,8 +30,8 @@ RSpec.describe Profiles do
 
     it "should find profile by name" do
       profile = @Profiles.find("Ace")
-      expect(profile["name"]).to eq(@ace_name)
-      expect(profile["description"]).to eq(@ace_desc)
+      expect(profile.name).to eq(@ace_name)
+      expect(profile.description).to eq(@ace_desc)
     end
 
     it "Should get profile json files" do
