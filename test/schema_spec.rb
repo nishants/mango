@@ -17,7 +17,6 @@ RSpec.describe Schema do
   describe "update collections field in file" do
     before(:all) do
       @dir    = "/Users/dawn/Documents/projects/schemer/samples/temp"
-      @home   = "/Users/dawn/Documents/projects/schemer/samples/temp/1011/home.json"
       @schema = "/#{@dir}/schema.json"
 
       FileUtils::mkdir_p @dir
@@ -37,9 +36,14 @@ RSpec.describe Schema do
           :field      => "data.message",
           :rename_to  => "status"
       });
-      new_json = JSON.parse(File.read(@home))
+      new_json = JSON.parse(File.read("/Users/dawn/Documents/projects/schemer/samples/temp/1011/home.json"))
 
       expect(new_json["data"]["status"]).to eq("hello");
+      expect(new_json["data"].key?("message")).to eq(false);
+
+      new_json = JSON.parse(File.read("/Users/dawn/Documents/projects/schemer/samples/temp/2022/home.json"))
+
+      expect(new_json["data"]["status"]).to eq("hello back");
       expect(new_json["data"].key?("message")).to eq(false);
     end
   end
