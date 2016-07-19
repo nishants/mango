@@ -4,9 +4,12 @@ app.controller("uiController", ["$rootScope", "$scope", "profilesService", funct
     profilesService.schema();
 
     $rootScope.$on('$stateChangeSuccess',
-        function(event, toState, toParams, fromState, fromParams){
+        function(event, toState, toParams){
             if(toState.name == "profile"){
                 profilesService.findByName(toParams.name)
+            }
+            if(toState.name == "profile.edit"){
+                profilesService.getFile(toParams.name, toParams.file)
             }
         });
 }]);

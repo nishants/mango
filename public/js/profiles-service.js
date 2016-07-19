@@ -26,6 +26,15 @@ window.app.service("profilesService", ["$http", function($http){
                 self.schema = response.data;
                 return response.data;
             });
+        },
+        getFile: function (profileName, fileName) {
+            var self = this;
+            self.fileEditing = null;
+            return $http.get("/profiles/"+profileName+"/files/"+fileName).then(function(response){
+                self.fileEditing = response.data;
+                return response.data;
+            });
+
         }
 
     }

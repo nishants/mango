@@ -1,5 +1,7 @@
-<ul>
-    <li ng-repeat="file in profiles.schema.files">
-        <a ui-sref="profile.edit({file: file.name})" ng-bind="file.name"></a>
-    </li>
-</ul>
+<div ui-view>
+    <ul >
+        <li ng-repeat="file in profiles.schema.files">
+            <a ui-sref="profile.edit({file: file.name})" ng-bind="file.name"></a>
+        </li>
+    </ul>
+</div>

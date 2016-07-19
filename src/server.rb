@@ -19,7 +19,7 @@ get '/profiles' do
   Profiles.all().to_json
 end
 
-get '/profiles/:name/:file' do
+get '/profiles/:name/files/:file' do
   Profiles.find(params[:name])[params[:file]].content.to_json
 end
 
