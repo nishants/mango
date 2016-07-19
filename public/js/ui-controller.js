@@ -1,4 +1,4 @@
-app.controller("uiController", ["$rootScope", "$scope", "profilesService", function($rootScope, $scope, profilesService){
+app.controller("uiController", ["$rootScope", "$scope", "profilesService", "$stateParams", function($rootScope, $scope, profilesService, $stateParams){
     $scope.profiles = profilesService;
     profilesService.all();
     profilesService.schema();
@@ -12,4 +12,6 @@ app.controller("uiController", ["$rootScope", "$scope", "profilesService", funct
                 profilesService.getFile(toParams.name, toParams.file)
             }
         });
+    $scope.ui = {state : $stateParams}
+    
 }]);

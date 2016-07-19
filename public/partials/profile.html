@@ -1,4 +1,8 @@
 <div ui-view>
+    <div class="top-bar">
+        <div class="back-button fa fa-arrow-left"></div>
+        <h1>Profiles/{{ui.state.name}}</h1>
+    </div>
     <ul >
         <li ng-repeat="file in profiles.schema.files">
             <a ui-sref="profile.edit({file: file.name})" ng-bind="file.name"></a>
