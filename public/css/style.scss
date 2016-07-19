@@ -46,3 +46,7 @@ $topBarHeight: 60px;
 .container-view{
   padding: $padding;
 }
+
+table.profiles{
+  td, th{padding: $padding/2;}
+}
