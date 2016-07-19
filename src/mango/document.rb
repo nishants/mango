@@ -5,8 +5,14 @@ class Document
   attr_accessor :content
 
   def initialize (profile_root, relative_path)
-    json_file   = "#{profile_root.chomp(File::SEPARATOR)}#{relative_path}"
-     @content   = JSON.parse(File.read(json_file))
+    @file     = "#{profile_root.chomp(File::SEPARATOR)}#{relative_path}"
+    @content  = JSON.parse(File.read(@file))
+  end
+
+  def save
+    File.open(@file, 'w'){|file|
+      file.write(@content.to_json() )
+    }
   end
 end
 

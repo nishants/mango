@@ -24,9 +24,7 @@ class Profile
             "description" => profile["description"]}
 
         @schema["files"].each{|file|
-          json_file = "#{profile_root.chomp(File::SEPARATOR)}#{file['path']}"
-          json      = JSON.parse(File.read(json_file))
-          result[file["name"]] = Document.new(json)
+          result[file["name"]] = Document.new(profile_root, file['path'])
         }
         return result
       end

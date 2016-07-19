@@ -18,8 +18,6 @@ RSpec.describe Profiles do
       @slot_name      = "Sloth"
       @ace_desc       = "Represent the profile of an ace user"
       @slot_desc      = "Represent the profile of a sloth user"
-
-
     end
 
     it "should read all profiles.json and return summary" do
@@ -48,8 +46,12 @@ RSpec.describe Profiles do
     end
 
     it "Should update profile json files" do
-      json = @Profiles.find("Ace")["home"].content
-      expect(json["data"]["user"]["id"]).to eq(@ace_id)
+      home         = @Profiles.find("Ace")["home"]
+      home.content["data"]["user"]["id"] = "updated"
+      home.save
+
+      actual_content = JSON.parse(File.read("#{@profiles_home}/profile-ace/home.json"))
+      expect(actual_content["data"]["user"]["id"]).to eq("updated")
     end
   end
 
