@@ -1,4 +1,5 @@
 require './src/schema'
+require 'fileutils'
 
 RSpec.describe Schema do
   describe "create schema from file" do
@@ -13,12 +14,36 @@ RSpec.describe Schema do
     end
   end
 
+  describe "update collections field in file" do
+    before(:all) do
+      @dir   = "/Users/dawn/Documents/projects/schemer/samples/temp"
+      FileUtils::mkdir_p @dir
+      FileUtils.copy_entry "/Users/dawn/Documents/projects/schemer/samples/users", @dir
+      @schema = "/#{@dir}/schema.json"
+      @Users  = Schema.create({:file => @schema})
+    end
+
+    after(:all) do
+      # File.delete @dir
+    end
+
+    it "rename collection field" do
+      @Users.update({
+          :collection => "home",
+          :field      => "data.message",
+          :rename_to  => "status"
+      });
+
+    end
+  end
+
+
   describe "create schema from parameter" do
     before(:all) do
       @Users = Schema.create({:definition => {
           "name" => "Users",
           "collections" => [
-              {"name" => "home", "path"=> "/home.json"},
+              {"name" => "home",      "path"=> "/home.json"},
               {"name" => "companies", "path" => "/companies/all.json"}
           ]
       }})

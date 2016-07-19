@@ -17,7 +17,10 @@ class Schema
 
   def self.create(config)
     definition = config[:file] ? JSON.parse(File.read(config[:file])) : config[:definition]
-     Schema.new(definition);
+    Schema.new(definition);
   end
 
+  def update args
+
+  end
 end
