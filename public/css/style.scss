@@ -8,6 +8,22 @@ $padding: 10px;
 
 .file-viewer, .file-editor{
   padding: $padding;
+  min-height: 50vh;
 }
 
+.file-editor{
+  padding-top: 0px;
+}
+
+.jsoneditor.jsoneditor-mode-code,
+.jsoneditor-outer,
+.ace_editor.ace-jsoneditor{
+  min-height: calc(50vh - 60px);
+}
 .jsoneditor-menu > a, .jsoneditor-collapse-all{ display: none};
+
+
+.top-bar{
+  height: 60px;
+  background: darkblue;
+}
