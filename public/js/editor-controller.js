@@ -21,7 +21,7 @@ app.controller("editorController", ["$scope", "profilesService", "$timeout", fun
         options: {
             mode: 'tree',
             change: function(arg, arg){
-                console.log("something changed");
+                file.changed = true;
             }
         },
         onLoad: function (instance) {
