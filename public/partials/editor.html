@@ -3,12 +3,14 @@
     <h1>Profiles/{{ui.state.name}}/{{ui.state.file}}</h1>
 </div>
 
-<div class          ="file-viewer"
-     ng-jsoneditor  ="viewer.onLoad"
-     ng-model       ="profiles.fileEditing"
-     options        ="viewer.options"></div>
+<div class="container-view">
+    <div class          ="file-viewer"
+         ng-jsoneditor  ="viewer.onLoad"
+         ng-model       ="profiles.fileEditing"
+         options        ="viewer.options"></div>
 
-<div class          ="file-editor"
-     ng-jsoneditor  ="editor.onLoad"
-     ng-model       ="profiles.fileEditing"
-     options        ="editor.options"></div>
+    <div class          ="file-editor"
+         ng-jsoneditor  ="editor.onLoad"
+         ng-model       ="profiles.fileEditing"
+         options        ="editor.options"></div>
+</div>
