@@ -17,12 +17,11 @@ class Profile
   end
 
   def find name
-    each_profile(){|profile, profile_root|
-      if(profile["name"] == name)
-        result = {
-            "name"        => profile["name"],
-            "description" => profile["description"]}
-
+    each_profile(){|profile_json, profile_root|
+      if(profile_json["name"] == name)
+        result = {}
+        result["name"]        = profile_json["name"]
+        result["description"] = profile_json["description"]
         @schema["files"].each{|file|
           result[file["name"]] = Document.new(profile_root, file['path'])
         }
