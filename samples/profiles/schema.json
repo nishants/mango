@@ -1,0 +1,16 @@
+{
+  "name" : "Users",
+  "collections": [
+    {
+    "name" : "home",
+    "path" : "/home.json"
+    },{
+    "name" : "companies",
+    "path" : "/companies/all.json"
+    }
+  ],
+  "attributes"  : [{
+    "companies" : "companies.getValue['data']['my-companies']",
+    "userid"    : "home.getValue['data']['user']['id']"
+  }]
+}

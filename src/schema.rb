@@ -26,7 +26,6 @@ class Schema
       @definition["collections"].each {|collection|
         target_file = "#{profile.chomp(File::SEPARATOR)}#{collection['path']}"
         if(collection["name"] == args[:collection] && Pathname.new(target_file).exist?)
-
           contents = JSON.parse(File.read(target_file))
           contents["data"][args[:rename_to]] = contents["data"]["message"]
           contents["data"].delete("message")
