@@ -1,17 +1,25 @@
 require './src/mango/profiles'
-require 'fileutils'
+require 'tempfile'
 
 RSpec.describe Profiles do
 
   describe "Profiles" do
     before(:all) do
-      @profiles_home = "/Users/dawn/Documents/projects/schemer/samples/profiles"
-      @Profiles = Profiles.load(@profiles_home)
-      @ace_name  = "Ace"
-      @ace_id    = "ace-user"
-      @slot_name = "Sloth"
-      @ace_desc  = "Represent the profile of an ace user"
-      @slot_desc = "Represent the profile of a sloth user"
+      @PROFILES_DATA  = "/Users/dawn/Documents/projects/schemer/samples/profiles"
+      @profiles_home = Tempfile.new("#{Random.new(212).rand()}").path()
+
+      FileUtils.rm_rf(@profiles_home)
+      FileUtils::mkdir_p @profiles_home
+      FileUtils.copy_entry @PROFILES_DATA, @profiles_home
+
+      @Profiles       = Profiles.load(@profiles_home)
+      @ace_name       = "Ace"
+      @ace_id         = "ace-user"
+      @slot_name      = "Sloth"
+      @ace_desc       = "Represent the profile of an ace user"
+      @slot_desc      = "Represent the profile of a sloth user"
+
+
     end
 
     it "should read all profiles.json and return summary" do
