@@ -5,6 +5,7 @@ class Profile
 
   def initialize path
     @path = path
+    @schema = schema()
   end
 
   def all
@@ -16,15 +17,26 @@ class Profile
   end
 
   def find name
-    each_profile(){|profile|
+    each_profile(){|profile, profile_root|
       if(profile["name"] == name)
-        return Mapper.parse({
-                "name"        => profile["name"],
-                "description" => profile["description"]}
-        )
+        result = {
+            "name"        => profile["name"],
+            "description" => profile["description"]}
+
+        @schema["files"].each{|file|
+          json_file = "#{profile_root.chomp(File::SEPARATOR)}#{file['path']}"
+          json      = JSON.parse(File.read(json_file))
+          result[file["name"]] = json
+        }
+        return result
       end
     }
     nil
+  end
+
+  def read relative_path
+    file_path = "#{@path}#{relative_path}"
+    JSON.parse(File.read(file_path))
   end
 
   def has_file relative_path
@@ -32,11 +44,16 @@ class Profile
     File.exists? file_path
   end
 
+  def schema
+    JSON.parse(File.read("#{@path}/schema.json"))
+  end
+
   def each_profile
     Dir["#{@path}/*/"].each{ |profile|
-      profileJson = "#{profile}profile.json"
-      if Pathname.new(profileJson).exist?
-        yield(JSON.parse(File.read(profileJson)))
+      profile_json = "#{profile}profile.json"
+      profile_root = "#{profile_json.sub("profile.json", "").strip()}"
+      if Pathname.new(profile_json).exist?
+        yield(JSON.parse(File.read(profile_json)), profile_root)
       end
     }
   end

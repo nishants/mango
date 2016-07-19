@@ -1,6 +1,6 @@
 {
   "name" : "Users",
-  "collections": [
+  "files": [
     {
     "name" : "home",
     "path" : "/home.json"
