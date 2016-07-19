@@ -1,7 +1,9 @@
+require 'json'
+
 class Schema
 
-  def initialize config
-    puts "creating schema : #{config.to_s}"
+  def initialize definition
+    puts "creating schema : #{definition}"
   end
 
   def load(path)
@@ -14,7 +16,8 @@ class Schema
   end
 
   def self.create(config)
-     Schema.new(config)
+     schema_definition = JSON.parse(File.read(config[:file]))
+     Schema.new(schema_definition);
   end
 
 end

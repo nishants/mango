@@ -1,0 +1,13 @@
+{
+  "name" : "Users",
+  "collection": [
+    {
+    "name" : "home",
+    "path" : "/home.json"
+    },{
+    "name" : "companies",
+    "path" : "/companies/all.json"
+    }
+
+  ]
+}
