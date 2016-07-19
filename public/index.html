@@ -11,20 +11,7 @@
 <body ng-app="mango" ng-controller="listingController">
 
     <div class="main-container" ui-view>
-        <table>
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
-            </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="profile in profiles.list">
-                    <td ng-bind="profile.name"></td>
-                    <td ng-bind="profile.description"></td>
-                </tr>
-            </tbody>
-        </table>
+
     </div>
 
     <script>
@@ -51,6 +38,27 @@
             profilesService.all()
         }]);
 
+
+
+        app.config(function($stateProvider, $urlRouterProvider) {
+            $urlRouterProvider.otherwise("/");
+            $stateProvider
+                    .state('home', {
+                        url: "/",
+                        templateUrl: "partials/listing.html"
+                    })
+//                    .state('state1', {
+//                        url: "/state1",
+//                        templateUrl: "partials/state1.html"
+//                    })
+//                    .state('state1.list', {
+//                        url: "/list",
+//                        templateUrl: "partials/state1.list.html",
+//                        controller: function($scope) {
+//                            $scope.items = ["A", "List", "Of", "Items"];
+//                        }
+//                    })
+        });
     </script>
 </body>
 </html>
