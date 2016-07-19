@@ -1,5 +1,4 @@
 require 'pathname'
-require_relative 'mapper'
 
 class Document
   attr_accessor :content

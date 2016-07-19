@@ -1,11 +1,12 @@
 require 'pathname'
+require 'json'
 require_relative 'document'
 
 class Profile
 
   def initialize path
     @path = path
-    @schema = schema()
+    @schema = JSON.parse(File.read("#{@path}/schema.json"))
   end
 
   def all
@@ -29,20 +30,6 @@ class Profile
       end
     }
     nil
-  end
-
-  def read relative_path
-    file_path = "#{@path}#{relative_path}"
-    JSON.parse(File.read(file_path))
-  end
-
-  def has_file relative_path
-    file_path = "#{@path}#{relative_path}"
-    File.exists? file_path
-  end
-
-  def schema
-    JSON.parse(File.read("#{@path}/schema.json"))
   end
 
   def each_profile
