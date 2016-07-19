@@ -8,7 +8,11 @@ class Schema
   end
 
   def load path
-    SchemaInstance.load(@definition, path)
+    collections = {}
+    @definition["collections"].each{|collection|
+      collections[collection["name"]] = JSON.parse(IO.read("#{path}#{collection['path']}"))
+    }
+    SchemaInstance.load(collections)
   end
 
   def self.create(config)
