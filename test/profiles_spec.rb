@@ -27,6 +27,11 @@ RSpec.describe Profiles do
       expect(descriptions.include?(@slot_desc)).to eq(true)
     end
 
+    it "Should find profile by name" do
+      profile = @Profiles.find("Ace")
+      expect(profile["name"]).to eq(@ace_name)
+      expect(profile["description"]).to eq(@ace_desc)
+    end
   end
 
 end

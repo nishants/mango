@@ -16,7 +16,13 @@ class Profile
     profiles
   end
 
-  def find id
+  def find name
+    each_profile(){|profile|
+      if(profile["name"] == name)
+        return profile
+      end
+    }
+    nil
   end
 
   def each_profile
