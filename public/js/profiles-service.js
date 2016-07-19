@@ -10,6 +10,13 @@ window.app.service("profilesService", ["$http", function($http){
                 self.waiting = false;
                 return response;
             });
+        },
+        schema : function(){
+            var self = this;
+            return $http.get("/schema").then(function(response){
+                self.schema = response.data;
+                return response.data;
+            });
         }
 
     }

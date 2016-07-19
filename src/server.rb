@@ -1,13 +1,18 @@
 require 'sinatra'
 require_relative 'mango/profiles'
 
-Profiles = Profiles.load("samples/profiles")
+PROFILE_HOME = "samples/profiles"
+Profiles = Profiles.load(PROFILE_HOME)
 
 set :port, 3000
 set :public_folder, 'public'
 
 get '/' do
   File.read 'public/index.html'
+end
+
+get '/schema' do
+  File.read "#{PROFILE_HOME}/schema.json"
 end
 
 get '/profiles' do

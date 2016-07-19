@@ -8,7 +8,7 @@
     </thead>
     <tbody>
     <tr ng-repeat="profile in profiles.list">
-        <td><a  class="fa fa-pencil-square-o"></a></td>
+        <td><a ui-sref="profile({name: profile.name})" class="fa fa-pencil-square-o"></a></td>
         <td ng-bind="profile.name"></td>
         <td ng-bind="profile.description"></td>
     </tr>

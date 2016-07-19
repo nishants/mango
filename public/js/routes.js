@@ -5,10 +5,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: "/",
             templateUrl: "partials/listing.html"
         })
-//                    .state('state1', {
-//                        url: "/state1",
-//                        templateUrl: "partials/state1.html"
-//                    })
+       .state('profile', {
+           url: "/profiles/:name",
+           templateUrl: "partials/profile.html"
+       })
 //                    .state('state1.list', {
 //                        url: "/list",
 //                        templateUrl: "partials/state1.list.html",
