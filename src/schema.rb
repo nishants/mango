@@ -16,7 +16,8 @@ class Schema
   end
 
   def self.create(config)
-     Schema.new(JSON.parse(File.read(config[:file])));
+    definition = config[:file] ? JSON.parse(File.read(config[:file])) : config[:definition]
+     Schema.new(definition);
   end
 
 end
