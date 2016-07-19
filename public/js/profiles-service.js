@@ -3,6 +3,7 @@ window.app.service("profilesService", ["$http", function($http){
     return {
         list: [],
         waiting: true,
+        current: undefined,
         all : function(){
             var self = this;
             return $http.get("/profiles").then(function(response){
@@ -10,6 +11,14 @@ window.app.service("profilesService", ["$http", function($http){
                 self.waiting = false;
                 return response;
             });
+        },
+        findByName : function(name){
+            for(var i =0; i< this.list.length; i++){
+                if(this.list[i].name == name){
+                    this.current = this.list[i];
+                    return this.current;
+                }
+            }
         },
         schema : function(){
             var self = this;

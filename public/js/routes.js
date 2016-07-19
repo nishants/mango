@@ -9,11 +9,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
            url: "/profiles/:name",
            templateUrl: "partials/profile.html"
        })
-//                    .state('state1.list', {
-//                        url: "/list",
-//                        templateUrl: "partials/state1.list.html",
-//                        controller: function($scope) {
-//                            $scope.items = ["A", "List", "Of", "Items"];
-//                        }
-//                    })
+       .state('profile.edit', {
+           url: "/edit/:file",
+           templateUrl: "partials/editor.html"
+       });
 });
