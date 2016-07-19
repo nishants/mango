@@ -1,0 +1,16 @@
+<table>
+    <thead>
+    <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="profile in profiles.list">
+        <td><a  class="fa fa-pencil-square-o"></a></td>
+        <td ng-bind="profile.name"></td>
+        <td ng-bind="profile.description"></td>
+    </tr>
+    </tbody>
+</table>
