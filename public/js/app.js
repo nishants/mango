@@ -1,1 +1,1 @@
-window.app = angular.module("mango", ["ui.router"]);
+window.app = angular.module("mango", ["ui.router", "ng.jsoneditor"]);

@@ -1,1 +1,17 @@
-<h1 ng-bind="profiles.fileEditing"></h1>
+<div ng-jsoneditor="onLoad"
+     ng-model="profiles.fileEditing"
+     options="obj.options"></div>
+
+<button type="button"
+        class="btn btn-primary"
+        ng-click="changeData()">
+    <i class="fa fa-check-circle"></i> change data
+</button>
+
+<button type="button"
+        class="btn btn-primary"
+        ng-click="changeOptions()">
+    <i class="fa fa-check-circle"></i> change options
+</button>
+
+<pre>{{pretty(obj.data)}}</pre>
