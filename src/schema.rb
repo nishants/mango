@@ -1,5 +1,6 @@
 require 'json'
 require_relative 'schema_instance'
+require 'pathname'
 
 class Schema
 
@@ -23,11 +24,10 @@ class Schema
   def update args
     Dir["#{args[:path]}/*/"].each{|profile|
       @definition["collections"].each {|collection|
-        if(collection["name"] == args[:collection])
+        target_file = "#{profile.chomp(File::SEPARATOR)}#{collection['path']}"
+        if(collection["name"] == args[:collection] && Pathname.new(target_file).exist?)
 
-          target_file = "#{profile.chomp(File::SEPARATOR)}#{collection['path']}"
           contents = JSON.parse(File.read(target_file))
-
           contents["data"][args[:rename_to]] = contents["data"]["message"]
           contents["data"].delete("message")
           File.open(target_file, 'w'){|file|
