@@ -3,17 +3,18 @@ require 'fileutils'
 
 RSpec.describe Profiles do
 
-  describe "read schema" do
+  describe "Profiles" do
     before(:all) do
       @profiles_home = "/Users/dawn/Documents/projects/schemer/samples/profiles"
       @Profiles = Profiles.load(@profiles_home)
       @ace_name  = "Ace"
+      @ace_id    = "ace-user"
       @slot_name = "Sloth"
       @ace_desc  = "Represent the profile of an ace user"
       @slot_desc = "Represent the profile of a sloth user"
     end
 
-    it "Should read all profiles.json and return summary" do
+    it "should read all profiles.json and return summary" do
       profiles = @Profiles.all()
       expect(profiles.length).to eq(2);
 
@@ -27,10 +28,15 @@ RSpec.describe Profiles do
       expect(descriptions.include?(@slot_desc)).to eq(true)
     end
 
-    it "Should find profile by name" do
+    it "should find profile by name" do
       profile = @Profiles.find("Ace")
       expect(profile["name"]).to eq(@ace_name)
       expect(profile["description"]).to eq(@ace_desc)
+    end
+
+    it "Should get profile json files" do
+      # json = @Profiles.find("Ace").home.json
+      # expect(json["data"]["user"]["id"]).to eq(@ace_id)
     end
   end
 

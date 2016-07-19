@@ -19,10 +19,18 @@ class Profile
   def find name
     each_profile(){|profile|
       if(profile["name"] == name)
-        return profile
+        return {
+            "name"        => profile["name"],
+            "description" => profile["description"]
+        }
       end
     }
     nil
+  end
+
+  def has_file relative_path
+    file_path = "#{@path}#{relative_path}"
+    File.exists? file_path
   end
 
   def each_profile
