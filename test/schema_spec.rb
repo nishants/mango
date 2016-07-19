@@ -11,6 +11,11 @@ RSpec.describe Schema do
       user_one = @Users.load("/Users/dawn/Documents/projects/schemer/samples/users/1011");
       expect(user_one.home["data"]["message"]).to eq("hello");
       expect(user_one.companies["data"][0]["name"]).to eq("xyz");
+
+      user_one = @Users.load("/Users/dawn/Documents/projects/schemer/samples/users/2022");
+      expect(user_one.home["data"]["message"]).to eq("hello back");
+      expect(user_one.companies["data"][0]["name"]).to eq("abc");
+
     end
   end
 
