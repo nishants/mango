@@ -4,14 +4,10 @@
 
 <button type="button"
         class="btn btn-primary"
-        ng-click="changeData()">
-    <i class="fa fa-check-circle"></i> change data
+        ng-click="changeOptions()">
+   <span ng-show="obj.options.mode == 'code'"><i class="fa fa-eye"></i> view</span>
+   <span ng-show="obj.options.mode == 'tree'"><i class="fa fa-code"></i> edit</span>
 </button>
 
-<button type="button"
-        class="btn btn-primary"
-        ng-click="changeOptions()">
-    <i class="fa fa-check-circle"></i> change options
-</button>
 
 <pre>{{pretty(obj.data)}}</pre>
