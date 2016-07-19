@@ -1,13 +1,9 @@
-<div ng-jsoneditor="onLoad"
-     ng-model="profiles.fileEditing"
-     options="obj.options"></div>
+<div class          ="file-viewer"
+     ng-jsoneditor  ="viewer.onLoad"
+     ng-model       ="profiles.fileEditing"
+     options        ="viewer.options"></div>
 
-<button type="button"
-        class="btn btn-primary"
-        ng-click="changeOptions()">
-   <span ng-show="obj.options.mode == 'code'"><i class="fa fa-eye"></i> view</span>
-   <span ng-show="obj.options.mode == 'tree'"><i class="fa fa-code"></i> edit</span>
-</button>
-
-
-<pre>{{pretty(obj.data)}}</pre>
+<div class          ="file-editor"
+     ng-jsoneditor  ="editor.onLoad"
+     ng-model       ="profiles.fileEditing"
+     options        ="editor.options"></div>

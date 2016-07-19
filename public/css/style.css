@@ -2073,6 +2073,12 @@
 .fa-percent:before {
   content: ""; }
 
+* {
+  box-sizing: border-box; }
+
+.file-viewer, .file-editor {
+  padding: 10px; }
+
 .jsoneditor-menu > a, .jsoneditor-collapse-all {
   display: none; }
 

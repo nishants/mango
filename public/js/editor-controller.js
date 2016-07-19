@@ -1,25 +1,36 @@
-app.controller("editorController", ["$scope", "profilesService", function($scope, profilesService){
-    $scope.obj = {
+app.controller("editorController", ["$scope", "profilesService", "$timeout", function($scope, profilesService, $timeout){
+
+    var editor = {
+        options: {
+            mode: 'code',
+            change: function(arg, arg){
+                console.log("something changed");
+            },
+            onLoad: function (instance) {
+                this.instance = instance;
+                instance.expandAll();
+                $timeout(function(){
+                    instance.expandAll();
+                },500);
+            }
+        }
+    };
+
+    var viewer = {
         options: {
             mode: 'tree',
             change: function(arg, arg){
                 console.log("something changed");
             }
+        },
+        onLoad: function (instance) {
+            this.instance = instance;
+            $timeout(function(){
+                instance.expandAll();
+            });
         }
     };
-    $scope.onLoad = function (instance) {
-        $scope.instance = instance;
-        instance.expandAll();
-    };
-    $scope.changeData = function () {
-        $scope.instance.expandAll();
-    };
-    $scope.changeOptions = function () {
-        $scope.obj.options.mode = $scope.obj.options.mode == 'tree' ? 'code' : 'tree';
-    };
 
-    //other
-    $scope.pretty = function (obj) {
-        return angular.toJson(obj, true);
-    }
+    $scope.editor = editor;
+    $scope.viewer = viewer;
 }]);
