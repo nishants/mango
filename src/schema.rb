@@ -1,16 +1,15 @@
+require_relative './collection'
+
 class Schema
-  def collections
-    Class.new {
-      def add config
-        puts "adding collection : #{config.to_s}"
-      end
-    }.new
+  attr_reader :collections
+
+  def initialize config
+    puts "creating schema : #{config.to_s}"
+    @collections =  Collection.new
   end
 
-
   def self.create(config)
-    puts "createing schema : #{config.to_s}"
-     Schema.new
+     Schema.new(config)
   end
 
 end
