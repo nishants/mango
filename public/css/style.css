@@ -2098,7 +2098,8 @@
     float: left;
     height: 60px;
     line-height: 60px;
-    font-size: large;
+    font-size: large; }
+  .top-bar .back-button, .top-bar h1, .top-bar button {
     margin: 0px;
     cursor: pointer;
     padding: 0px 10px; }
@@ -2106,6 +2107,14 @@
     color: rgba(255, 255, 255, 0.6); }
   .top-bar h1 {
     color: rgba(255, 255, 255, 0.9); }
+  .top-bar button {
+    float: right;
+    font-size: medium;
+    margin: 10px;
+    padding: 0px 20px;
+    line-height: 40px; }
+  .top-bar button.hide {
+    opacity: 0; }
 
 .container-view {
   padding: 10px; }

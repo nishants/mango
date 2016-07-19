@@ -1,10 +1,11 @@
 app.controller("editorController", ["$scope", "profilesService", "$timeout", function($scope, profilesService, $timeout){
 
+    var file = {changed : false};
     var editor = {
         options: {
             mode: 'code',
             change: function(arg, arg){
-                console.log("something changed");
+                file.changed = true;
             },
             onLoad: function (instance) {
                 this.instance = instance;
@@ -33,4 +34,5 @@ app.controller("editorController", ["$scope", "profilesService", "$timeout", fun
 
     $scope.editor = editor;
     $scope.viewer = viewer;
+    $scope.file   = file;
 }]);
