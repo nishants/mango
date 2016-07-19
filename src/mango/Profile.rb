@@ -1,5 +1,5 @@
 require 'pathname'
-require_relative 'mapper'
+require_relative 'document'
 
 class Profile
 
@@ -26,7 +26,7 @@ class Profile
         @schema["files"].each{|file|
           json_file = "#{profile_root.chomp(File::SEPARATOR)}#{file['path']}"
           json      = JSON.parse(File.read(json_file))
-          result[file["name"]] = json
+          result[file["name"]] = Document.new(json)
         }
         return result
       end

@@ -4,7 +4,7 @@ require 'tempfile'
 RSpec.describe Profiles do
 
   describe "Profiles" do
-    before(:all) do
+    before(:each) do
       @PROFILES_DATA  = "/Users/dawn/Documents/projects/schemer/samples/profiles"
       @profiles_home = Tempfile.new("#{Random.new(212).rand()}").path()
 
@@ -43,7 +43,12 @@ RSpec.describe Profiles do
     end
 
     it "Should get profile json files" do
-      json = @Profiles.find("Ace")["home"]
+      json = @Profiles.find("Ace")["home"].content
+      expect(json["data"]["user"]["id"]).to eq(@ace_id)
+    end
+
+    it "Should update profile json files" do
+      json = @Profiles.find("Ace")["home"].content
       expect(json["data"]["user"]["id"]).to eq(@ace_id)
     end
   end
