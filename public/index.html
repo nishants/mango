@@ -2,9 +2,55 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="css" href="public/css/style.css">
+    <script src="js/app.js"></script>
+    <script src="lib/angular-1.4.3.js"></script>
+    <script src="lib/ui-router.js"></script>
     <title>Mango</title>
 </head>
-<body>
+<body ng-app="mango" ng-controller="listingController">
 
+    <div class="main-container" ui-view>
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="profile in profiles.list">
+                    <td ng-bind="profile.name"></td>
+                    <td ng-bind="profile.description"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+
+        var app = angular.module("mango", ["ui.router"]);
+        app.service("profilesService", ["$http", function($http){
+            $http.get("/profiles").then(function(){})
+            return {
+                list: [],
+                waiting: true,
+                all : function(){
+                    var self = this;
+                    return $http.get("/profiles").then(function(response){
+                        self.list = response.data;
+                        self.waiting = false;
+                        return response;
+                    });
+                }
+
+            }
+        }]);
+        app.controller("listingController", ["$scope", "profilesService", function($scope, profilesService){
+            $scope.profiles = profilesService;
+            profilesService.all()
+        }]);
+
+    </script>
 </body>
 </html>

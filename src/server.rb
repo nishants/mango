@@ -4,6 +4,7 @@ require_relative 'mango/profiles'
 Profiles = Profiles.load("samples/profiles")
 
 set :port, 3000
+set :public_folder, 'public'
 
 get '/' do
   File.read 'public/index.html'
