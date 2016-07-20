@@ -12,7 +12,7 @@ app.controller("uiController", ["$rootScope", "$scope", "profilesService", "sear
         state : $stateParams, 
         search : searchService, 
         profiles: profilesService,
-        scehma: schemaService,
+        schema: schemaService,
     };
     
     $scope.ui.search.profiles.search();

@@ -2122,7 +2122,9 @@ div.jsoneditor-tree,
     opacity: 0; }
 
 .container-view {
-  padding: 10px; }
+  padding: 10px;
+  min-height: 100vh;
+  overflow: auto; }
 
 table.table.view td.select, table.table.view th.select {
   text-align: center;

@@ -3,10 +3,10 @@
         <div class="back-button fa fa-arrow-left"></div>
         <h1>Profiles/{{ui.state.name}}</h1>
         <div class="search-input">
-            <span class="icon fa fa-search"></span>
             <input class="search"
                    ng-change="ui.search.files.search()"
                    ng-model="ui.search.files.key">
+            <span class="icon fa fa-search"></span>
         </div>
     </div>
 
@@ -17,6 +17,7 @@
                 <th class="select"></th>
                 <th>Name</th>
                 <th>Path</th>
+                <th>FullPath</th>
             </tr>
             </thead>
             <tbody>
@@ -24,6 +25,9 @@
                 <td class="select"><a ui-sref="profile.edit({file: file.name})" class="fa fa-pencil"></a></td>
                 <td ng-bind="file.name"></td>
                 <td ng-bind="file.path"></td>
+                <td>
+                    <span >{{file | fullFilePath}}</span>
+                </td>
             </tr>
             </tbody>
         </table>

@@ -64,6 +64,8 @@ $topBarHeight: 60px;
 }
 .container-view{
   padding: $padding;
+  min-height: 100vh;
+  overflow: auto;
 }
 
 table.table.view{
