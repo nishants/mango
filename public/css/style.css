@@ -2113,13 +2113,6 @@
   background: #ffa500 !important;
   opacity: 0.5; }
 
-* {
-  box-sizing: border-box; }
-
-.no-display {
-  pointer-events: none;
-  opacity: 0; }
-
 .top-bar {
   position: fixed;
   top: 0px;
@@ -2146,9 +2139,17 @@
     font-size: medium;
     margin: 10px;
     padding: 0px 20px;
-    line-height: 40px; }
+    line-height: 40px;
+    color: white; }
   .top-bar button.hide {
     opacity: 0; }
+
+* {
+  box-sizing: border-box; }
+
+.no-display {
+  pointer-events: none;
+  opacity: 0; }
 
 .container-view {
   padding: 10px;

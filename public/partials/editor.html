@@ -4,6 +4,9 @@
     <button class="save btn amber-bg"
             ng-click="editor.save()"
             ng-class="{'hide' : !editor.canSave}">Save</button>
+    <button class="save btn amber-bg"
+            ng-click="editor.applyToAll()"
+            ng-class="{'hide' : !editor.canSave}">Apply to all</button>
 </div>
 
 <div class="container-view">

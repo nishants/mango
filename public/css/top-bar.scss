@@ -1,0 +1,38 @@
+.top-bar{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  z-index: 1;
+  height: $topBarHeight;
+  background: $topBarColor;
+
+  .back-button, h1{
+    float: left;
+    height: $topBarHeight;
+    line-height: $topBarHeight;
+    font-size: large;
+  }
+  .back-button, h1, button{
+    margin: 0px;
+    cursor: pointer;
+    padding: 0px $padding;
+  }
+  .back-button{
+    color : rgba(255, 255, 255, 0.6);
+  }
+  h1{
+    color : rgba(255, 255, 255, 0.9);
+  }
+  button{
+    float: right;
+    font-size: medium;
+    margin: $padding;
+    padding: 0px 2*$padding;
+    line-height: $topBarHeight - 2*$padding;
+    color: rgba(255, 255, 255, 1);
+  }
+  button.hide{
+    opacity: 0;
+  }
+}
