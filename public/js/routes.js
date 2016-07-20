@@ -3,7 +3,13 @@ app.config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('home', {
             url: "/",
-            templateUrl: "partials/home.html"
+            templateUrl: "partials/home.html",
+            resolve: {
+                loadProfile: function(searchService) {
+                    return searchService.profiles.search();
+                }
+            }
+
         })
        .state('profile', {
            url: "/profiles/:name",
