@@ -2078,11 +2078,12 @@
 
 .file-editor-view .file-overview, .file-editor-view .code-editor {
   float: left;
-  padding: 10px;
-  height: calc(100vh - 60px);
-  min-height: calc(100vh - 60px); }
+  padding-right: 10px 0px;
+  height: calc(100vh - 80px);
+  min-height: calc(100vh - 80px); }
 .file-editor-view .file-overview {
-  width: 300px; }
+  width: 300px;
+  padding-right: 10px; }
 .file-editor-view .code-editor {
   width: calc(100% - 300px); }
 .file-editor-view .jsoneditor.jsoneditor-mode-code,
@@ -2090,9 +2091,15 @@
 .file-editor-view div.jsoneditor-tree,
 .file-editor-view .ace_scroller,
 .file-editor-view .ace_editor.ace-jsoneditor {
-  min-height: calc(100vh - 60px); }
-.file-editor-view .jsoneditor-menu > a, .file-editor-view .jsoneditor-collapse-all {
+  min-height: calc(100vh - 80px); }
+.file-editor-view .jsoneditor-undo.jsoneditor-separator,
+.file-editor-view .jsoneditor-redo {
   display: none; }
+.file-editor-view .jsoneditor-expand-all,
+.file-editor-view .jsoneditor-search,
+.file-editor-view .jsoneditor-collapse-all {
+  float: right;
+  left: 0; }
 
 .no-display {
   pointer-events: none;
