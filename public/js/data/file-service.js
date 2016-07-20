@@ -15,6 +15,12 @@ window.app.service("fileService", ["$http", function($http){
             return $http.put(url,contents).then(function(response){
                 return response.data;
             });
+        },
+        applyToAll :function (fileName, contents) {
+            var url ="/profiles/apply-to-all/files/:file".replace(":file",fileName)
+            return $http.put(url,contents).then(function(response){
+                return response.data;
+            });
         }
     }
 }]);
