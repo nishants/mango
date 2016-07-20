@@ -27,7 +27,7 @@ get '/profiles/:name/files/:file' do
   Profiles.find(params[:name])[params[:file]].content.to_json
 end
 
-put '/profiles/:name/:file' do
+put '/profiles/:name/files/:file' do
   file_content =  JSON.parse request.body.read
   document = Profiles.find(params[:name])[params[:file]]
   document.content = file_content

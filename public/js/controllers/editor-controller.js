@@ -1,10 +1,15 @@
-app.controller("editorController", ["$scope", "fetchFile", function ($scope, fetchFile) {
+app.controller("editorController", ["$scope", "fetchFile", "fileService", "$stateParams", function ($scope, fetchFile, fileService, $stateParams) {
 
     var editor = {
             canSave: false,
             treeView: undefined,
+            content : fetchFile,
             save: function () {
-                editor.canSave = false;
+                fileService.save($stateParams.name, $stateParams.file, editor.content).then(function () {
+                    editor.canSave = false;
+                }, function (err) {
+                    console.error(err);
+                })
             }
         },
         onCodeChange = function (arg, arg) {

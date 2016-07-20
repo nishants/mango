@@ -12,7 +12,7 @@ window.app.service("fileService", ["$http", function($http){
         },
         save :function (profileName, fileName, contents) {
             var url ="/profiles/:name/files/:file".replace(":name",profileName).replace(":file",fileName)
-            return $http.put(url).then(function(response){
+            return $http.put(url,contents).then(function(response){
                 return response.data;
             });
         }
