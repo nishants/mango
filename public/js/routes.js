@@ -7,7 +7,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
         })
        .state('profile', {
            url: "/profiles/:name",
-           templateUrl: "partials/profile.html"
+           templateUrl: "partials/profile.html",
+           controller: "profileController"
        })
        .state('profile.edit', {
            url: "/edit/:file",

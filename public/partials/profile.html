@@ -5,14 +5,14 @@
         <div class="search-input">
             <span class="icon fa fa-search"></span>
             <input class="search"
-                   ng-change="ui.search.profiles.search()"
-                   ng-model="ui.search.profiles.key">
+                   ng-change="ui.search.files.search()"
+                   ng-model="ui.search.files.key">
         </div>
     </div>
 
     <div class="container-view">
         <ul >
-            <li ng-repeat="file in ui.profiles.schema.files">
+            <li ng-repeat="file in ui.search.files.results">
                 <a ui-sref="profile.edit({file: file.name})" ng-bind="file.name"></a>
             </li>
         </ul>

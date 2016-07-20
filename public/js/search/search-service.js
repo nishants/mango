@@ -16,6 +16,19 @@ window.app.service("searchService", ["profilesService", "filterService", functio
                 }
 
             },
+            files: {
+                key    : null,
+                results: [],
+                search : function () {
+                    var noKey   = !this.key || !this.key.length,
+                        key     = noKey ? defaultKey : this.key;
+                    profilesService.all().then(function (profiles) {
+                        service.files.results = [];
+                        service.files.results = filterService.filterProfiles(key, profiles);
+                    });
+                }
+
+            }
         }
     return service;
 }]);
