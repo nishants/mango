@@ -1,6 +1,4 @@
 app.controller("uiController", ["$rootScope", "$scope", "profilesService", "searchService", "schemaService", "$stateParams", function($rootScope, $scope, profilesService, searchService, schemaService, $stateParams){
-    profilesService.all();
-
     $rootScope.$on('$stateChangeSuccess',
         function(event, toState, toParams){
             if(toState.name == "profile"){
@@ -18,4 +16,5 @@ app.controller("uiController", ["$rootScope", "$scope", "profilesService", "sear
     };
     
     $scope.ui.search.profiles.search();
+    profilesService.all();
 }]);
