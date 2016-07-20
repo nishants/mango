@@ -28,8 +28,7 @@ get '/profiles/:name/files/:file' do
 end
 
 put '/profiles/:name/:file' do
-  req = JSON.parse request.body.read
-  file_content =  req[params[:file]]
+  file_content =  JSON.parse request.body.read
   document = Profiles.find(params[:name])[params[:file]]
   document.content = file_content
   document.save
