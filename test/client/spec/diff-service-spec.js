@@ -18,28 +18,32 @@ describe('diffService', function () {
                 return !!update.remove
             });
         },
-        original = {
-            "data": {
-                "item" : {
-                    "status" : {"name": "one"},
-                    "message": "some-message"
-                }
-            }
-        },diff;
+        service;
 
     beforeEach(inject(function (_diffService_) {
-        diff = _diffService_.create(original);
+        service = _diffService_;
     }));
 
     it('should find deleted field', function () {
-        var modifiedTo = {
-            "data": {
-                "item" : {
-                    "user"  : {"id" : "user-one"},
-                    "result": "some-message"
+
+        var original = {
+                "data": {
+                    "item": {
+                        "status": {"name": "one"},
+                        "message": "some-message"
+                    }
                 }
-            }
-        }, update = diff.schemaDiff(modifiedTo);
+            },
+            modifiedTo = {
+                "data": {
+                    "item": {
+                        "user": {"id": "user-one"},
+                        "result": "some-message"
+                    }
+                }
+            },
+            diff = service.create(original),
+            update = diff.schemaDiff(modifiedTo);
 
         expect(update.modified).toBe(true);
 
