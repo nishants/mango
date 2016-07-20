@@ -64,3 +64,23 @@ $topBarHeight: 60px;
 table.profiles{
   td, th{padding: $padding/2;}
 }
+
+.search-input{
+  float: right;
+  height: $topBarHeight;
+  line-height: $topBarHeight;
+  padding: $padding;
+
+  .icon, input{
+    float: left;
+    height: 100%;
+    display: block;
+    line-height: $topBarHeight - 2*$padding;
+    padding: 0px $padding;
+  }
+  .icon{
+    background: #ffa500;
+    color: rgba(255, 255, 255, 0.8);
+    padding: 0px 2* $padding;
+  }
+}

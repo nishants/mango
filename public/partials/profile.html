@@ -2,6 +2,12 @@
     <div class="top-bar">
         <div class="back-button fa fa-arrow-left"></div>
         <h1>Profiles/{{ui.state.name}}</h1>
+        <div class="search-input">
+            <span class="icon fa fa-search"></span>
+            <input class="search"
+                   ng-change="ui.search.profiles.search()"
+                   ng-model="ui.search.profiles.key">
+        </div>
     </div>
 
     <div class="container-view">

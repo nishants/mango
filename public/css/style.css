@@ -2123,4 +2123,20 @@ div.jsoneditor-tree,
 table.profiles td, table.profiles th {
   padding: 5px; }
 
+.search-input {
+  float: right;
+  height: 60px;
+  line-height: 60px;
+  padding: 10px; }
+  .search-input .icon, .search-input input {
+    float: left;
+    height: 100%;
+    display: block;
+    line-height: 40px;
+    padding: 0px 10px; }
+  .search-input .icon {
+    background: #ffa500;
+    color: rgba(255, 255, 255, 0.8);
+    padding: 0px 20px; }
+
 /*# sourceMappingURL=style.css.map */
