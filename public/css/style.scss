@@ -68,8 +68,9 @@ $topBarHeight: 60px;
   }
 }
 .container-view{
-  padding: $topBarHeight + $padding $padding $padding;
-  min-height: 100vh;
+  padding:  $padding;
+  margin-top:  $topBarHeight;
+  height: calc(100vh - #{$topBarHeight});
   overflow: auto;
 }
 

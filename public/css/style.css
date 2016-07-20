@@ -2127,8 +2127,9 @@ div.jsoneditor-tree,
     opacity: 0; }
 
 .container-view {
-  padding: 70px 10px 10px;
-  min-height: 100vh;
+  padding: 10px;
+  margin-top: 60px;
+  height: calc(100vh - 60px);
   overflow: auto; }
 
 table.table.view td.select, table.table.view th.select {
