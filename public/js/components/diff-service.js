@@ -31,13 +31,6 @@ window.app.service("diffService", [function(){
                         return currentObject[newFieldName] == object[fieldName];
                     })[0];
                 },
-                removed = missingNow.filter(function (fieldName) {
-                    var isObject    = !typeof(object[fieldName]) == "object";
-
-                    return isObject;
-                }).map(function (fieldName) {
-                    return {remove : prefix+fieldName}
-                }),
                 newRenames = [],
                 existWithDiffName = [],
                 renamed = missingNow.filter(wasRenamed).map(function (fieldName) {
