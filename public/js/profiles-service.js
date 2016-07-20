@@ -1,15 +1,17 @@
 window.app.service("profilesService", ["$http", function($http){
     $http.get("/profiles").then(function(){})
+
     return {
         list: [],
         waiting: true,
         current: undefined,
         all : function(){
             var self = this;
+            self.waiting = true;
             return $http.get("/profiles").then(function(response){
                 self.list = response.data;
                 self.waiting = false;
-                return response;
+                return self.list;
             });
         },
         findByName : function(name){
