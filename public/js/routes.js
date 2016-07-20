@@ -3,7 +3,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('home', {
             url: "/",
-            templateUrl: "partials/listing.html"
+            templateUrl: "partials/home.html"
         })
        .state('profile', {
            url: "/profiles/:name",
