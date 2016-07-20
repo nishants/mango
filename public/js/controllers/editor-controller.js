@@ -29,5 +29,5 @@ app.controller("editorController", ["$scope", function ($scope) {
             editor.treeView.expandAll();
         }
     };
-    $scope.file = editor;
+    $scope.editor = editor;
 }]);
