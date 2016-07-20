@@ -2,11 +2,13 @@
   "name" : "Users",
   "files": [
     {
-    "name" : "home",
-    "path" : "/home.json"
+    "name"          : "home",
+     "description"  : "response for users-service/<user-id>/home",
+     "path"         : "/home.json"
     },{
-    "name" : "companies",
-    "path" : "/companies/all.json"
+    "name"        : "companies",
+    "description" : "response for quote-service/user/<user-id>/company",
+    "path"        : "/companies/all.json"
     }
   ],
   "attributes"  : [{
