@@ -65,6 +65,18 @@ RSpec.describe Profiles do
       actual_content = JSON.parse(File.read("#{@profiles_home}/profile-ace/home.json"))
       expect(actual_content["data"]["user"]["id"]).to eq("updated")
     end
+
+    it "Should update json files in all profiles" do
+      content       = JSON.parse('{"data" : {"Message" : "HellO"}}');
+
+      @Profiles.updateAllFiles("home", content)
+
+      content_ace   = JSON.parse(File.read("#{@profiles_home}/profile-ace/home.json"))
+      content_sloth = JSON.parse(File.read("#{@profiles_home}/profile-sloth/home.json"))
+
+      expect(content_sloth).to eq(content)
+      expect(content_ace).to eq(content)
+    end
   end
 
 end

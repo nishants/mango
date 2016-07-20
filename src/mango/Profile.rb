@@ -33,12 +33,22 @@ class Profile
     nil
   end
 
+  def updateAllFiles(fileName, content)
+    each_profile(){|profile, profile_root|
+      path = @schema["files"].select{|file| file["name"] == fileName}[0]["path"]
+      document = Document.new(profile_root, path)
+      document.content = content;
+      document.save;
+    }
+  end
+
   def each_profile
     Dir["#{@path}/*/"].each{ |profile|
       profile_json = "#{profile}profile.json"
       profile_root = "#{profile_json.sub("profile.json", "").strip()}"
       if Pathname.new(profile_json).exist?
-        yield(JSON.parse(File.read(profile_json)), profile_root, profile)
+        profile_json_contents = JSON.parse(File.read(profile_json))
+        yield(profile_json_contents, profile_root, profile)
       end
     }
   end
