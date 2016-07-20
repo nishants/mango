@@ -11,6 +11,22 @@ app.config(function($stateProvider, $urlRouterProvider) {
             }
 
         })
+        .state('powermode', {
+            url: "/power",
+            templateUrl: "partials/powermode.html",
+            resolve: {
+                loadData: function(searchService, profilesService, fileService) {
+                    return searchService.profiles.search().then(function (profiles){
+                        return profilesService.findByName(profiles[0].name).then(function(){
+                            return fileService.updateSchema().then(function(files){
+                                return profilesService.getFile(profiles[0].name, files[0].name);
+                            });
+                        });
+                    });
+                }
+            }
+
+        })
        .state('profile', {
            url: "/profiles/:name",
            templateUrl: "partials/profile.html",

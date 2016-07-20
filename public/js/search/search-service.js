@@ -9,9 +9,10 @@ window.app.service("searchService", ["profilesService", "filterService","fileSer
                 search : function () {
                     var noKey   = !this.key || !this.key.length,
                         key     = noKey ? defaultKey : this.key;
-                        profilesService.all().then(function (profiles) {
+                        return profilesService.all().then(function (profiles) {
                             service.profiles.results = [];
                             service.profiles.results = filterService.filterProfiles(key, profiles);
+                            return profiles;
                         });
                 }
 
