@@ -24,6 +24,65 @@ describe('diffService', function () {
         service = _diffService_;
     }));
 
+    it('should find insertions', function () {
+
+        var original = {
+                "data": {
+                    "item": {
+                        "status": {"name": "one"},
+                        "message": "some-message"
+                    }
+                }
+            },
+            modifiedTo = {
+                "data": {
+                    "flag" : false,
+                    "item": {
+                        "new-field": {"name": "one"},
+                        "status": {"name": "one"},
+                        "message": "some-message"
+                    }
+                }
+            },
+            diff = service.create(original),
+            update = diff.schemaDiff(modifiedTo);
+
+        expect(update.modified).toBe(true);
+
+        var inserted = getInserts(update.changes);
+
+        expect(inserted.length).toBe(2);
+        expect(inserted).toEqual([{insert: "data.flag", value: false},{insert: "data.item.new-field", value: {"name": "one"}}]);
+    });
+    it('should find deletions', function () {
+
+        var original = {
+                "flag" : false,
+                "data": {
+                    "item": {
+                        "status": {"name": "one"},
+                        "message": "some-message"
+                    }
+                }
+            },
+            modifiedTo = {
+                "data": {
+                    "item": {
+                        "message": "some-message"
+                    }
+                }
+            }            ,
+            diff = service.create(original),
+            update = diff.schemaDiff(modifiedTo);
+
+        expect(update.modified).toBe(true);
+
+        var deleted = getRemoved(update.changes);
+
+        expect(deleted.length).toBe(2);
+        expect(deleted).toEqual([{remove: "data.item.status"},{remove: "flag"}]);
+    });
+
     it('should find deleted field', function () {
 
         var original = {
