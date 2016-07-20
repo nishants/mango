@@ -11,7 +11,8 @@ class Profile
 
   def all
     profiles =  []
-    each_profile(){|profile|
+    each_profile(){|profile, root, dir|
+      profile["dir"] = absolute_path dir;
       profiles.push(profile);
     }
     profiles
@@ -37,10 +38,15 @@ class Profile
       profile_json = "#{profile}profile.json"
       profile_root = "#{profile_json.sub("profile.json", "").strip()}"
       if Pathname.new(profile_json).exist?
-        yield(JSON.parse(File.read(profile_json)), profile_root)
+        yield(JSON.parse(File.read(profile_json)), profile_root, profile)
       end
     }
   end
+
+  def absolute_path path
+    return Pathname.new(path).realpath.to_s
+  end
+
 end
 
 

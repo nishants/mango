@@ -4,6 +4,9 @@ require 'tempfile'
 RSpec.describe Profiles do
 
   describe "Profiles" do
+    def absolute_path path
+      return Pathname.new(path).realpath.to_s
+    end
     before(:each) do
       @PROFILES_DATA  = "/Users/dawn/Documents/projects/schemer/samples/profiles"
       @profiles_home = Tempfile.new("#{Random.new(212).rand()}").path()
@@ -14,8 +17,13 @@ RSpec.describe Profiles do
 
       @Profiles       = Profiles.load(@profiles_home)
       @ace_name       = "Ace"
-      @ace_id         = "ace-user"
       @slot_name      = "Sloth"
+
+      @ace_id         = "ace-user"
+
+      @ace_dir        = absolute_path "#{@profiles_home}/profile-ace"
+      @sloth_dir      = absolute_path "#{@profiles_home}/profile-sloth"
+
       @ace_desc       = "Represent the profile of an ace user"
       @slot_desc      = "Represent the profile of a sloth user"
     end
@@ -32,6 +40,10 @@ RSpec.describe Profiles do
       descriptions = profiles.map{|profile| profile["description"]}
       expect(descriptions.include?(@ace_desc)).to eq(true)
       expect(descriptions.include?(@slot_desc)).to eq(true)
+
+      descriptions = profiles.map{|profile| profile["dir"]}
+      expect(descriptions.include?(@ace_dir)).to eq(true)
+      expect(descriptions.include?(@sloth_dir)).to eq(true)
     end
 
     it "should find profile by name" do
