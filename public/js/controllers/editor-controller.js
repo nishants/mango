@@ -1,11 +1,14 @@
 app.controller("editorController", ["$scope", "fetchFile", function ($scope, fetchFile) {
 
     var editor = {
-            changed: false,
-            treeView: undefined
+            canSave: false,
+            treeView: undefined,
+            save: function () {
+                editor.canSave = false;
+            }
         },
         onCodeChange = function (arg, arg) {
-            editor.changed = true;
+            editor.canSave = true;
         };
 
 
