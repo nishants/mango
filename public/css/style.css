@@ -2097,6 +2097,11 @@ div.jsoneditor-tree,
   opacity: 0; }
 
 .top-bar {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  z-index: 1;
   height: 60px;
   background: darkblue; }
   .top-bar .back-button, .top-bar h1 {
@@ -2122,7 +2127,7 @@ div.jsoneditor-tree,
     opacity: 0; }
 
 .container-view {
-  padding: 10px;
+  padding: 70px 10px 10px;
   min-height: 100vh;
   overflow: auto; }
 
