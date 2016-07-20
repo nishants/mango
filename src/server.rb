@@ -1,4 +1,6 @@
 require 'sinatra'
+require 'pathname'
+
 require_relative 'mango/profiles'
 
 PROFILE_HOME = "samples/profiles"
@@ -12,7 +14,9 @@ get '/' do
 end
 
 get '/schema' do
-  File.read "#{PROFILE_HOME}/schema.json"
+  schema = JSON.parse(File.read("#{PROFILE_HOME}/schema.json"))
+  schema["base"] = Pathname.new(PROFILE_HOME).realpath
+  schema.to_json
 end
 
 get '/profiles' do
