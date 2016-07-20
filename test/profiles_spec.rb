@@ -8,12 +8,12 @@ RSpec.describe Profiles do
       return Pathname.new(path).realpath.to_s
     end
     before(:each) do
-      @PROFILES_DATA  = "/Users/dawn/Documents/projects/schemer/samples/profiles"
+      @TEST_PROFILES_PATH  = "/Users/dawn/Documents/projects/schemer/samples/test-profiles"
       @profiles_home = Tempfile.new("#{Random.new(212).rand()}").path()
 
       FileUtils.rm_rf(@profiles_home)
       FileUtils::mkdir_p @profiles_home
-      FileUtils.copy_entry @PROFILES_DATA, @profiles_home
+      FileUtils.copy_entry @TEST_PROFILES_PATH, @profiles_home
 
       @Profiles       = Profiles.load(@profiles_home)
       @ace_name       = "Ace"
