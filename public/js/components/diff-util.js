@@ -1,7 +1,7 @@
 window.app.service("diffUtil", [function(){
 
     var fieldsOf = function (parentId, object) {
-        var result = {},
+        var result = [],
             fields = Object.keys(object);
 
         for(var i = 0 ; i < fields.length; i++){
@@ -10,10 +10,11 @@ window.app.service("diffUtil", [function(){
                 isArray  = value instanceof Array,
                 isObject = !isArray && (typeof(value) == "object"),
                 fieldId = parentId + fieldName + ".";
-            result[fieldId.slice(0,-1)] = value;
+            result.push(fieldId.slice(0,-1));
             if(isObject && value){
-                _.assign(result, fieldsOf(fieldId, value));
+                result = result.concat(fieldsOf(fieldId, value));
             }
+
         }
         return result;
     }

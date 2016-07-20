@@ -20,6 +20,6 @@ describe('diffUtil', function () {
             expected = ["data", "data.item", "data.item.user", "data.item.result","data.name"],
             actual   = util.fieldsIn(object);
         
-        expect(_.difference(expected, Object.keys(actual))).toEqual([]);
+        expect(_.difference(expected, actual)).toEqual([]);
     });
 });
