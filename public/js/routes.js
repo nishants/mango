@@ -13,6 +13,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
        .state('profile.edit', {
            url: "/edit/:file",
            templateUrl: "partials/editor.html",
-           controller: "editorController"
+           controller: "editorController",
+           resolve: {
+               fetchFile: function($stateParams, profilesService) {
+                   return profilesService.getFile($stateParams.name, $stateParams.file);
+               }
+           }
        });
 });

@@ -1,4 +1,4 @@
-app.controller("editorController", ["$scope", function ($scope) {
+app.controller("editorController", ["$scope", "fetchFile", function ($scope, fetchFile) {
 
     var editor = {
             changed: false,

@@ -5,7 +5,6 @@ app.controller("uiController", ["$rootScope", "$scope", "profilesService", "sear
                 showingFiles    = state.name == "profile.edit";
 
             showingProfiles && profilesService.findByName(params.name);
-            showingFiles    && profilesService.getFile(params.name, params.file);
         });
     
     $scope.ui = {
