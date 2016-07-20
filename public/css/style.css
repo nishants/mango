@@ -2128,7 +2128,8 @@ div.jsoneditor-tree,
 
 table.table.view td.select, table.table.view th.select {
   text-align: center;
-  font-size: large; }
+  font-size: large;
+  width: 50px; }
 table.table.view tr:hover td {
   background-color: rgba(33, 150, 243, 0.09); }
 table.table.view td, table.table.view th {
