@@ -1,4 +1,4 @@
-app.controller("viewProfileController", ["$scope", "schemaService", "loadProfile", function($scope, schemaService, loadProfile){
-    schemaService.updateSchema();
+app.controller("viewProfileController", ["$scope", "fileService", "loadProfile", function($scope, fileService, loadProfile){
+    fileService.updateSchema();
     $scope.ui.search.files.search();
 }]);

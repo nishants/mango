@@ -1,4 +1,4 @@
-app.filter("fullFilePath", ["profilesService","schemaService",function(profilesService, schemaService){
+app.filter("fullFilePath", ["profilesService","fileService",function(profilesService, fileService){
     var pathTemplate = "<profile-name><relative-path>"
     return function(file){
         var relative = file ? file.path : null;
