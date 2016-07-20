@@ -12,4 +12,5 @@ app.controller("uiController", ["$rootScope", "$scope", "profilesService", "sear
             }
         });
     $scope.ui = {state : $stateParams, search : searchService, profiles: profilesService}
+    $scope.ui.search.profiles.search();
 }]);

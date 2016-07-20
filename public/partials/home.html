@@ -3,6 +3,12 @@
 </div>
 
 <div class="container-view">
+    <div class="search-input">
+        <input class="search"
+               ng-change="ui.search.profiles.search()"
+               ng-model="ui.search.profiles.key">
+    </div>
+
     <table class="profiles">
         <thead>
         <tr>
@@ -12,7 +18,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="profile in ui.profiles.list">
+        <tr ng-repeat="profile in ui.search.profiles.results track by $index">
             <td><a ui-sref="profile({name: profile.name})" class="fa fa-pencil-square-o"></a></td>
             <td ng-bind="profile.name"></td>
             <td ng-bind="profile.description"></td>
