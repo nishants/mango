@@ -20,10 +20,7 @@ window.app.service("diffUtil", [function(){
     }
     return {
         fieldsIn: function (object) {
-            var fields = Object.keys(object);
-
             return fieldsOf("", object);
-            return ["data", "data.item", "data.item.user", "data.item.result","data.name"];
         }
     };
 }]);
