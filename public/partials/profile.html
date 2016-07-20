@@ -11,10 +11,22 @@
     </div>
 
     <div class="container-view">
-        <ul >
-            <li ng-repeat="file in ui.search.files.results">
-                <a ui-sref="profile.edit({file: file.name})" ng-bind="file.name"></a>
-            </li>
-        </ul>
+        <table class="profiles">
+            <thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Path</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="file in ui.search.files.results">
+                <td><a ui-sref="profile.edit({file: file.name})" class="fa fa-pencil-square-o"></a></td>
+                <td ng-bind="file.name"></td>
+                <td ng-bind="file.path"></td>
+            </tr>
+            </tbody>
+        </table>
+
     </div>
 </div>

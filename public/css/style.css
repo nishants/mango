@@ -2092,6 +2092,10 @@ div.jsoneditor-tree,
 .jsoneditor-menu > a, .jsoneditor-collapse-all {
   display: none; }
 
+.no-display {
+  pointer-events: none;
+  opacity: 0; }
+
 .top-bar {
   height: 60px;
   background: darkblue; }
@@ -2137,6 +2141,10 @@ table.profiles td, table.profiles th {
   .search-input .icon {
     background: #ffa500;
     color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.8);
     padding: 0px 20px; }
+
+.amber-bg {
+  background-color: #ffa500; }
 
 /*# sourceMappingURL=style.css.map */

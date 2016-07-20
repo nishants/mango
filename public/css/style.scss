@@ -1,6 +1,7 @@
 @import "../lib/font-awesome-4.5.0/scss/font-awesome";
 
 $padding: 10px;
+$amber  : #ffa500;
 
 *{
   box-sizing: border-box;
@@ -23,6 +24,10 @@ div.jsoneditor-tree,
 }
 .jsoneditor-menu > a, .jsoneditor-collapse-all{ display: none};
 
+.no-display{
+  pointer-events: none;
+  opacity: 0;
+}
 
 $topBarHeight: 60px;
 .top-bar{
@@ -79,8 +84,13 @@ table.profiles{
     padding: 0px $padding;
   }
   .icon{
-    background: #ffa500;
+    background: $amber;
+    color: rgba(255, 255, 255, 0.8);
     color: rgba(255, 255, 255, 0.8);
     padding: 0px 2* $padding;
   }
+}
+
+.amber-bg{
+  background-color: $amber;
 }
