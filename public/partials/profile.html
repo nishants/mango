@@ -11,17 +11,17 @@
     </div>
 
     <div class="container-view">
-        <table class="profiles">
+        <table class="table view">
             <thead>
             <tr>
-                <th></th>
+                <th class="select"></th>
                 <th>Name</th>
                 <th>Path</th>
             </tr>
             </thead>
             <tbody>
             <tr ng-repeat="file in ui.search.files.results">
-                <td><a ui-sref="profile.edit({file: file.name})" class="fa fa-pencil-square-o"></a></td>
+                <td class="select"><a ui-sref="profile.edit({file: file.name})" class="fa fa-pencil"></a></td>
                 <td ng-bind="file.name"></td>
                 <td ng-bind="file.path"></td>
             </tr>

@@ -66,8 +66,20 @@ $topBarHeight: 60px;
   padding: $padding;
 }
 
-table.profiles{
-  td, th{padding: $padding/2;}
+table.table.view{
+  td.select, th.select{
+    text-align: center;
+    font-size: large;
+  }
+  tr:hover {
+    td{
+      background-color: rgba(33, 150, 243, 0.09);
+    }
+  }
+  td, th{
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
 }
 
 .search-input{

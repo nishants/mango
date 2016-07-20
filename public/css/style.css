@@ -2124,8 +2124,14 @@ div.jsoneditor-tree,
 .container-view {
   padding: 10px; }
 
-table.profiles td, table.profiles th {
-  padding: 5px; }
+table.table.view td.select, table.table.view th.select {
+  text-align: center;
+  font-size: large; }
+table.table.view tr:hover td {
+  background-color: rgba(33, 150, 243, 0.09); }
+table.table.view td, table.table.view th {
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
 
 .search-input {
   float: right;

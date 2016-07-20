@@ -11,17 +11,17 @@
 
 <div class="container-view">
 
-    <table class="profiles">
+    <table class="table view">
         <thead>
         <tr>
-            <th></th>
+            <th class="select"></th>
             <th>Name</th>
             <th>Description</th>
         </tr>
         </thead>
         <tbody>
         <tr ng-repeat="profile in ui.search.profiles.results track by $index">
-            <td><a ui-sref="profile({name: profile.name})" class="fa fa-pencil-square-o"></a></td>
+            <td class="select"><a ui-sref="profile({name: profile.name})" class="fa fa-pencil"></a></td>
             <td ng-bind="profile.name"></td>
             <td ng-bind="profile.description"></td>
         </tr>
