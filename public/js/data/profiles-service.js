@@ -12,15 +12,13 @@ window.app.service("profilesService", ["$http", "$q", function($http, $q){
             return getProfiles.then();
         },
         findByName : function(name){
-            for(var i =0; i< this.list.length; i++){
-                if(this.list[i].name == name){
-                    this.current = this.list[i];
-                    return this.current;
-                }
-            }
-
             return getProfiles.then(function(){
-
+                for(var i =0; i< service.list.length; i++){
+                    if(service.list[i].name == name){
+                        service.current = service.list[i];
+                        return service.current;
+                    }
+                }
             });
         },
         updateSchema : function(){
