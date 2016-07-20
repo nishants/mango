@@ -50,8 +50,8 @@ describe('diffService', function () {
         expect(renamed.renameTo).toBe("result");
 
         expect(removed.remove).toBe("data.item.status");
-        //
-        // expect(inserted.insert).toBe("data.item.user");
-        // expect(inserted.value).toEqual({"id" : "user-one"});
+
+        expect(inserted.insert).toBe("data.item.user");
+        expect(inserted.value).toEqual({"id" : "user-one"});
     });
 });
