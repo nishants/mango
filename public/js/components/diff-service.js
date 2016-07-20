@@ -47,6 +47,11 @@ window.app.service("diffService", ["diffUtil",function(diffUtil){
             newFound.splice(i, 1);
         }
 
+        missing = missing.sort();
+        for(var i = indexOfSubString(missing); i != -1; i = indexOfSubString(missing)){
+            missing.splice(i, 1);
+        }
+
         var difference = newFound.map(function (newField) {
             return {insert: newField, value: diffUtil.valueFor(newField, newObject)};
         }).concat(missing.map(function (missingField) {

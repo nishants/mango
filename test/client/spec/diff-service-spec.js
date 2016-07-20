@@ -21,7 +21,7 @@ describe('diffService', function () {
         original = {
             "data": {
                 "item" : {
-                    "status" : "some-status",
+                    "status" : {"name": "one"},
                     "message": "some-message"
                 }
             }
