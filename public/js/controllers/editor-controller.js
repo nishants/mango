@@ -1,38 +1,33 @@
-app.controller("editorController", ["$scope", "profilesService", "$timeout", function($scope, profilesService, $timeout){
+app.controller("editorController", ["$scope", function ($scope) {
 
-    var file = {changed : false};
     var editor = {
+            changed: false,
+            treeView: undefined
+        },
+        onCodeChange = function (arg, arg) {
+            editor.changed = true;
+        };
+
+
+    $scope.codeView = codeView = {
         options: {
             mode: 'code',
-            change: function(arg, arg){
-                file.changed = true;
-            },
+            change: onCodeChange,
             onLoad: function (instance) {
                 this.instance = instance;
                 instance.expandAll();
-                $timeout(function(){
-                    instance.expandAll();
-                },500);
             }
         }
     };
-
-    var viewer = {
+    $scope.treeView = treeView = {
         options: {
             mode: 'tree',
-            change: function(arg, arg){
-                file.changed = true;
-            }
+            change: onCodeChange
         },
         onLoad: function (instance) {
-            this.instance = instance;
-            $timeout(function(){
-                instance.expandAll();
-            });
+            editor.treeView = instance;
+            editor.treeView.expandAll();
         }
     };
-
-    $scope.editor = editor;
-    $scope.viewer = viewer;
-    $scope.file   = file;
+    $scope.file = editor;
 }]);
