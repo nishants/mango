@@ -1,30 +1,27 @@
 window.app.service("profilesService", ["$http", "$q", function($http, $q){
-    var getProfiles = $http.get("/profiles");
-    return {
+    var getProfiles = $http.get("/profiles").then(function(response){
+            service.list = response.data;
+            service.waiting = false;
+            return response.data;
+        }),
+        service = {
         list: [],
         waiting: true,
         current: undefined,
         all : function(){
-            var self = this;
-            self.waiting = true;
-            return getProfiles.then(function(response){
-                self.list = response.data;
-                self.waiting = false;
-                return self.list;
-            });
+            return getProfiles.then();
         },
         findByName : function(name){
-            getProfiles.then();
             for(var i =0; i< this.list.length; i++){
                 if(this.list[i].name == name){
                     this.current = this.list[i];
                     return this.current;
                 }
             }
-            var self = this;
-            return {then: function (success) {
-                success();
-            }};
+
+            return getProfiles.then(function(){
+
+            });
         },
         updateSchema : function(){
             var self = this;
@@ -43,5 +40,6 @@ window.app.service("profilesService", ["$http", "$q", function($http, $q){
 
         }
 
-    }
+    };
+    return service
 }]);
