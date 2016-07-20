@@ -7,15 +7,15 @@
 </div>
 
 <div class="container-view">
-    <div class          ="file-editor"
-         ng-jsoneditor  ="codeView.onLoad"
-         ng-model       ="ui.profiles.fileEditing"
-         options        ="codeView.options"></div>
+    <div class="file-editor-view">
+        <div class          ="file-overview"
+             ng-jsoneditor  ="treeView.onLoad"
+             ng-model       ="ui.profiles.fileEditing"
+             options        ="treeView.options"></div>
+        <div class          ="code-editor"
+             ng-jsoneditor  ="codeView.onLoad"
+             ng-model       ="ui.profiles.fileEditing"
+             options        ="codeView.options"></div>
 
-    <div class          ="file-viewer"
-         ng-jsoneditor  ="treeView.onLoad"
-         ng-model       ="ui.profiles.fileEditing"
-         options        ="treeView.options"></div>
-
-
+    </div>
 </div>

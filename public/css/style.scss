@@ -2,35 +2,44 @@
 
 $padding: 10px;
 $amber  : #ffa500;
+$topBarHeight: 60px;
 
 *{
   box-sizing: border-box;
 }
 
-.file-viewer, .file-editor{
-  padding: $padding;
-  min-height: 50vh;
-}
+$fileOverviewWidth: 300px;
+$calcEditorHeight : calc(100vh - #{$topBarHeight});
+.file-editor-view{
+  .file-overview, .code-editor{
+    float     :left;
+    padding   : $padding;
+    height    : $calcEditorHeight;
+    min-height: $calcEditorHeight;
+  }
 
-.file-editor{
-  padding-top: 0px;
-}
+  .file-overview{
+    width: $fileOverviewWidth;
+  }
+  .code-editor{
+    width: calc(100% - #{$fileOverviewWidth});
+  }
 
-.jsoneditor.jsoneditor-mode-code,
-.jsoneditor-outer,
-div.jsoneditor-tree,
-.ace_scroller,
-.ace_editor.ace-jsoneditor{
-  min-height: calc(50vh - 60px);
+  .jsoneditor.jsoneditor-mode-code,
+  .jsoneditor-outer,
+  div.jsoneditor-tree,
+  .ace_scroller,
+  .ace_editor.ace-jsoneditor{
+    min-height: $calcEditorHeight;
+  }
+  .jsoneditor-menu > a, .jsoneditor-collapse-all{ display: none};
 }
-.jsoneditor-menu > a, .jsoneditor-collapse-all{ display: none};
 
 .no-display{
   pointer-events: none;
   opacity: 0;
 }
 
-$topBarHeight: 60px;
 .top-bar{
   position: fixed;
   top: 0px;
