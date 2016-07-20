@@ -22,4 +22,17 @@ describe('diffUtil', function () {
         
         expect(_.difference(expected, actual)).toEqual([]);
     });
+    it('should read field-id value', function () {
+        var object = {
+                "data": {
+                    "name" : "some-item",
+                    "item": {
+                        "user": {"id": "user-one"},
+                        "result": "some-message"
+                    }
+                }
+            };
+
+        expect(util.valueFor("data.item.user", object)).toEqual({"id": "user-one"});
+    });
 });
