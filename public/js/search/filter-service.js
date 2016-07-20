@@ -16,9 +16,15 @@ window.app.service("filterService", [function () {
     var profilesConfig = {
         fields: ["name", "description"]
     };
+    var filesConfig = {
+        fields: ["name", "path"]
+    };
     return {
         filterProfiles : function (key, profiles) {
             return filter(key, profiles, profilesConfig)
+        },
+        filterFiles   : function (key, files) {
+            return filter(key, files, filesConfig)
         }
     };
 }]);

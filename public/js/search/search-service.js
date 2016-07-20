@@ -1,4 +1,4 @@
-window.app.service("searchService", ["profilesService", "filterService", function (profilesService, filterService) {
+window.app.service("searchService", ["profilesService", "filterService","schemaService", function (profilesService, filterService, schemaService) {
     var defaultKey = ".*";
 
     var
@@ -22,9 +22,9 @@ window.app.service("searchService", ["profilesService", "filterService", functio
                 search : function () {
                     var noKey   = !this.key || !this.key.length,
                         key     = noKey ? defaultKey : this.key;
-                    profilesService.all().then(function (profiles) {
+                    schemaService.updateSchema().then(function (files) {
                         service.files.results = [];
-                        service.files.results = filterService.filterProfiles(key, profiles);
+                        service.files.results = filterService.filterFiles(key, files);
                     });
                 }
 

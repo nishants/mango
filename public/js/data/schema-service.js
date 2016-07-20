@@ -1,11 +1,11 @@
 window.app.service("schemaService", ["$http", function($http){
     return {
-        schema: undefined,
+        files : [],
         updateSchema : function(){
             var self = this;
             return $http.get("/schema").then(function(response){
-                self.schema = response.data;
-                return response.data;
+                self.files = response.data.files;
+                return self.files;
             });
         }
     }
