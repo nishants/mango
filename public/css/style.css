@@ -2073,9 +2073,6 @@
 .fa-percent:before {
   content: ""; }
 
-* {
-  box-sizing: border-box; }
-
 .file-editor-view .file-overview, .file-editor-view .code-editor {
   float: left;
   padding-right: 10px 0px;
@@ -2092,6 +2089,7 @@
 .file-editor-view .ace_scroller,
 .file-editor-view .ace_editor.ace-jsoneditor {
   min-height: calc(100vh - 80px); }
+.file-editor-view .jsoneditor-poweredBy,
 .file-editor-view .jsoneditor-undo.jsoneditor-separator,
 .file-editor-view .jsoneditor-redo {
   display: none; }
@@ -2100,6 +2098,23 @@
 .file-editor-view .jsoneditor-collapse-all {
   float: right;
   left: 0; }
+.file-editor-view .jsoneditor-search {
+  margin-left: 5px; }
+  .file-editor-view .jsoneditor-search input {
+    padding-left: 5px; }
+  .file-editor-view .jsoneditor-search .jsoneditor-results {
+    display: none; }
+.file-editor-view .jsoneditor-menu {
+  background-color: #ffa500;
+  border: 1px solid transparent; }
+.file-editor-view .jsoneditor {
+  border: 1px solid #ffa500; }
+.file-editor-view .ace_gutter {
+  background: #ffa500 !important;
+  opacity: 0.5; }
+
+* {
+  box-sizing: border-box; }
 
 .no-display {
   pointer-events: none;
@@ -2112,7 +2127,7 @@
   width: 100vw;
   z-index: 1;
   height: 60px;
-  background: darkblue; }
+  background: #3F51B5; }
   .top-bar .back-button, .top-bar h1 {
     float: left;
     height: 60px;

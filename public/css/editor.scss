@@ -1,0 +1,57 @@
+.file-editor-view{
+  .file-overview, .code-editor{
+    float     :left;
+    padding-right: $padding 0px;
+    height    : $calcEditorHeight;
+    min-height: $calcEditorHeight;
+  }
+
+  .file-overview{
+    width: $fileOverviewWidth;
+    padding-right: $padding;
+  }
+  .code-editor{
+    width: calc(100% - #{$fileOverviewWidth});
+  }
+
+  .jsoneditor.jsoneditor-mode-code,
+  .jsoneditor-outer,
+  div.jsoneditor-tree,
+  .ace_scroller,
+  .ace_editor.ace-jsoneditor{
+    min-height: $calcEditorHeight;
+  }
+  .jsoneditor-poweredBy,
+  .jsoneditor-undo.jsoneditor-separator,
+  .jsoneditor-redo{
+    display: none
+  }
+  .jsoneditor-expand-all,
+  .jsoneditor-search,
+  .jsoneditor-collapse-all{
+    float: right;
+    left: 0;
+  };
+
+
+  .jsoneditor-search{
+    margin-left: $padding/2;
+    input{
+      padding-left: $padding/2;
+    }
+    .jsoneditor-results{
+      display: none;
+    }
+  }
+  .jsoneditor-menu{
+    background-color: $amber;
+    border: 1px solid transparent;
+  }
+  .jsoneditor{
+    border: 1px solid $amber;
+  }
+  .ace_gutter{
+    background: $amber !important;
+    opacity: 0.5;
+  }
+}

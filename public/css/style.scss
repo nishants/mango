@@ -3,47 +3,17 @@
 $padding: 10px;
 $amber  : #ffa500;
 $topBarHeight: 60px;
+$topBarColor : #3F51B5;
+$fileOverviewWidth: 300px;
+$calcEditorHeight : calc(100vh - #{$topBarHeight +  2*$padding});
+
+@import "editor";
 
 *{
   box-sizing: border-box;
 }
 
-$fileOverviewWidth: 300px;
-$calcEditorHeight : calc(100vh - #{$topBarHeight +  2*$padding});
-.file-editor-view{
-  .file-overview, .code-editor{
-    float     :left;
-    padding-right: $padding 0px;
-    height    : $calcEditorHeight;
-    min-height: $calcEditorHeight;
-  }
 
-  .file-overview{
-    width: $fileOverviewWidth;
-    padding-right: $padding;
-  }
-  .code-editor{
-    width: calc(100% - #{$fileOverviewWidth});
-  }
-
-  .jsoneditor.jsoneditor-mode-code,
-  .jsoneditor-outer,
-  div.jsoneditor-tree,
-  .ace_scroller,
-  .ace_editor.ace-jsoneditor{
-    min-height: $calcEditorHeight;
-  }
-  .jsoneditor-undo.jsoneditor-separator,
-  .jsoneditor-redo{
-    display: none
-  }
-  .jsoneditor-expand-all,
-  .jsoneditor-search,
-  .jsoneditor-collapse-all{
-    float: right;
-    left: 0;
-  };
-}
 
 .no-display{
   pointer-events: none;
@@ -57,7 +27,7 @@ $calcEditorHeight : calc(100vh - #{$topBarHeight +  2*$padding});
   width: 100vw;
   z-index: 1;
   height: $topBarHeight;
-  background: darkblue;
+  background: $topBarColor;
 
   .back-button, h1{
     float: left;
