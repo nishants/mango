@@ -3,6 +3,16 @@ window.app.service("diffService", ["diffUtil",function(diffUtil){
             return JSON.parse(JSON.stringify(object));
         };
 
+    var indexOfSubString = function (insertedFields) {
+        for(var i = 1; i< insertedFields.length; i ++){
+            var isSubStringOfLast = insertedFields[i].startsWith(insertedFields[i-1]);
+            if(isSubStringOfLast){
+                return i;
+            }
+        }
+        return -1;
+    };
+
     var calculateDiff = function (objectOne, newObject) {
         var oldFields  = diffUtil.fieldsIn(objectOne),
             newFields  = diffUtil.fieldsIn(newObject),
@@ -30,6 +40,11 @@ window.app.service("diffService", ["diffUtil",function(diffUtil){
                     newFound = _.filter(newFound, function(field) { return field != newField; });
                 }
             }
+        }
+
+        newFound = newFound.sort();
+        for(var i = indexOfSubString(newFound); i != -1; i = indexOfSubString(newFound)){
+            newFound.splice(i, 1);
         }
 
         var difference = newFound.map(function (newField) {

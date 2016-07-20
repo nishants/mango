@@ -53,5 +53,7 @@ describe('diffService', function () {
 
         expect(inserted.insert).toBe("data.item.user");
         expect(inserted.value).toEqual({"id" : "user-one"});
+
+        expect(update.changes.length).toEqual(3);
     });
 });
