@@ -16,7 +16,6 @@ window.app.service("profilesService", ["$http", function($http){
             for(var i =0; i< this.list.length; i++){
                 if(this.list[i].name == name){
                     this.current = this.list[i];
-                    this.current.dir = this.current.name;
                     return this.current;
                 }
             }
