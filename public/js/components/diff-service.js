@@ -1,4 +1,4 @@
-window.app.service("diffService", [function(){
+window.app.service("diffService", ["diffUtil",function(diffUtil){
     var copyOf = function (object) {
             return JSON.parse(JSON.stringify(object));
         },
@@ -49,6 +49,41 @@ window.app.service("diffService", [function(){
                 return {remove : prefix+fieldName}
             }));
         };
+
+    var calculateDiff = function (objectOne, newObject) {
+        var oldFields  = diffUtil.fieldsIn(objectOne),
+            newFields  = diffUtil.fieldsIn(newObject),
+            missing    = _.difference(oldFields, newFields),
+            newFound   = _.difference(newFields, oldFields),
+            missingValues = {},
+            newValues     = {},
+            renamed       = [];
+
+        missing.forEach(function (missingField) {
+            missingValues[missingField] = diffUtil.valueFor(missingField, objectOne);
+        });
+
+        newFound.forEach(function (newField) {
+            newValues[newField] = diffUtil.valueFor(newField, newObject);
+        });
+
+        for(var missingField in missingValues){
+            for(var newField in newValues){
+                var isRenamed = missingValues[missingField] == newValues[newField];
+                if(isRenamed){
+                    renamed.push({field: missingField, renameTo: newField});
+                    missing = _.filter(missing, function(field) { return field != missingField; });
+                    newFound = _.filter(newFound, function(field) { return field != newField; });
+                }
+            }
+        }
+
+        for(var field in renamed){
+            missing.splice(array.indexOf(5), 1);
+        }
+        return {};
+
+    }
 
     return {
         create :function (original) {
