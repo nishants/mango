@@ -1,13 +1,13 @@
 app.controller("uiController", ["$rootScope", "$scope", "profilesService", "searchService", "schemaService", "$stateParams", function($rootScope, $scope, profilesService, searchService, schemaService, $stateParams){
     $rootScope.$on('$stateChangeSuccess',
-        function(event, toState, toParams){
-            if(toState.name == "profile"){
-                profilesService.findByName(toParams.name)
-            }
-            if(toState.name == "profile.edit"){
-                profilesService.getFile(toParams.name, toParams.file)
-            }
+        function(event, state, params){
+            var showingProfiles = state.name == "profile",
+                showingFiles    = state.name == "profile.edit";
+
+            showingProfiles && profilesService.findByName(params.name);
+            showingFiles    && profilesService.getFile(params.name, params.file);
         });
+    
     $scope.ui = {
         state : $stateParams, 
         search : searchService, 
