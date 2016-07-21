@@ -1,4 +1,4 @@
-app.controller("editorController", ["$scope", "fetchFile", "fileService", "$stateParams", "diffService", function ($scope, fetchFile, fileService, $stateParams, diffService) {
+app.controller("editorController", ["$scope", "fetchFile", "fileService", "$stateParams", "diffService", "$state", function ($scope, fetchFile, fileService, $stateParams, diffService, $state) {
 
     var editor = {
             canSave     : false,
@@ -7,6 +7,11 @@ app.controller("editorController", ["$scope", "fetchFile", "fileService", "$stat
             savedContent    : diffService.create(fetchFile),
             showSchemaDialog : false,
             schemaDiff  : undefined,
+            file        : undefined,
+
+            reload : function () {
+                $state.go("profile.edit", {name: $scope.ui.profiles.current.name, file: editor.file.name})
+            },
             updateSchema: function () {
                 console.log("save");
                 editor.showSchemaDialog = false;
