@@ -1,4 +1,21 @@
+$editorBarHeight: 35px;
+
 .file-editor-view{
+  position: relative;
+  .file-selector{
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 0px $padding;
+    z-index: $modalLayer - 1;
+    height: $editorBarHeight;
+    line-height: $editorBarHeight;
+    select{
+      display: inline-block;
+      font-size: xx-large;
+      opacity: 0.9;
+    }
+  }
   .file-overview, .code-editor{
     float     :left;
     padding-right: $padding 0px;

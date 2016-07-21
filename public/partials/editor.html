@@ -11,6 +11,10 @@
 
 <div class="container-view">
     <div class="file-editor-view">
+        <div class="file-selector">
+            <select ng-options="item as item.name for item in ui.profiles.list track by item.name" ng-model="selected"></select>
+            <select ng-options="item as item.name for item in ui.schema.files track by item.name" ng-model="selecteds"></select>
+        </div>
         <div class          ="file-overview"
              ng-jsoneditor  ="treeView.onLoad"
              ng-model       ="editor.content"
