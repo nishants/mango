@@ -21,6 +21,14 @@ window.app.service("fileService", ["$http", function($http){
             return $http.put(url,contents).then(function(response){
                 return response.data;
             });
+        },
+        getFile: function (profileName, fileName) {
+            var self = this;
+            return $http.get("/profiles/"+profileName+"/files/"+fileName).then(function(response){
+                self.fileEditing = response.data;
+                return response.data;
+            });
+
         }
-    }
+    };
 }]);

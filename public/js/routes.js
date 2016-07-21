@@ -19,7 +19,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
                     return searchService.profiles.search().then(function (profiles){
                         return profilesService.findByName(profiles[0].name).then(function(){
                             return fileService.updateSchema().then(function(files){
-                                return profilesService.getFile(profiles[0].name, files[0].name);
+                                return fileService.getFile(profiles[0].name, files[0].name);
                             });
                         });
                     });
@@ -42,8 +42,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
            templateUrl: "partials/editor.html",
            controller: "editorController",
            resolve: {
-               fetchFile: function($stateParams, profilesService) {
-                   return profilesService.getFile($stateParams.name, $stateParams.file);
+               fetchFile: function($stateParams, fileService) {
+                   return fileService.getFile($stateParams.name, $stateParams.file);
                }
            }
        });

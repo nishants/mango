@@ -20,17 +20,7 @@ window.app.service("profilesService", ["$http", "$q", function($http, $q){
                     }
                 }
             });
-        },
-        getFile: function (profileName, fileName) {
-            var self = this;
-            self.fileEditing = null;
-            return $http.get("/profiles/"+profileName+"/files/"+fileName).then(function(response){
-                self.fileEditing = response.data;
-                return response.data;
-            });
-
         }
-
     };
     return service
 }]);

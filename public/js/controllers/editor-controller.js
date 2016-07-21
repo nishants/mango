@@ -32,7 +32,7 @@ app.controller("editorController", ["$scope", "fetchFile", "fileService", "$stat
                 fileService.save($stateParams.name, $stateParams.file, editor.content).then(function () {
                     editor.canSave      = false;
                     editor.savedContent = diffService.create(editor.content);
-                    editor.savedContent.schemaDiff(editor.content);
+                    editor.schemaDiff   = editor.savedContent.schemaDiff(editor.content);
                 }, function (err) {
                     console.error(err);
                 });
