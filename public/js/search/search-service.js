@@ -23,9 +23,10 @@ window.app.service("searchService", ["profilesService", "filterService","fileSer
                 search : function () {
                     var noKey   = !this.key || !this.key.length,
                         key     = noKey ? defaultKey : this.key;
-                    fileService.updateSchema().then(function (files) {
+                    return fileService.updateSchema().then(function (files) {
                         service.files.results = [];
                         service.files.results = filterService.filterFiles(key, files);
+                        return files;
                     });
                 }
 

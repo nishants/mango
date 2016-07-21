@@ -32,8 +32,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
            templateUrl: "partials/profile.html",
            controller: "viewProfileController",
            resolve: {
-               loadProfile: function($stateParams, profilesService) {
-                   return profilesService.findByName($stateParams.name);
+               loadProfile: function($stateParams, profilesService, searchService, fileService) {
+                   return fileService.updateSchema().then(function () {
+                       return searchService.files.search().then(function () {
+                           return profilesService.findByName($stateParams.name);
+                       });
+                   });
                }
            }
        })
