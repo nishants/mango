@@ -2175,7 +2175,8 @@
     padding: 20px; }
 
 * {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  font-family: 'Source Sans Pro', sans-serif; }
 
 .no-display {
   pointer-events: none;
