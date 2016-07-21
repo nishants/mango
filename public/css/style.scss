@@ -9,6 +9,8 @@ $calcEditorHeight : calc(100vh - #{$topBarHeight +  2*$padding});
 $topBarLayer : 1;
 $modalLayer : 10;
 $red : #d9534f;
+$editorBarHeight: 35px;
+
 
 @import "editor";
 @import "top-bar";
@@ -76,4 +78,17 @@ table.table.view{
 
 .amber-bg{
   background-color: $amber;
+}
+
+$selectHeight: $editorBarHeight;
+.select-view{
+  position: relative;
+  height: $selectHeight;
+  select, .psuedo-select{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $selectHeight;
+  }
 }

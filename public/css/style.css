@@ -2091,8 +2091,7 @@
     right: 0; }
     .file-editor-view .file-selector select {
       display: inline-block;
-      font-size: xx-large;
-      opacity: 0.9; }
+      font-size: xx-large; }
   .file-editor-view .file-overview, .file-editor-view .code-editor {
     float: left;
     padding-right: 10px 0px;
@@ -2251,5 +2250,15 @@ table.table.view td, table.table.view th {
 
 .amber-bg {
   background-color: #ffa500; }
+
+.select-view {
+  position: relative;
+  height: 35px; }
+  .select-view select, .select-view .psuedo-select {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 35px; }
 
 /*# sourceMappingURL=style.css.map */
