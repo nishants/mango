@@ -1,5 +1,13 @@
-app.controller("explorerController", ["$scope", "profilesService", "fileService", function( $scope, profilesService, fileService){
-    var explorer = {profiles: []};
+app.controller("explorerController", ["$scope", "profilesService", "fileService", "$state", function( $scope, profilesService, fileService, $state){
+    var explorer = {
+        profiles: [],
+        toggle : function (profile) {
+
+        },
+        showFile : function (profile, file) {
+            $state.go("profile.edit", {name: profile.name, file: file.name})
+        }
+    };
     var reset = function () {
         profilesService.all().then(function (profiles) {
             explorer.profiles = profiles;
