@@ -40,6 +40,12 @@ RSpec.describe SchemaUpdates do
       expect(json).to eq(JSON.parse '{"data": [{"id" : "me", "name": "jugnu", "list": [{"inner" : "one", "another-inner": "inserted-values"},{"inner" : "two", "another-inner": "inserted-values"}]}]}')
     end
 
+    it "should delete inside array" do
+      json = JSON.parse '{"data": [{"id" : "me", "name": "jugnu", "list": [{"inner" : "one"},{"inner" : "two"}]}]}'
+      SchemaUpdates.remove("data[].list[].inner" , json)
+      expect(json).to eq(JSON.parse '{"data": [{"id" : "me", "name": "jugnu", "list": [{},{}]}]}')
+    end
+
   end
 
 end
