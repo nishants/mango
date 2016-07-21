@@ -1,15 +1,24 @@
 $editorBarHeight: 35px;
+$menuFormattingWidth: 60px;
 
 .file-editor-view{
   position: relative;
-  .file-selector{
+  .file-path-view, .file-selector{
     position: absolute;
-    right: 0;
     top: 0;
     margin: 0px $padding;
     z-index: $modalLayer - 1;
     height: $editorBarHeight;
     line-height: $editorBarHeight;
+  }
+  .file-path-view{
+    left: $menuFormattingWidth + $fileOverviewWidth;
+    font-size: smaller;
+    color: white;
+    opacity: 0.5;
+  }
+  .file-selector{
+    right: 0;
     select{
       display: inline-block;
       font-size: xx-large;

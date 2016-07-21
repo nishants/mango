@@ -11,6 +11,9 @@
 
 <div class="container-view">
     <div class="file-editor-view">
+        <div class="file-path-view">
+            {{editor.file | fullFilePath}}
+        </div>
         <div class="file-selector">
             <select ng-options="item as item.name for item in ui.profiles.list track by item.name" ng-model="ui.profiles.current" ng-change="editor.reload()"></select>
             <select ng-options="item as item.name for item in ui.schema.files track by item.name"  ng-model="editor.file" ng-change="editor.reload()"></select>
