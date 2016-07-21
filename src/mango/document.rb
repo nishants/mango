@@ -15,12 +15,6 @@ class Document
     }
   end
 
-  def applyRename update
-  end
-
-  def applyInsert update
-    SchemaUpdates.insert(update["insert"], update["value"] , @content)
-  end
 
 
   def updateSchema(updateSchema)
@@ -29,8 +23,8 @@ class Document
       isInsert = !update["insert"].nil?
       isRemove = !update["remove"].nil?
 
-      isRename && applyRename(update)
-      isInsert && applyInsert(update)
+      isRemove && SchemaUpdates.remove(update["remove"], @content)
+      isInsert && SchemaUpdates.insert(update["insert"], update["value"] , @content)
     }
   end
 end

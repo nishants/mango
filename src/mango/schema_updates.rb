@@ -10,6 +10,15 @@ class SchemaUpdates
     }
     pointer[fields.last] = value
   end
+
+  def self.remove (field_id, json)
+    fields = field_id.split(".")
+    pointer = json
+    fields.slice(0, fields.length-1).each{|field|
+      pointer = pointer[field]
+    }
+    pointer.delete(fields.last)
+  end
 end
 
 
