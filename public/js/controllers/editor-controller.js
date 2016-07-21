@@ -5,13 +5,16 @@ app.controller("editorController", ["$scope", "fetchFile", "fileService", "$stat
             treeView: undefined,
             content : fetchFile,
             savedContent    : diffService.create(fetchFile),
-            showSchemaDialog : true,
+            showSchemaDialog : false,
             updateSchema: function () {
                 console.log("save");
                 editor.showSchemaDialog = false;
             },
             closeSchemaDialog : function () {
                 editor.showSchemaDialog = false;
+            },
+            confirmSchemaUpdate: function () {
+                editor.showSchemaDialog = true;
             },
             codeChanged: function () {
                 editor.canSave = true;

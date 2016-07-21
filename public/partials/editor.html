@@ -5,8 +5,8 @@
             ng-click="editor.save()"
             ng-class="{'hide' : !editor.canSave}">Save</button>
     <button class="save btn amber-bg"
-            ng-click="editor.applyToAll()"
-            ng-class="{'hide' : !editor.canSave}">Apply to all</button>
+            ng-click="editor.confirmSchemaUpdate()"
+            ng-class="{'hide' : !editor.canSave}">Update Schema</button>
 </div>
 
 <div class="container-view">
