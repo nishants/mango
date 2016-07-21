@@ -57,6 +57,15 @@ class Profile
     return Pathname.new(path).realpath.to_s
   end
 
+  def updateSchema(fileName, updates)
+    each_profile(){|profile, profile_root|
+      path = @schema["files"].select{|file| file["name"] == fileName}[0]["path"]
+      document = Document.new(profile_root, path)
+      document.updateSchema(updates);
+      document.save;
+    }
+  end
+
 end
 
 

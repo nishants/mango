@@ -20,6 +20,7 @@ RSpec.describe Profiles do
       @slot_name      = "Sloth"
 
       @ace_id         = "ace-user"
+      @sloth_id       = "sloth-user"
 
       @ace_dir        = absolute_path "#{@profiles_home}/profile-ace"
       @sloth_dir      = absolute_path "#{@profiles_home}/profile-sloth"
@@ -77,6 +78,27 @@ RSpec.describe Profiles do
       expect(content_sloth).to eq(content)
       expect(content_ace).to eq(content)
     end
+
+    describe "Schema Update : update json schema in all profiles" do
+      before(:all) do
+        updates  = [{"field" => "", "renameTo" => ""},
+                    {"insert" => "field.field", "value" => "some-value"},
+                    {"remove" => "missingField"}];
+
+      end
+
+      it "Should insert fields to schema" do
+        @Profiles.updateSchema("home", [{"insert" => "data.user.user-id", "value" => "user-id-value"}])
+
+        content_ace   = JSON.parse(File.read("#{@profiles_home}/profile-ace/home.json"))
+        content_sloth = JSON.parse(File.read("#{@profiles_home}/profile-sloth/home.json"))
+
+        expect(content_sloth["data"]["user"]["user-id"]).to eq("user-id-value")
+        expect(content_ace["data"]["user"]["user-id"]).to eq("user-id-value")
+      end
+
+    end
+
   end
 
 end
