@@ -6,6 +6,18 @@ class SchemaUpdates
     fields = field_id.split(".")
     pointer = json
     fields.slice(0, fields.length-1).each{|field|
+      if(isArrayField(field))
+        array = pointer[field.sub("[]", "").strip()];
+        field_substring_id = field_id.split(field+".")[1].strip()
+        if array.nil?
+          return
+        end
+        array.each{|element|
+          insert(field_substring_id, value, element);
+        }
+        return
+      end
+
       if(pointer[field].nil?)
         return
       end

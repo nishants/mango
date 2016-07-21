@@ -34,6 +34,12 @@ RSpec.describe SchemaUpdates do
       expect(json).to eq(JSON.parse '{"data": [{"id" : "me", "name": "jugnu", "list": [{"inner-renamed" : "one"},{"inner-renamed" : "two"}]}]}')
     end
 
+    it "should insert inside array" do
+      json = JSON.parse '{"data": [{"id" : "me", "name": "jugnu", "list": [{"inner" : "one"},{"inner" : "two"}]}]}'
+      SchemaUpdates.insert("data[].list[].another-inner", "inserted-values" , json)
+      expect(json).to eq(JSON.parse '{"data": [{"id" : "me", "name": "jugnu", "list": [{"inner" : "one", "another-inner": "inserted-values"},{"inner" : "two", "another-inner": "inserted-values"}]}]}')
+    end
+
   end
 
 end
