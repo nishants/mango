@@ -69,8 +69,9 @@ window.app.service("diffService", ["diffUtil",function(diffUtil){
             var base = copyOf(original);
             return {
                 schemaDiff : function (modifiedTo) {
+                    var changes = calculateDiff(base, modifiedTo);
                     return {
-                        modified: true,
+                        modified: changes.length > 0,
                         changes:calculateDiff(base, modifiedTo)
                     }
                 }

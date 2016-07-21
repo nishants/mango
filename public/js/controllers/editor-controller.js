@@ -1,9 +1,10 @@
-app.controller("editorController", ["$scope", "fetchFile", "fileService", "$stateParams", function ($scope, fetchFile, fileService, $stateParams) {
+app.controller("editorController", ["$scope", "fetchFile", "fileService", "$stateParams", "diffService", function ($scope, fetchFile, fileService, $stateParams, diffService) {
 
     var editor = {
             canSave: false,
             treeView: undefined,
             content : fetchFile,
+            savedContent    : diffService.create(fetchFile),
             applyToAll: function () {
                 fileService.applyToAll($stateParams.file, editor.content).then(function () {
                     editor.canSave = false;
@@ -12,8 +13,13 @@ app.controller("editorController", ["$scope", "fetchFile", "fileService", "$stat
                 });
             },
             save: function () {
+                var difference = this.savedContent.schemaDiff(editor.content);
+                if(difference){
+                    console.log("schema changed");
+                }
                 fileService.save($stateParams.name, $stateParams.file, editor.content).then(function () {
-                    editor.canSave = false;
+                    editor.canSave      = false;
+                    editor.savedContent = diffService.create(editor.content);
                 }, function (err) {
                     console.error(err);
                 });
