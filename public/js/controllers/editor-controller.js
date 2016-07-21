@@ -28,11 +28,15 @@ app.controller("editorController", ["$scope", "fetchFile", "fileService", "$stat
             },
             updateSchemaForFile: function () {
                 fileService.updateSchemaFor($stateParams.file, editor.schemaDiff.changes).then(function () {
-                    editor.canSave = false;
+                    editor.canSave      = false;
                     editor.savedContent = diffService.create(editor.content);
                     editor.schemaDiff   = editor.savedContent.schemaDiff(editor.content);
+                    editor.showSchemaDialog = false;
+                    fileService.getFile($stateParams.name, $stateParams.file).then(function (data) {
+                        editor.content = data;
+                    });
                 }, function (err) {
-                    console.error(err);
+                    editor.showSchemaDialog = false;
                 });
             },
             save: function () {
