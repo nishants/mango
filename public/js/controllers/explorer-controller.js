@@ -2,7 +2,7 @@ app.controller("explorerController", ["$scope", "profilesService", "fileService"
     var explorer = {
         profiles: [],
         toggle : function (profile) {
-
+            profile.__collapse = !profile.__collapse; 
         },
         showFile : function (profile, file) {
             $state.go("profile.edit", {name: profile.name, file: file.name})

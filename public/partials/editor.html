@@ -23,9 +23,12 @@
             <ul class="file-explorer" ng-controller="explorerController">
 
                 <li ng-repeat="profile in explorer.profiles  track by $index"
-                    ng-class="{'selected' : explorer.profile.name == profile.name}">
+                    ng-class="{'expand' : !profile.__collapse}">
                     <div class="profile" ng-click="explorer.toggle(profile)">
-                        <a><i class="folder-icon fa fa-folder"></i>
+                        <a>
+                            <i class= "opened fa fa-plus"></i>
+                            <i class= "closed fa fa-minus"></i>
+                            <i class="folder-icon fa fa-folder"></i>
                             <span ng-bind="profile.name"></span>
                         </a>
                     </div>
