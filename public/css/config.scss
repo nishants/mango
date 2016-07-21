@@ -1,0 +1,27 @@
+$padding: 10px;
+$amber  : #ffa500;
+$topBarHeight: 60px;
+$topBarColor : #3F51B5;
+$fileOverviewWidth: 300px;
+$calcEditorHeight : calc(100vh - #{$topBarHeight +  2*$padding});
+$topBarLayer : 1;
+$modalLayer : 10;
+$red : #d9534f;
+$editorBarHeight: 35px;
+
+*{
+  box-sizing: border-box;
+}
+.text-font{ font-family: 'Source Sans Pro', sans-serif;  }
+
+
+ul.undo-list{
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  display: block;
+}
+
+.amber-bg{
+  background-color: $amber;
+}

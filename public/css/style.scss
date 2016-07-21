@@ -1,25 +1,12 @@
 @import "../lib/font-awesome-4.5.0/scss/font-awesome";
 
-$padding: 10px;
-$amber  : #ffa500;
-$topBarHeight: 60px;
-$topBarColor : #3F51B5;
-$fileOverviewWidth: 300px;
-$calcEditorHeight : calc(100vh - #{$topBarHeight +  2*$padding});
-$topBarLayer : 1;
-$modalLayer : 10;
-$red : #d9534f;
-$editorBarHeight: 35px;
 
-
+@import "config";
+@import "file-explorer";
 @import "editor";
 @import "top-bar";
 @import "modal";
 
-*{
-  box-sizing: border-box;
-}
-.text-font{ font-family: 'Source Sans Pro', sans-serif;  }
 
 body{
   @extend .text-font;
@@ -29,7 +16,6 @@ body{
   pointer-events: none;
   opacity: 0;
 }
-
 
 .container-view{
   padding:  $padding;
@@ -74,10 +60,6 @@ table.table.view{
     color: rgba(255, 255, 255, 0.8);
     padding: 0px 2* $padding;
   }
-}
-
-.amber-bg{
-  background-color: $amber;
 }
 
 $selectHeight: $editorBarHeight;

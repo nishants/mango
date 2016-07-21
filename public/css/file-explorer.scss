@@ -1,0 +1,43 @@
+$childOffset : 15px;
+ul.file-explorer {
+  height: 100%;
+  font-size: 15px;
+  line-height: 25px;
+  border: 1px solid $amber;
+  padding: $padding;
+  .folder-icon ,.file-icon{
+    color: $amber;
+    opacity: 0.8;
+    padding: 0px $padding/2;
+  }
+  .profile:hover{
+    cursor: pointer;
+    background-color: #FFA500;
+    color: rgba(255, 255, 255, 0.95);
+    .folder-icon{color: rgba(255, 255, 255, 0.95)}
+  }
+  .profile{
+    padding-left: $childOffset;
+  }
+  ul {
+    @extend .undo-list;
+    li {
+      padding-left: $childOffset * 2;
+    }
+    li:hover{
+      cursor: pointer;
+      background-color: #FFA500;
+      color: rgba(255, 255, 255, 0.95);
+      .file-icon{color: rgba(255, 255, 255, 0.95)}
+    }
+  }
+  > li {
+    padding-top: $padding;
+    padding-bottom: $padding;
+    border-bottom: 1px solid rgba(255, 165, 0, 0.27);
+  }
+  > li:not(.selected){
+    opacity: 0.5;
+  }
+  @extend .undo-list;
+}

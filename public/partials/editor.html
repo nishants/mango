@@ -19,7 +19,25 @@
             <select ng-options="tile as tile.name for tile in ui.schema.files track by tile.name"  ng-model="editor.file" ng-change="editor.reload()"></select>
 
         </div>
+        <div class="file-overview">
+            <ul class="file-explorer" ng-controller="explorerController">
+                <li ng-repeat="profile in explorer.profiles  track by $index" ng-class="{'selected' : explorer.profile.name == profile.name}">
+                    <div class="profile"><i class="folder-icon fa fa-folder"></i>
+                        <span ng-bind="profile.name"></span>
+                    </div>
+                    <ul>
+                        <li ng-repeat="file in profile.files  track by $index" >
+                            <i class="file-icon fa fa-file-text"></i>
+                            <span ng-bind="file.name"></span>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+
         <div class          ="file-overview"
+             ng-show="false"
              ng-jsoneditor  ="treeView.onLoad"
              ng-model       ="editor.content"
              options        ="treeView.options"></div>
