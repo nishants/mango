@@ -16,12 +16,8 @@
         </div>
         <div class="file-selector">
             <select ng-options="item as item.name for item in ui.profiles.list track by item.name" ng-model="ui.profiles.current" ng-change="editor.reload()"></select>
+            <select ng-options="tile as tile.name for tile in ui.schema.files track by tile.name"  ng-model="editor.file" ng-change="editor.reload()"></select>
 
-            <div class="select-view">
-                <div class="psuedo-select"></div>
-                <select ng-options="tile as tile.name for tile in ui.schema.files track by tile.name"  ng-model="editor.file" ng-change="editor.reload()"></select>
-            </div>
-            
         </div>
         <div class          ="file-overview"
              ng-jsoneditor  ="treeView.onLoad"

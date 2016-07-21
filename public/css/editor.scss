@@ -21,6 +21,7 @@ $menuFormattingWidth: 60px;
     select{
       display: inline-block;
       font-size: xx-large;
+      margin-right: $padding;
     }
   }
   .file-overview, .code-editor{

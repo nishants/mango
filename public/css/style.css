@@ -2091,7 +2091,8 @@
     right: 0; }
     .file-editor-view .file-selector select {
       display: inline-block;
-      font-size: xx-large; }
+      font-size: xx-large;
+      margin-right: 10px; }
   .file-editor-view .file-overview, .file-editor-view .code-editor {
     float: left;
     padding-right: 10px 0px;
