@@ -5,6 +5,17 @@ app.controller("editorController", ["$scope", "fetchFile", "fileService", "$stat
             treeView: undefined,
             content : fetchFile,
             savedContent    : diffService.create(fetchFile),
+            showSchemaDialog : true,
+            updateSchema: function () {
+                console.log("save");
+                editor.showSchemaDialog = false;
+            },
+            closeSchemaDialog : function () {
+                editor.showSchemaDialog = false;
+            },
+            codeChanged: function () {
+                editor.canSave = true;
+            },
             applyToAll: function () {
                 fileService.applyToAll($stateParams.file, editor.content).then(function () {
                     editor.canSave = false;
@@ -26,7 +37,7 @@ app.controller("editorController", ["$scope", "fetchFile", "fileService", "$stat
             }
         },
         onCodeChange = function (arg, arg) {
-            editor.canSave = true;
+            editor.codeChanged();
         };
 
 

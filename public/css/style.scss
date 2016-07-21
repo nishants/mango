@@ -6,9 +6,11 @@ $topBarHeight: 60px;
 $topBarColor : #3F51B5;
 $fileOverviewWidth: 300px;
 $calcEditorHeight : calc(100vh - #{$topBarHeight +  2*$padding});
-
+$topBarLayer : 1;
+$modalLayer : 10;
 @import "editor";
 @import "top-bar";
+@import "modal";
 
 *{
   box-sizing: border-box;
