@@ -30,9 +30,10 @@ window.app.service("diffUtil", [function () {
         readValue = function (suffix, object) {
             var fields = suffix.split("."),
                 currentField = fields[0],
-                nextFieldId = suffix.replace(currentField + ".", ""),
-                isTerminal = fields.length == 1;
-            return isTerminal ? object[currentField] : readValue(nextFieldId, object[currentField]);
+                isArray      = currentField.includes("[]"),
+                nextFieldId  = suffix.replace(currentField + ".", ""),
+                isTerminal   = fields.length == 1;
+            return isTerminal ? object[currentField] : isArray ? readValue(nextFieldId, object[currentField.replace("[]", "").trim()][0]) : readValue(nextFieldId, object[currentField]);
         };
     return {
         fieldsIn: function (object) {

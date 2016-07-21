@@ -20,7 +20,7 @@ describe('diffUtil', function () {
             expected = ["data", "data.item", "data.item.user", "data.item.result","data.name","data.item.user.id"],
             actual   = util.fieldsIn(object);
         
-        expect(_.difference(expected, actual)).toEqual([]);
+        expect(expected.sort()).toEqual(actual.sort());
     });
 
     it('should find array field', function () {
@@ -33,7 +33,7 @@ describe('diffUtil', function () {
             expected = ["data", "data.item","data.name"],
             actual   = util.fieldsIn(object);
 
-        expect(_.difference(expected, actual)).toEqual([]);
+        expect(expected.sort()).toEqual(actual.sort());
     });
 
     it('should find elements inside array', function () {
@@ -41,7 +41,7 @@ describe('diffUtil', function () {
             expected = ["data", "data[].id"],
             actual   = util.fieldsIn(object);
 
-        expect(_.difference(expected, actual)).toEqual([]);
+        expect(expected.sort()).toEqual(actual.sort());
     });
 
     it('should find elements nested inside arrays', function () {
@@ -49,7 +49,13 @@ describe('diffUtil', function () {
             expected = ["data", "data[].id","data[].name", "data[].list", "data[].list[].inner"],
             actual   = util.fieldsIn(object);
 
-        expect(_.difference(expected, actual)).toEqual([]);
+        expect(expected.sort()).toEqual(actual.sort());
+    });
+
+    it('should read value for objects inside arrays(from sample element)', function () {
+        var object   = {"data": [{"id" : "me", "name": "jugnu", "list": [{"inner" : "super"}]}]};
+
+        expect(util.valueFor("data[].list[].inner", object)).toEqual("super");
     });
 
     it('should read field-id value', function () {
