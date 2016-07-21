@@ -18,6 +18,9 @@ class SchemaUpdates
     fields = field_id.split(".")
     pointer = json
     fields.slice(0, fields.length-1).each{|field|
+      if(pointer[field].nil?)
+        return
+      end
       pointer = pointer[field]
     }
     value = pointer[fields.last]
@@ -29,6 +32,9 @@ class SchemaUpdates
     fields = field_id.split(".")
     pointer = json
     fields.slice(0, fields.length-1).each{|field|
+      if(pointer[field].nil?)
+        return
+      end
       pointer = pointer[field]
     }
     pointer.delete(fields.last)

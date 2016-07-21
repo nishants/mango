@@ -16,6 +16,18 @@ RSpec.describe SchemaUpdates do
       expect(json).to eq(JSON.parse '{"data" : {"id": "one"}}')
     end
 
+    it "should ignore remove if parent object not found" do
+      json = JSON.parse '{"data" : {"id": "one"}}'
+      SchemaUpdates.remove("data.bar.body" , json)
+      expect(json).to eq(JSON.parse '{"data" : {"id": "one"}}')
+    end
+
+    it "should ignore rename if parent object not found" do
+      json = JSON.parse '{"data" : {"id": "one"}}'
+      SchemaUpdates.rename("data.bar.body.foo", "boddy" , json)
+      expect(json).to eq(JSON.parse '{"data" : {"id": "one"}}')
+    end
+
   end
 
 end
