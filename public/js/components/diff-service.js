@@ -30,18 +30,6 @@ window.app.service("diffService", ["diffUtil",function(diffUtil){
             newValues[newField] = diffUtil.valueFor(newField, newObject);
         });
 
-        for(var missingField in missingValues){
-            for(var newField in newValues){
-                var isRenamed = missingValues[missingField] == newValues[newField];
-                if(isRenamed){
-                    var tokens = newField.split(".");
-                    renamed.push({field: missingField, renameTo: tokens[tokens.length -1]});
-                    missing = _.filter(missing, function(field) { return field != missingField; });
-                    newFound = _.filter(newFound, function(field) { return field != newField; });
-                }
-            }
-        }
-
         newFound = newFound.sort();
         for(var i = indexOfSubString(newFound); i != -1; i = indexOfSubString(newFound)){
             newFound.splice(i, 1);
@@ -51,6 +39,21 @@ window.app.service("diffService", ["diffUtil",function(diffUtil){
         for(var i = indexOfSubString(missing); i != -1; i = indexOfSubString(missing)){
             missing.splice(i, 1);
         }
+
+        for(var missingField in missingValues){
+            for(var newField in newValues){
+                var subChildOfNew = missing.indexOf(missingField) == -1,
+                    isRenamed = !subChildOfNew && _.isEqual(missingValues[missingField],newValues[newField]);
+                if(isRenamed){
+                    var tokens = newField.split(".");
+                    renamed.push({field: missingField, renameTo: tokens[tokens.length -1]});
+                    missing = _.filter(missing, function(field) { return field != missingField; });
+                    newFound = _.filter(newFound, function(field) { return field != newField; });
+                }
+            }
+        }
+
+
 
         var difference = newFound.map(function (newField) {
             return {insert: newField, value: diffUtil.valueFor(newField, newObject)};

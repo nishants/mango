@@ -29,10 +29,6 @@ window.app.service("diffUtil", [function(){
         },
         valueFor: function (fieldId, object) {
             return readValue(fieldId, object);
-            return {
-                "user": {"id": "user-one"},
-                "result": "some-message"
-            };
         }
     };
 }]);

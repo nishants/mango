@@ -82,8 +82,38 @@ describe('diffService', function () {
         expect(deleted.length).toBe(2);
         expect(deleted).toEqual([{remove: "data.item.status"},{remove: "flag"}]);
     });
+    it('should find renamed fields', function () {
 
-    it('should find deleted field', function () {
+        var original = {
+                "flag" : false,
+                "data": {
+                    "item": {
+                        "status": {"name": "one"},
+                        "message": "some-message"
+                    }
+                }
+            },
+            modifiedTo = {
+                "status" : false,
+                "data": {
+                    "item": {
+                        "result": {"name": "one"},
+                        "message": "some-message"
+                    }
+                }
+            }            ,
+            diff = service.create(original),
+            update = diff.schemaDiff(modifiedTo);
+
+        expect(update.modified).toBe(true);
+
+        var renamed = getRenames(update.changes);
+
+        expect(renamed.length).toBe(2);
+        expect(renamed).toEqual([{field: "flag", renameTo: "status"},{field: "data.item.status", renameTo: "result"}]);
+    });
+
+    it('should find changes', function () {
 
         var original = {
                 "data": {
