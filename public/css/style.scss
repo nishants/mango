@@ -8,6 +8,7 @@ $fileOverviewWidth: 300px;
 $calcEditorHeight : calc(100vh - #{$topBarHeight +  2*$padding});
 $topBarLayer : 1;
 $modalLayer : 10;
+$red : #d9534f;
 
 @import "editor";
 @import "top-bar";

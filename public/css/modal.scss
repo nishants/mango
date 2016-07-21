@@ -1,3 +1,7 @@
+.modal-window.danger{
+  border: 1px solid $red;
+}
+
 .modal-window{
   position: fixed;
   top: 0;
@@ -13,5 +17,36 @@
     display: inline-block;
     line-height: 1;
     padding: $padding*2;
+    text-align: left;
+
+    button{
+      height: $topBarHeight - 2 * $padding;
+      line-height: $topBarHeight - 2 * $padding;
+      padding: 0px 2 * $padding;
+      font-size: large;
+      margin-left: 2 * $padding;
+      margin-top: 2 * $padding;
+      float: right;
+    }
+    h3{
+      float: left;
+      margin: 0px 0px $padding;
+      font-size: x-large;
+
+      line-height: $topBarHeight;
+      height: $topBarHeight;
+      width: 100%;
+
+      font-size: large;
+      border-bottom: 1px solid $red;
+      color: $red;
+      font-size: 20px;
+      .fa{margin-left: $padding;}
+    }
+
+    ul.changes{
+      li{
+      }
+    }
   }
 }

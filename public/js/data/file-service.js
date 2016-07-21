@@ -24,7 +24,7 @@ window.app.service("fileService", ["$http", function($http){
             });
         },
         setFile: function (fileName) {
-            return (this.current = this.files.filter(function(file){return file.name == fileName;}));
+            return (this.current = this.files.filter(function(file){return file.name == fileName;})[0]);
         },
         getFile: function (profileName, fileName) {
             var self = this;

@@ -1,8 +1,16 @@
 <div class="modal-window">
-    <div class="modal-content">
-        <h3>Update field names in all files</h3>
-        <p>This will modify all files for path : <strong>{{ui.schema.root}}/*/{{ui.schema.current.path}}</strong></p>
+    <div class="modal-content danger">
+        <h3>Modify Multiple Files <i class="fa fa-warning"></i></h3>
 
+        <label class="message-head">Changes</label>
+        <ul class="changes" ng-repeat="change in editor.schemaDiff.changes">
+            <li>{{change | message}}</li>
+        </ul>
+
+        <label class="message-head">Files modified</label>
+        <ul>
+            <li>{{ui.schema.root}}/*{{ui.schema.current.path}}</li>
+        </ul>
         <button class="btn btn-danger"  ng-click="editor.updateSchemaForFile()">Proceed</button>
         <button class="btn btn-default" ng-click="editor.closeSchemaDialog()">Cancel</button>
     </div>

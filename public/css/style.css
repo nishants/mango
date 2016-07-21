@@ -2165,6 +2165,9 @@
   .top-bar button.hide {
     opacity: 0; }
 
+.modal-window.danger {
+  border: 1px solid #d9534f; }
+
 .modal-window {
   position: fixed;
   top: 0;
@@ -2179,7 +2182,29 @@
     margin: auto;
     display: inline-block;
     line-height: 1;
-    padding: 20px; }
+    padding: 20px;
+    text-align: left; }
+    .modal-window .modal-content button {
+      height: 40px;
+      line-height: 40px;
+      padding: 0px 20px;
+      font-size: large;
+      margin-left: 20px;
+      margin-top: 20px;
+      float: right; }
+    .modal-window .modal-content h3 {
+      float: left;
+      margin: 0px 0px 10px;
+      font-size: x-large;
+      line-height: 60px;
+      height: 60px;
+      width: 100%;
+      font-size: large;
+      border-bottom: 1px solid #d9534f;
+      color: #d9534f;
+      font-size: 20px; }
+      .modal-window .modal-content h3 .fa {
+        margin-left: 10px; }
 
 * {
   box-sizing: border-box; }
