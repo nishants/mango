@@ -1,11 +1,21 @@
 $childOffset : 15px;
+$color : rgba(255, 192, 77, 0.45);
+
 ul.file-explorer {
   height: 100%;
   font-size: 15px;
   line-height: 25px;
-  border: 1px solid $amber;
+  border: 1px solid $color;
   padding: $padding;
 
+  .highlight{
+    background-color: $color;
+    color: rgba(255, 255, 255, 0.95);
+    opacity: 0.7;
+  }
+  a{
+    display: block;
+  }
   a:hover{
     text-decoration: none;
   }
@@ -16,8 +26,7 @@ ul.file-explorer {
   }
   .profile:hover{
     cursor: pointer;
-    background-color: #FFA500;
-    color: rgba(255, 255, 255, 0.95);
+    @extend .highlight;
     .folder-icon{color: rgba(255, 255, 255, 0.95)}
     .opened, .closed{
       color: rgba(255, 255, 255, 0.95);
@@ -33,8 +42,7 @@ ul.file-explorer {
     }
     li:hover{
       cursor: pointer;
-      background-color: #FFA500;
-      color: rgba(255, 255, 255, 0.95);
+      @extend .highlight;
       .file-icon{color: rgba(255, 255, 255, 0.95)}
     }
   }
@@ -43,8 +51,10 @@ ul.file-explorer {
     padding-bottom: $padding;
     border-bottom: 1px solid rgba(255, 165, 0, 0.27);
   }
-  > li:not(.selected){
-    opacity: 0.65;
+  > li.selected{
+    ul.files > li.current{
+      @extend .highlight;
+    }
   }
 
   li.expand{
