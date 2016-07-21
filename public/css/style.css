@@ -2200,11 +2200,12 @@
       height: 60px;
       width: 100%;
       font-size: large;
+      font-weight: 600;
       border-bottom: 1px solid #d9534f;
       color: #d9534f;
       font-size: 20px; }
       .modal-window .modal-content h3 .fa {
-        margin-left: 10px; }
+        margin: 0px 10px; }
 
 * {
   box-sizing: border-box; }
