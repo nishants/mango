@@ -21,9 +21,11 @@ app.controller("editorController", ["$scope", "fetchFile", "fileService", "$stat
                 this.schemaDiff = editor.savedContent.schemaDiff(editor.content)
                 editor.canSave = true;
             },
-            applyToAll: function () {
-                fileService.applyToAll($stateParams.file, editor.content).then(function () {
+            updateSchemaForFile: function () {
+                fileService.updateSchemaFor($stateParams.file, editor.schemaDiff.changes).then(function () {
                     editor.canSave = false;
+                    editor.savedContent = diffService.create(editor.content);
+                    editor.schemaDiff   = editor.savedContent.schemaDiff(editor.content);
                 }, function (err) {
                     console.error(err);
                 });

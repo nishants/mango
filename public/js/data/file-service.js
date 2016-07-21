@@ -16,9 +16,9 @@ window.app.service("fileService", ["$http", function($http){
                 return response.data;
             });
         },
-        applyToAll :function (fileName, contents) {
-            var url ="/profiles/apply-to-all/files/:file".replace(":file",fileName)
-            return $http.put(url,contents).then(function(response){
+        updateSchemaFor :function (fileName, updates) {
+            var url ="/profiles/files/:file/update-schema".replace(":file",fileName)
+            return $http.put(url, updates).then(function(response){
                 return response.data;
             });
         },
