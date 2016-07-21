@@ -2139,7 +2139,8 @@
     float: left;
     height: 60px;
     line-height: 60px;
-    font-size: large; }
+    font-size: large;
+    font-weight: 600; }
   .top-bar .back-button, .top-bar h1, .top-bar button {
     margin: 0px;
     cursor: pointer;
@@ -2175,7 +2176,9 @@
     padding: 20px; }
 
 * {
-  box-sizing: border-box;
+  box-sizing: border-box; }
+
+.text-font, body {
   font-family: 'Source Sans Pro', sans-serif; }
 
 .no-display {

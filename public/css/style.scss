@@ -8,15 +8,19 @@ $fileOverviewWidth: 300px;
 $calcEditorHeight : calc(100vh - #{$topBarHeight +  2*$padding});
 $topBarLayer : 1;
 $modalLayer : 10;
+
 @import "editor";
 @import "top-bar";
 @import "modal";
 
 *{
   box-sizing: border-box;
-  font-family: 'Source Sans Pro', sans-serif;
 }
+.text-font{ font-family: 'Source Sans Pro', sans-serif;  }
 
+body{
+  @extend .text-font;
+}
 
 .no-display{
   pointer-events: none;

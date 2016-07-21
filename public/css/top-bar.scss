@@ -6,12 +6,12 @@
   z-index: $topBarLayer;
   height: $topBarHeight;
   background: $topBarColor;
-
   .back-button, h1{
     float: left;
     height: $topBarHeight;
     line-height: $topBarHeight;
     font-size: large;
+    font-weight: 600;
   }
   .back-button, h1, button{
     margin: 0px;
