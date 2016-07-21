@@ -28,6 +28,12 @@ RSpec.describe SchemaUpdates do
       expect(json).to eq(JSON.parse '{"data" : {"id": "one"}}')
     end
 
+    it "should rename inside array" do
+      json = JSON.parse '{"data": [{"id" : "me", "name": "jugnu", "list": [{"inner" : "one"},{"inner" : "two"}]}]}'
+      SchemaUpdates.rename("data[].list[].inner", "inner-renamed" , json)
+      expect(json).to eq(JSON.parse '{"data": [{"id" : "me", "name": "jugnu", "list": [{"inner-renamed" : "one"},{"inner-renamed" : "two"}]}]}')
+    end
+
   end
 
 end
