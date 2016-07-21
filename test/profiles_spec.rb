@@ -107,6 +107,19 @@ RSpec.describe Profiles do
         expect(content_ace["data"]["user"]["id"]).to eq(nil)
       end
 
+      it "Should delete fields from schema" do
+        @Profiles.updateSchema("home", [{"field" => "data.user.id", "renameTo" => "user-id"}])
+
+        content_ace   = JSON.parse(File.read("#{@profiles_home}/profile-ace/home.json"))
+        content_sloth = JSON.parse(File.read("#{@profiles_home}/profile-sloth/home.json"))
+
+        expect(content_sloth["data"]["user"]["user-id"]).to eq(@sloth_id)
+        expect(content_ace["data"]["user"]["user-id"]).to eq(@ace_id)
+
+        expect(content_sloth["data"]["user"]["id"]).to eq(nil)
+        expect(content_ace["data"]["user"]["id"]).to eq(nil)
+      end
+
     end
 
   end

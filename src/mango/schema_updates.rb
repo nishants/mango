@@ -11,6 +11,17 @@ class SchemaUpdates
     pointer[fields.last] = value
   end
 
+  def self.rename (field_id, rename_to, json)
+    fields = field_id.split(".")
+    pointer = json
+    fields.slice(0, fields.length-1).each{|field|
+      pointer = pointer[field]
+    }
+    value = pointer[fields.last]
+    pointer.delete(fields.last)
+    pointer[rename_to] = value
+  end
+
   def self.remove (field_id, json)
     fields = field_id.split(".")
     pointer = json

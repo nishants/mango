@@ -23,8 +23,9 @@ class Document
       isInsert = !update["insert"].nil?
       isRemove = !update["remove"].nil?
 
+      isRename && SchemaUpdates.rename(update["field"] , update["renameTo"] , @content)
+      isInsert && SchemaUpdates.insert(update["insert"], update["value"]    , @content)
       isRemove && SchemaUpdates.remove(update["remove"], @content)
-      isInsert && SchemaUpdates.insert(update["insert"], update["value"] , @content)
     }
   end
 end
