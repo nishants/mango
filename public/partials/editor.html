@@ -6,7 +6,7 @@
             ng-class="{'hide' : !editor.canSave}">Save</button>
     <button class="save btn amber-bg"
             ng-click="editor.confirmSchemaUpdate()"
-            ng-class="{'hide' : !editor.canSave}">Update Schema</button>
+            ng-class="{'hide' : !editor.schemaDiff.modified}">Update Schema</button>
 </div>
 
 <div class="container-view">
