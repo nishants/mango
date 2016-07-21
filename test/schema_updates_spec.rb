@@ -10,6 +10,12 @@ RSpec.describe SchemaUpdates do
       expect(json["data"]["name"]).to eq("hundered")
     end
 
+    it "should ignore insert if parent object not found" do
+      json = JSON.parse '{"data" : {"id": "one"}}'
+      SchemaUpdates.insert("data.bar.body", "hundered" , json)
+      expect(json).to eq(JSON.parse '{"data" : {"id": "one"}}')
+    end
+
   end
 
 end

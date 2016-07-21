@@ -15,8 +15,6 @@ class Document
     }
   end
 
-
-
   def updateSchema(updateSchema)
     updateSchema.each{|update|
       isRename = !update["renameTo"].nil?

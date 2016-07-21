@@ -40,5 +40,10 @@ put '/profiles/:name/files/:file' do
   Profiles.find(params[:name])[params[:file]].content.to_json
 end
 
+put '/profiles/files/:file/update-schema' do
+  udpates =  JSON.parse request.body.read
+  Profiles.updateSchema(params[:file], udpates)
+end
+
 
 
