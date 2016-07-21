@@ -47,10 +47,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
            controller: "editorController",
            resolve: {
                fetchFile: function($stateParams, fileService) {
-                   return fileService.getFile($stateParams.name, $stateParams.file).then(function (data) {
-                       fileService.setFile($stateParams.file);
-                       return data;
-                   });
+                   return fileService.getFile($stateParams.name, $stateParams.file);
                }
            }
        });

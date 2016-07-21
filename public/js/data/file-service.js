@@ -2,6 +2,7 @@ window.app.service("fileService", ["$http", function($http){
     return {
         files : [],
         root  : undefined,
+        current  : undefined,
         updateSchema : function(){
             var self = this;
             return $http.get("/schema").then(function(response){
@@ -23,12 +24,13 @@ window.app.service("fileService", ["$http", function($http){
             });
         },
         setFile: function (fileName) {
-            this.current = files.filter(function(file){return file.name == fileName;});
+            return (this.current = this.files.filter(function(file){return file.name == fileName;}));
         },
         getFile: function (profileName, fileName) {
             var self = this;
             return $http.get("/profiles/"+profileName+"/files/"+fileName).then(function(response){
                 self.fileEditing = response.data;
+                self.setFile(fileName);
                 return response.data;
             });
 

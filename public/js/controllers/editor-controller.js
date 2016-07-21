@@ -44,7 +44,8 @@ app.controller("editorController", ["$scope", "fetchFile", "fileService", "$stat
             editor.codeChanged();
         };
 
-
+    fileService.setFile($stateParams.file);
+    
     $scope.codeView = codeView = {
         options: {
             mode: 'code',
@@ -66,4 +67,7 @@ app.controller("editorController", ["$scope", "fetchFile", "fileService", "$stat
         }
     };
     $scope.editor = editor;
+    editor.file = $scope.ui.schema.files.filter(function (file) {
+        return file.name == $stateParams.file;
+    })[0];
 }]);
