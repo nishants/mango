@@ -7,7 +7,7 @@ describe('diffUtil', function () {
         util = _diffUtil_;
     }));
 
-    it('should find deleted field', function () {
+    it('should find fields in object', function () {
         var object = {
                 "data": {
                     "name" : "some-item",
@@ -17,11 +17,41 @@ describe('diffUtil', function () {
                     }
                 }
             },
-            expected = ["data", "data.item", "data.item.user", "data.item.result","data.name"],
+            expected = ["data", "data.item", "data.item.user", "data.item.result","data.name","data.item.user.id"],
             actual   = util.fieldsIn(object);
         
         expect(_.difference(expected, actual)).toEqual([]);
     });
+
+    it('should find array field', function () {
+        var object = {
+                "data": {
+                    "name" : "some-item",
+                    "item": [1, 2, 3]
+                }
+            },
+            expected = ["data", "data.item","data.name"],
+            actual   = util.fieldsIn(object);
+
+        expect(_.difference(expected, actual)).toEqual([]);
+    });
+
+    it('should find elements inside array', function () {
+        var object   = {"data": [{"id" : "me"}]},
+            expected = ["data", "data[].id"],
+            actual   = util.fieldsIn(object);
+
+        expect(_.difference(expected, actual)).toEqual([]);
+    });
+
+    it('should find elements nested inside arrays', function () {
+        var object   = {"data": [{"id" : "me", "name": "jugnu", "list": [{"inner" : "super"}]}]},
+            expected = ["data", "data[].id","data[].name", "data[].list", "data[].list[].inner"],
+            actual   = util.fieldsIn(object);
+
+        expect(_.difference(expected, actual)).toEqual([]);
+    });
+
     it('should read field-id value', function () {
         var object = {
                 "data": {
