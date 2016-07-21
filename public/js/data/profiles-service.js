@@ -21,13 +21,6 @@ window.app.service("profilesService", ["$http", "$q", function($http, $q){
                 }
             });
         },
-        updateSchema : function(){
-            var self = this;
-            return $http.get("/schema").then(function(response){
-                self.schema = response.data;
-                return response.data;
-            });
-        },
         getFile: function (profileName, fileName) {
             var self = this;
             self.fileEditing = null;
