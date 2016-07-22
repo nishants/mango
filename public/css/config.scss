@@ -1,13 +1,17 @@
 $padding: 10px;
 $amber  : #ffa500;
 $topBarHeight: 60px;
-$topBarColor : #3F51B5;
 $fileOverviewWidth: 300px;
 $calcEditorHeight : calc(100vh - #{$topBarHeight +  2*$padding});
 $topBarLayer : 1;
 $modalLayer : 10;
 $red : #d9534f;
 $editorBarHeight: 35px;
+
+$themeMainColor: #2196f3;
+$themeLightContrastColor: #007b96;
+$veryLightColor: #b9ddfc;
+$veryLightContrastColor: rgba(255, 165, 0, 0.18);
 
 *{
   box-sizing: border-box;
@@ -24,4 +28,14 @@ ul.undo-list{
 
 .amber-bg{
   background-color: $amber;
+}
+
+.primary-button{
+  border: 1px solid #CDDC39;
+  background: white;
+  color: $themeMainColor
+}
+
+.primary-button:hover{
+  color: $themeMainColor
 }

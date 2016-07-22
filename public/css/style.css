@@ -2088,30 +2088,40 @@ ul.undo-list, ul.file-explorer ul, ul.file-explorer {
 .amber-bg {
   background-color: #ffa500; }
 
+.primary-button {
+  border: 1px solid #CDDC39;
+  background: white;
+  color: #2196f3; }
+
+.primary-button:hover {
+  color: #2196f3; }
+
 ul.file-explorer {
   height: 100%;
   font-size: 15px;
   line-height: 25px;
-  border: 1px solid rgba(255, 192, 77, 0.45);
+  border: 1px solid rgba(255, 165, 0, 0.18);
   padding: 10px; }
   ul.file-explorer .highlight, ul.file-explorer .profile:hover, ul.file-explorer ul li:hover, ul.file-explorer > li.selected ul.files > li.current {
-    background-color: rgba(255, 192, 77, 0.45);
-    color: rgba(255, 255, 255, 0.95);
+    color: #ffa500;
     opacity: 0.7; }
+    ul.file-explorer .highlight .file-icon, ul.file-explorer .profile:hover .file-icon, ul.file-explorer ul li:hover .file-icon, ul.file-explorer > li.selected ul.files > li.current .file-icon {
+      color: #ffa500; }
   ul.file-explorer a {
-    display: block; }
+    display: block;
+    color: inherit; }
   ul.file-explorer a:hover {
     text-decoration: none; }
   ul.file-explorer .folder-icon, ul.file-explorer .file-icon {
-    color: #ffa500;
+    color: #2196f3;
     opacity: 0.8;
     padding: 0px 5px; }
   ul.file-explorer .profile:hover {
     cursor: pointer; }
     ul.file-explorer .profile:hover .folder-icon {
-      color: rgba(255, 255, 255, 0.95); }
+      color: #ffa500; }
     ul.file-explorer .profile:hover .opened, ul.file-explorer .profile:hover .closed {
-      color: rgba(255, 255, 255, 0.95); }
+      color: #ffa500; }
   ul.file-explorer .profile {
     padding-left: 10px; }
   ul.file-explorer ul li {
@@ -2119,11 +2129,11 @@ ul.file-explorer {
   ul.file-explorer ul li:hover {
     cursor: pointer; }
     ul.file-explorer ul li:hover .file-icon {
-      color: rgba(255, 255, 255, 0.95); }
+      color: #ffa500; }
   ul.file-explorer > li {
     padding-top: 10px;
     padding-bottom: 10px;
-    border-bottom: 1px solid rgba(255, 165, 0, 0.27); }
+    border-bottom: 1px solid rgba(255, 165, 0, 0.18); }
   ul.file-explorer li.expand .opened {
     display: none; }
   ul.file-explorer li:not(.expand) .closed {
@@ -2185,13 +2195,14 @@ ul.file-explorer {
     .file-editor-view .jsoneditor-search .jsoneditor-results {
       display: none; }
   .file-editor-view .jsoneditor-menu {
-    background-color: #ffa500;
-    border: 1px solid transparent; }
+    background-color: #2196f3;
+    border: 1px solid transparent;
+    opacity: 0.8; }
   .file-editor-view .jsoneditor {
-    border: 1px solid #ffa500; }
+    border: 1px solid #2196f3; }
   .file-editor-view .ace_gutter {
-    background: #ffa500 !important;
-    opacity: 0.5; }
+    background: #2196f3 !important;
+    opacity: 0.1; }
 
 .top-bar {
   position: fixed;
@@ -2200,7 +2211,7 @@ ul.file-explorer {
   width: 100vw;
   z-index: 1;
   height: 60px;
-  background: #3F51B5; }
+  background: #2196f3; }
   .top-bar .back-button, .top-bar h1 {
     float: left;
     height: 60px;
@@ -2220,8 +2231,7 @@ ul.file-explorer {
     font-size: medium;
     margin: 10px;
     padding: 0px 20px;
-    line-height: 40px;
-    color: white; }
+    line-height: 40px; }
   .top-bar button.hide {
     opacity: 0; }
 
@@ -2299,7 +2309,7 @@ table.table.view td, table.table.view th {
     line-height: 40px;
     padding: 0px 10px; }
   .search-input .icon {
-    background: #ffa500;
+    background: #007b96;
     color: rgba(255, 255, 255, 0.8);
     color: rgba(255, 255, 255, 0.8);
     padding: 0px 20px; }

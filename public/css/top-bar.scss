@@ -5,7 +5,7 @@
   width: 100vw;
   z-index: $topBarLayer;
   height: $topBarHeight;
-  background: $topBarColor;
+  background: $themeMainColor;
   .back-button, h1{
     float: left;
     height: $topBarHeight;
@@ -30,7 +30,6 @@
     margin: $padding;
     padding: 0px 2*$padding;
     line-height: $topBarHeight - 2*$padding;
-    color: rgba(255, 255, 255, 1);
   }
   button.hide{
     opacity: 0;

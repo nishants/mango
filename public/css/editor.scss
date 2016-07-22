@@ -70,14 +70,15 @@ $menuFormattingWidth: 60px;
     }
   }
   .jsoneditor-menu{
-    background-color: $amber;
+    background-color: $themeMainColor;
     border: 1px solid transparent;
+    opacity: 0.8;
   }
   .jsoneditor{
-    border: 1px solid $amber;
+    border: 1px solid $themeMainColor;
   }
   .ace_gutter{
-    background: $amber !important;
-    opacity: 0.5;
+    background: $themeMainColor !important;
+    opacity: 0.1;
   }
 }
