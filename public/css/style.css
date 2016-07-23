@@ -2357,6 +2357,8 @@ ul.file-explorer {
     cursor: pointer; }
   #diff-editor .acediff-copy-left div:hover {
     color: #c98100; }
+  #diff-editor .acediff-copy-left, #diff-editor .acediff-copy-right {
+    display: none; }
 
 .no-display {
   pointer-events: none;
