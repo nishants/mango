@@ -1,10 +1,10 @@
-<!--<div class="top-bar">-->
-    <!--<a class="back-button fa fa-arrow-left" ui-sref="profile({name: ui.state.name})"></a>-->
-    <!--<h1>Profiles/{{ui.state.name}}/{{ui.state.file}}</h1>-->
-    <!--<button class="save commit btn primary-button"-->
-            <!--ng-click="editor.commit()"-->
-            <!--ng-class="{'hide' : !editor.canSave}">Commit</button>-->
-<!--</div>-->
+<div class="top-bar">
+    <a class="back-button fa fa-arrow-left" ui-sref="profile.edit({file: ui.state.file})"></a>
+    <h1>{{ui.state.file}}</h1>
+    <button class="save commit btn primary-button"
+            ng-click="editor.commit()"
+            ng-class="{'hide' : !editor.canSave}">Commit</button>
+</div>
 
 <div class="container-view" id="diff-editor">
     <div id="flex-container" class="diff-editor">

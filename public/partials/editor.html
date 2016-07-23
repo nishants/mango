@@ -1,4 +1,4 @@
-<div ui-view>
+<div>
     <div class="top-bar">
         <a class="back-button fa fa-arrow-left" ui-sref="profile({name: ui.state.name})"></a>
         <h1>Profiles/{{ui.state.name}}/{{ui.state.file}}</h1>
@@ -10,7 +10,7 @@
                 ng-class="{'hide' : !editor.schemaDiff.modified}">Update Schema</button>
     </div>
 
-    <div class="container-view" >
+    <div class="container-view"  ui-view>
         <div class="file-editor-view">
             <div class="file-path-view">
                 {{editor.file | fullFilePath}}
