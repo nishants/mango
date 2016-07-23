@@ -21,8 +21,8 @@
         </thead>
         <tbody>
         <tr ng-repeat="profile in ui.search.profiles.results track by $index">
-            <td class="select"><a ui-sref="profile({name: profile.name})" class="fa fa-pencil"></a></td>
-            <td ng-bind="profile.name"></td>
+            <td><a ui-sref="profile({name: profile.name})" class="fa fa-pencil"></a></td>
+            <td><a ui-sref="profile({name: profile.name})" ng-bind="profile.name"></a></td>
             <td ng-bind="profile.description"></td>
         </tr>
         </tbody>

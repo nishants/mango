@@ -23,8 +23,12 @@
             </thead>
             <tbody>
             <tr ng-repeat="file in ui.search.files.results">
-                <td class="select"><a ui-sref="profile.edit({file: file.name})" class="fa fa-pencil"></a></td>
-                <td ng-bind="file.name"></td>
+                <td>
+                    <a ui-sref="profile.edit({file: file.name})" class="fa fa-pencil"></a>
+                </td>
+                <td>
+                    <a ui-sref="profile.edit({file: file.name})" ng-bind="file.name"></a>
+                </td>
                 <td ng-bind="file.description"></td>
                 <td ng-bind="file.path"></td>
                 <td>
