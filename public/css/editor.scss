@@ -19,6 +19,7 @@ $menuFormattingWidth: 60px;
   .editor-options{
     right: 0;
     @extend .undo-list;
+    display: none !important;
     .editor-option{
       display: block;
       float: left;

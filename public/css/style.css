@@ -2157,7 +2157,8 @@ ul.file-explorer {
     color: white;
     opacity: 0.5; }
   .file-editor-view .editor-options {
-    right: 0; }
+    right: 0;
+    display: none !important; }
     .file-editor-view .editor-options .editor-option {
       display: block;
       float: left;

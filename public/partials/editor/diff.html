@@ -1,9 +1,9 @@
 <div class="top-bar">
     <a class="back-button fa fa-arrow-left" ui-sref="profile.edit({file: ui.state.file})"></a>
-    <h1>{{ui.state.file}}</h1>
+    <h1>Preview Changes : {{editor.file | fullFilePath}} </h1>
     <button class="save commit btn primary-button"
-            ng-click="editor.commit()"
-            ng-class="{'hide' : !editor.canSave}">Commit</button>
+            ng-click="editor.save()"
+            ng-class="{'hide' : !editor.canSave}">Confirm</button>
 </div>
 
 <div class="container-view" id="diff-editor">

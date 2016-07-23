@@ -3,7 +3,7 @@
         <a class="back-button fa fa-arrow-left" ui-sref="profile({name: ui.state.name})"></a>
         <h1>Profiles/{{ui.state.name}}/{{ui.state.file}}</h1>
         <button class="save btn primary-button"
-                ng-click="editor.save()"
+                ng-click="editor.confirmSave()"
                 ng-class="{'hide' : !editor.canSave}">Save</button>
         <button class="save btn primary-button"
                 ng-click="editor.confirmSchemaUpdate()"
