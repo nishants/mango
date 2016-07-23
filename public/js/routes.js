@@ -42,7 +42,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
            }
        })
        .state('profile.edit', {
-           url: "/edit/:file",
+           url: "/:file/edit",
            templateUrl: "partials/editor.html",
            controller: "editorController",
            resolve: {
