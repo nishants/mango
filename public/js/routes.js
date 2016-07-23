@@ -50,5 +50,15 @@ app.config(function($stateProvider, $urlRouterProvider) {
                    return fileService.getFile($stateParams.name, $stateParams.file);
                }
            }
+       })
+        .state('profile.edit.diff', {
+           url: "/diff",
+           templateUrl: "partials/editor/diff.html",
+           controller: "diffController",
+           resolve: {
+               fetchFile: function($stateParams, fileService) {
+                   return fileService.getFile($stateParams.name, $stateParams.file);
+               }
+           }
        });
 });

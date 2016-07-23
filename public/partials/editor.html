@@ -9,7 +9,7 @@
             ng-class="{'hide' : !editor.schemaDiff.modified}">Update Schema</button>
 </div>
 
-<div class="container-view">
+<div class="container-view" ui-view>
     <div class="file-editor-view">
         <div class="file-path-view">
             {{editor.file | fullFilePath}}
