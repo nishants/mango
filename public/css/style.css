@@ -2201,8 +2201,8 @@ ul.file-explorer {
   .file-editor-view .jsoneditor {
     border: 1px solid #2196f3; }
   .file-editor-view .ace_gutter {
-    background: #2196f3 !important;
-    opacity: 0.1; }
+    background: #b9ddfc !important;
+    opacity: 1; }
 
 .top-bar {
   position: fixed;
@@ -2287,10 +2287,6 @@ ul.file-explorer {
   height: calc(100vh - 60px);
   overflow: auto; }
 
-table.table.view td.select, table.table.view th.select {
-  text-align: center;
-  font-size: large;
-  width: 50px; }
 table.table.view tr:hover td {
   background-color: rgba(33, 150, 243, 0.09); }
 table.table.view td, table.table.view th {
