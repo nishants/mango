@@ -36,6 +36,13 @@ $menuFormattingWidth: 60px;
   .file-overview{
     width: $fileOverviewWidth;
     padding-right: $padding;
+    .heading{
+      height: $editorBarHeight;
+      padding: 0px $padding;
+      line-height: $editorBarHeight;
+      background-color: $themeMainLighterColor;
+      color: rgba(255, 255, 255, 0.5);
+    }
   }
   .code-editor{
     width: calc(100% - #{$fileOverviewWidth});
@@ -71,9 +78,8 @@ $menuFormattingWidth: 60px;
     }
   }
   .jsoneditor-menu{
-    background-color: $themeMainColor;
+    background-color: $themeMainLighterColor;
     border: 1px solid transparent;
-    opacity: 0.8;
   }
   .jsoneditor{
     border: 1px solid $themeMainColor;

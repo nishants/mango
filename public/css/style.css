@@ -2171,6 +2171,12 @@ ul.file-explorer {
   .file-editor-view .file-overview {
     width: 300px;
     padding-right: 10px; }
+    .file-editor-view .file-overview .heading {
+      height: 35px;
+      padding: 0px 10px;
+      line-height: 35px;
+      background-color: #4dabf5;
+      color: rgba(255, 255, 255, 0.5); }
   .file-editor-view .code-editor {
     width: calc(100% - 300px); }
   .file-editor-view .jsoneditor.jsoneditor-mode-code,
@@ -2195,9 +2201,8 @@ ul.file-explorer {
     .file-editor-view .jsoneditor-search .jsoneditor-results {
       display: none; }
   .file-editor-view .jsoneditor-menu {
-    background-color: #2196f3;
-    border: 1px solid transparent;
-    opacity: 0.8; }
+    background-color: #4dabf5;
+    border: 1px solid transparent; }
   .file-editor-view .jsoneditor {
     border: 1px solid #2196f3; }
   .file-editor-view .ace_gutter {
