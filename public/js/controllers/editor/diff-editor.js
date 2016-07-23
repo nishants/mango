@@ -19,14 +19,6 @@ return {
                 }
             }),
             aceEditor = aceDiff.editors.right.ace;
-            aceEditor.on("change", function () {
-                try{
-                    $scope.$parent.editor.content = $scope.diffEditor.editors.right.ace.getValue();
-                }catch(e){
-                    console.log(e)
-                }
-            })
-
         $scope.diffEditor = aceDiff;
     }
 };

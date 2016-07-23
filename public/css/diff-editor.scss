@@ -92,5 +92,8 @@
   .acediff-copy-left div:hover {
     color: #c98100;
   }
+  .acediff-copy-left, .acediff-copy-right{
+    display: none;
+  }
 
 }
