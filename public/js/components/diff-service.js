@@ -74,6 +74,9 @@ window.app.service("diffService", ["diffUtil",function(diffUtil){
                         modified: changes.length > 0,
                         changes:calculateDiff(base, modifiedTo)
                     }
+                },
+                base : function () {
+                    return base;
                 }
             }
         }

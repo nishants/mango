@@ -1,60 +1,62 @@
-<div class="top-bar">
-    <a class="back-button fa fa-arrow-left" ui-sref="profile({name: ui.state.name})"></a>
-    <h1>Profiles/{{ui.state.name}}/{{ui.state.file}}</h1>
-    <button class="save btn primary-button"
-            ng-click="editor.save()"
-            ng-class="{'hide' : !editor.canSave}">Save</button>
-    <button class="save btn primary-button"
-            ng-click="editor.confirmSchemaUpdate()"
-            ng-class="{'hide' : !editor.schemaDiff.modified}">Update Schema</button>
-</div>
-
-<div class="container-view" ui-view>
-    <div class="file-editor-view">
-        <div class="file-path-view">
-            {{editor.file | fullFilePath}}
-        </div>
-        <ul class="editor-options">
-            <li class="editor-option"><a ui-sref="profile.edit.diff()" class="fa fa-clone"></a></li>
-        </ul>
-        <div class="file-overview">
-            <ul class="file-explorer" ng-controller="explorerController">
-
-                <li ng-repeat="profile in explorer.profiles  track by $index"
-                    ng-class="{'expand' : profile.__expand, 'selected' : profile.name == ui.state.name}">
-                    <div class="profile" ng-click="explorer.toggle(profile)">
-                        <a>
-                            <i class= "opened fa fa-plus"></i>
-                            <i class= "closed fa fa-minus"></i>
-                            <i class="folder-icon opened fa fa-folder"></i>
-                            <i class="folder-icon closed fa fa-folder-open"></i>
-                            <span ng-bind="profile.name"></span>
-                        </a>
-                    </div>
-                    <ul class="files">
-                        <li ng-repeat="file in profile.files  track by $index" ng-class="{'current' : file.name == ui.state.file}" >
-                            <a ui-sref="profile.edit({file: file.name, name: profile.name})">
-                                <i class="file-icon fa fa-file-text"></i>
-                                <span ng-bind="file.name"></span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-            </ul>
-        </div>
-
-        <div class          ="file-overview"
-             ng-show="false"
-             ng-jsoneditor  ="treeView.onLoad"
-             ng-model       ="editor.content"
-             options        ="treeView.options"></div>
-        <div class          ="code-editor"
-             ng-jsoneditor  ="codeView.onLoad"
-             ng-model       ="editor.content"
-             options        ="codeView.options"></div>
-
+<div ui-view>
+    <div class="top-bar">
+        <a class="back-button fa fa-arrow-left" ui-sref="profile({name: ui.state.name})"></a>
+        <h1>Profiles/{{ui.state.name}}/{{ui.state.file}}</h1>
+        <button class="save btn primary-button"
+                ng-click="editor.save()"
+                ng-class="{'hide' : !editor.canSave}">Save</button>
+        <button class="save btn primary-button"
+                ng-click="editor.confirmSchemaUpdate()"
+                ng-class="{'hide' : !editor.schemaDiff.modified}">Update Schema</button>
     </div>
-</div>
 
-<div ng-show="editor.showSchemaDialog" ng-include="'partials/messages/update-schema.html'"></div>
+    <div class="container-view" >
+        <div class="file-editor-view">
+            <div class="file-path-view">
+                {{editor.file | fullFilePath}}
+            </div>
+            <ul class="editor-options">
+                <li class="editor-option"><a ui-sref="profile.edit.diff()" class="fa fa-clone"></a></li>
+            </ul>
+            <div class="file-overview">
+                <ul class="file-explorer" ng-controller="explorerController">
+
+                    <li ng-repeat="profile in explorer.profiles  track by $index"
+                        ng-class="{'expand' : profile.__expand, 'selected' : profile.name == ui.state.name}">
+                        <div class="profile" ng-click="explorer.toggle(profile)">
+                            <a>
+                                <i class= "opened fa fa-plus"></i>
+                                <i class= "closed fa fa-minus"></i>
+                                <i class="folder-icon opened fa fa-folder"></i>
+                                <i class="folder-icon closed fa fa-folder-open"></i>
+                                <span ng-bind="profile.name"></span>
+                            </a>
+                        </div>
+                        <ul class="files">
+                            <li ng-repeat="file in profile.files  track by $index" ng-class="{'current' : file.name == ui.state.file}" >
+                                <a ui-sref="profile.edit({file: file.name, name: profile.name})">
+                                    <i class="file-icon fa fa-file-text"></i>
+                                    <span ng-bind="file.name"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class          ="file-overview"
+                 ng-show="false"
+                 ng-jsoneditor  ="treeView.onLoad"
+                 ng-model       ="editor.content"
+                 options        ="treeView.options"></div>
+            <div class          ="code-editor"
+                 ng-jsoneditor  ="codeView.onLoad"
+                 ng-model       ="editor.content"
+                 options        ="codeView.options"></div>
+
+        </div>
+    </div>
+
+    <div ng-show="editor.showSchemaDialog" ng-include="'partials/messages/update-schema.html'"></div>
+</div>

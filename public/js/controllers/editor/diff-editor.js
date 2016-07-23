@@ -8,7 +8,7 @@ return {
         var aceDiffer = new AceDiff({
             mode: "ace/mode/json",
             left: {
-                content: JSON.stringify(scope.editor.content, null, "\t"),
+                content: JSON.stringify(scope.editor.savedContent.base(), null, "\t"),
             },
             right: {
                 content: JSON.stringify(scope.editor.content, null, "\t"),
