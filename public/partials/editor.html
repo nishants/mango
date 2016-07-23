@@ -14,11 +14,9 @@
         <div class="file-path-view">
             {{editor.file | fullFilePath}}
         </div>
-        <div class="file-selector">
-            <select ng-options="item as item.name for item in ui.profiles.list track by item.name" ng-model="ui.profiles.current" ng-change="editor.reload()"></select>
-            <select ng-options="tile as tile.name for tile in ui.schema.files track by tile.name"  ng-model="editor.file" ng-change="editor.reload()"></select>
-
-        </div>
+        <ul class="editor-options">
+            <li class="editor-option"><a ui-sref="profile.edit.diff()" class="fa fa-clone"></a></li>
+        </ul>
         <div class="file-overview">
             <ul class="file-explorer" ng-controller="explorerController">
 

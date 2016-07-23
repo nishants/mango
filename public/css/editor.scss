@@ -2,7 +2,7 @@ $menuFormattingWidth: 60px;
 
 .file-editor-view{
   position: relative;
-  .file-path-view, .file-selector{
+  .file-path-view, .editor-options{
     position: absolute;
     top: 0;
     margin: 0px $padding;
@@ -16,13 +16,13 @@ $menuFormattingWidth: 60px;
     color: white;
     opacity: 0.5;
   }
-  .file-selector{
+  .editor-options{
     right: 0;
-    display: none;
-    select{
-      display: inline-block;
-      font-size: xx-large;
-      margin-right: $padding;
+    @extend .undo-list;
+    .editor-option{
+      display: block;
+      float: left;
+      width: 50px;
     }
   }
   .file-overview, .code-editor{

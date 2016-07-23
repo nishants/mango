@@ -2079,7 +2079,7 @@
 .text-font, body {
   font-family: 'Source Sans Pro', sans-serif; }
 
-ul.undo-list, ul.file-explorer ul, ul.file-explorer {
+ul.undo-list, ul.file-explorer ul, ul.file-explorer, .file-editor-view ul.editor-options {
   list-style: none;
   margin: 0px;
   padding: 0px;
@@ -2144,7 +2144,7 @@ ul.file-explorer {
 
 .file-editor-view {
   position: relative; }
-  .file-editor-view .file-path-view, .file-editor-view .file-selector {
+  .file-editor-view .file-path-view, .file-editor-view .editor-options {
     position: absolute;
     top: 0;
     margin: 0px 10px;
@@ -2156,13 +2156,12 @@ ul.file-explorer {
     font-size: smaller;
     color: white;
     opacity: 0.5; }
-  .file-editor-view .file-selector {
-    right: 0;
-    display: none; }
-    .file-editor-view .file-selector select {
-      display: inline-block;
-      font-size: xx-large;
-      margin-right: 10px; }
+  .file-editor-view .editor-options {
+    right: 0; }
+    .file-editor-view .editor-options .editor-option {
+      display: block;
+      float: left;
+      width: 50px; }
   .file-editor-view .file-overview, .file-editor-view .code-editor {
     float: left;
     padding-right: 10px 0px;
