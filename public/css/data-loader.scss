@@ -1,5 +1,5 @@
 $progressBarHeight : 2px;
-$maxWaitingTime : 10s;
+$maxWaitingTime : 1s;
 
 #loader{
   position: fixed;
@@ -9,7 +9,7 @@ $maxWaitingTime : 10s;
   z-index: $modalLayer*2;
   height: 100vh;
   width: 100vw;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: transparent;
   cursor: wait;
 }
 

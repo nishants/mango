@@ -30,6 +30,6 @@
     margin: $padding;
     padding: 0px 2*$padding;
     line-height: $topBarHeight - 2*$padding;
-    @include transition(opacity $quickAnimationDuration $defaultAnimationFunction);
+    @include transition(opacity $observableAnimationDuration $defaultAnimationFunction);
   }
 }

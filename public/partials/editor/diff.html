@@ -1,7 +1,7 @@
 <div class="top-bar">
     <a class="back-button fa fa-arrow-left" ui-sref="profile.edit({file: ui.state.file})"></a>
     <h1>Preview Changes : {{editor.file | fullFilePath}} </h1>
-    <button class="save commit btn primary-button"
+    <button class="save commit btn primary-button no-display"
             ng-click="editor.save()"
             ng-class="{'no-display' : !editor.canSave}">Confirm</button>
 </div>

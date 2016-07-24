@@ -4,11 +4,10 @@ app.controller("editorController", ["$scope", "fetchFile", "fileService", "$stat
             canSave     : false,
             treeView    : undefined,
             content     : fetchFile,
-            savedContent    : diffService.create(fetchFile),
-            showSchemaDialog : false,
             schemaDiff  : undefined,
             file        : undefined,
-
+            savedContent     : diffService.create(fetchFile),
+            showSchemaDialog : false,
             reload : function () {
                 $state.go("profile.edit", {name: $scope.ui.profiles.current.name, file: editor.file.name})
             },
@@ -42,10 +41,9 @@ app.controller("editorController", ["$scope", "fetchFile", "fileService", "$stat
                 });
             },
             save: function () {
+                editor.canSave      = false;
                 $state.go("profile.edit");
-
                 fileService.save($stateParams.name, $stateParams.file, editor.content).then(function () {
-                    editor.canSave      = false;
                     editor.savedContent = diffService.create(editor.content);
                     editor.schemaDiff   = editor.savedContent.schemaDiff(editor.content);
                 }, function (err) {
