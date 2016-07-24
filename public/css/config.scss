@@ -13,9 +13,11 @@ $themeMainLighterColor: #4dabf5;
 $themeLightContrastColor: #007b96;
 $veryLightColor: #b9ddfc;
 $veryLightContrastColor: rgba(255, 165, 0, 0.18);
+$themeFluroscentColor: #ffcf00;
 
 $quickAnimationDuration : 100ms;
 $defaultAnimationFunction : ease;
+$smoothAnimationFunction : ease;
 
 *{
   box-sizing: border-box;
@@ -55,4 +57,19 @@ ul.undo-list{
   -ms-transition: $value ;
   -o-transition: $value ;
   transition: $value ;
+}
+
+@mixin transform($value){
+  -webkit-transform: $value;
+  -moz-transform: $value;
+  -ms-transform: $value;
+  -o-transform: $value;
+  transform: $value;
+}
+@mixin transformOrigin($value){
+  -webkit-transform-origin:$value;
+  -moz-transform-origin:$value;
+  -ms-transform-origin:$value;
+  -o-transform-origin:$value;
+  transform-origin:$value;
 }

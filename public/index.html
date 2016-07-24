@@ -46,6 +46,7 @@
     <title>Mango</title>
 </head>
 <body ng-app="mango" ng-controller="uiController">
+    <div id="loader" ng-show="false"></div>
     <div class="main-container" ui-view></div>
     <div class="deferred-load" ng-include="'partials/deferred-load.html'"></div>
 </body>

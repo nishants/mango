@@ -1,0 +1,38 @@
+$progressBarHeight : 2px;
+$maxWaitingTime : 10s;
+
+#loader{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: $modalLayer*2;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.5);
+  cursor: wait;
+}
+
+#loader:after{
+  left: 0;
+  top: 0;
+  width: 100vw;
+  content: " ";
+  position: fixed;
+  height: $progressBarHeight;
+  background-color: $themeFluroscentColor;
+  animation-name: loading;
+  animation-duration: $maxWaitingTime;
+  @include transformOrigin(0 50%);
+}
+
+#loader.waiting{
+
+}
+
+@keyframes loading {
+  0%   {@include transform(scaleX(0));}
+  5%  {@include transform(scaleX(0.5));}
+  15%  {@include transform(scaleX(0.9));}
+  100% {@include transform(scaleX(1));}
+}
