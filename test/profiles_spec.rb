@@ -16,7 +16,7 @@ RSpec.describe Mango::Profiles do
       FileUtils::mkdir_p @profiles_home
       FileUtils.copy_entry @TEST_PROFILES_PATH, @profiles_home
 
-      @Profiles       = Profiles.load(@profiles_home)
+      @Profiles       = Mango::Profiles.load(@profiles_home)
       @ace_name       = "Ace"
       @slot_name      = "Sloth"
 
