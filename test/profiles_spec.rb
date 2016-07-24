@@ -9,7 +9,7 @@ RSpec.describe Mango::Profiles do
       return Pathname.new(path).realpath.to_s
     end
     before(:each) do
-      @TEST_PROFILES_PATH  = "/Users/dawn/Documents/projects/schemer/test/test-profiles"
+      @TEST_PROFILES_PATH  = "/Users/dawn/Documents/projects/schemer/test/data/test-profiles"
       @profiles_home = Tempfile.new("#{Random.new(212).rand()}").path()
 
       FileUtils.rm_rf(@profiles_home)
