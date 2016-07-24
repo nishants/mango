@@ -5,7 +5,7 @@ require_relative 'mango/profiles'
 require_relative 'config'
 
 PROFILE_HOME = "samples/profiles"
-Profiles = Profiles.load(PROFILE_HOME)
+Profiles = Mango::Profiles.load(PROFILE_HOME)
 
 set :port, 3000
 set :public_folder, 'public'

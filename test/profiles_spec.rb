@@ -1,7 +1,8 @@
 require './src/mango/profiles'
 require 'tempfile'
+require 'rspec'
 
-RSpec.describe Profiles do
+RSpec.describe Mango::Profiles do
 
   describe "Profiles" do
     def absolute_path path
