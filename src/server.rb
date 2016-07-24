@@ -2,6 +2,7 @@ require 'sinatra'
 require 'pathname'
 
 require_relative 'mango/profiles'
+require_relative 'config'
 
 PROFILE_HOME = "samples/profiles"
 Profiles = Profiles.load(PROFILE_HOME)
@@ -11,6 +12,10 @@ set :public_folder, 'public'
 
 get '/' do
   File.read 'public/index.html'
+end
+
+get '/projects' do
+  MangoConfig.projects.to_json
 end
 
 get '/schema' do
