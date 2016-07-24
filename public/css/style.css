@@ -2089,12 +2089,16 @@ ul.undo-list, ul.file-explorer ul, ul.file-explorer, .file-editor-view ul.editor
   background-color: #ffa500; }
 
 .primary-button {
-  border: 1px solid #CDDC39;
+  border: 1px solid #33d5dc;
   background: white;
   color: #2196f3; }
 
 .primary-button:hover {
   color: #2196f3; }
+
+.no-display {
+  opacity: 0;
+  pointer-events: none; }
 
 ul.file-explorer {
   height: 100%;
@@ -2236,9 +2240,12 @@ ul.file-explorer {
     font-size: medium;
     margin: 10px;
     padding: 0px 20px;
-    line-height: 40px; }
-  .top-bar button.hide {
-    opacity: 0; }
+    line-height: 40px;
+    -webkit-transition: opacity 100ms ease;
+    -moz-transition: opacity 100ms ease;
+    -ms-transition: opacity 100ms ease;
+    -o-transition: opacity 100ms ease;
+    transition: opacity 100ms ease; }
 
 .modal-window.danger {
   border: 1px solid #d9534f; }

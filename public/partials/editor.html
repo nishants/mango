@@ -4,10 +4,10 @@
         <h1>Profiles/{{ui.state.name}}/{{ui.state.file}}</h1>
         <button class="save btn primary-button"
                 ng-click="editor.confirmSave()"
-                ng-class="{'hide' : !editor.canSave}">Save</button>
+                ng-class="{'no-display' : !editor.canSave}">Save</button>
         <button class="save btn primary-button"
                 ng-click="editor.confirmSchemaUpdate()"
-                ng-class="{'hide' : !editor.schemaDiff.modified}">Update Schema</button>
+                ng-class="{'no-display' : !editor.schemaDiff.modified}">Update Schema</button>
     </div>
 
     <div class="container-view"  ui-view>

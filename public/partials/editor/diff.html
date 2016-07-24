@@ -3,7 +3,7 @@
     <h1>Preview Changes : {{editor.file | fullFilePath}} </h1>
     <button class="save commit btn primary-button"
             ng-click="editor.save()"
-            ng-class="{'hide' : !editor.canSave}">Confirm</button>
+            ng-class="{'no-display' : !editor.canSave}">Confirm</button>
 </div>
 
 <div class="container-view" id="diff-editor">

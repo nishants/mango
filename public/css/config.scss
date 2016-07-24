@@ -14,6 +14,9 @@ $themeLightContrastColor: #007b96;
 $veryLightColor: #b9ddfc;
 $veryLightContrastColor: rgba(255, 165, 0, 0.18);
 
+$quickAnimationDuration : 100ms;
+$defaultAnimationFunction : ease;
+
 *{
   box-sizing: border-box;
 }
@@ -32,11 +35,24 @@ ul.undo-list{
 }
 
 .primary-button{
-  border: 1px solid #CDDC39;
+  border: 1px solid #33d5dc;
   background: white;
   color: $themeMainColor
 }
 
 .primary-button:hover{
   color: $themeMainColor
+}
+
+.no-display{
+  opacity: 0;
+  pointer-events: none;
+}
+
+@mixin transition($value){
+  -webkit-transition: $value ;
+  -moz-transition: $value ;
+  -ms-transition: $value ;
+  -o-transition: $value ;
+  transition: $value ;
 }
