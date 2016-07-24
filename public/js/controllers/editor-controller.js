@@ -9,7 +9,7 @@ app.controller("editorController", ["$scope", "fetchFile", "fileService", "$stat
             savedContent     : diffService.create(fetchFile),
             showSchemaDialog : false,
             reload : function () {
-                $state.go("profile.edit", {name: $scope.ui.profiles.current.name, file: editor.file.name})
+                $state.go("profile.edit", {name: $scope.ui.profiles.current.name, file: editor.file.name});
             },
             updateSchema: function () {
                 editor.showSchemaDialog = false;
@@ -18,7 +18,7 @@ app.controller("editorController", ["$scope", "fetchFile", "fileService", "$stat
                 editor.showSchemaDialog = false;
             },
             confirmSave : function () {
-                $state.go("profile.edit.diff")
+                $state.go("profile.edit.diff");
             },
             confirmSchemaUpdate: function () {
                 editor.showSchemaDialog = true;
