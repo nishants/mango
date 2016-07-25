@@ -29,16 +29,10 @@ RSpec.describe Mango::MangoService do
       @service.add_project(project_name, @empty_project_path)
       expect(@service.projects).to eq([{"name" => project_name, "path" => project_path}])
 
-      contracts = @service.contracts project_name
-      exected_contracts = [
-          {"name"        =>  "home",
-          "description"  => "response for users-service/<user-id>/home",
-          "path"         => "/home.json"}, {
-          "name"         => "companies",
-          "description"  => "response for quote-service/user/<user-id>/company",
-          "path"         => "/companies/all.json"}]
+      contracts_paths = @service.contracts(project_name).map{|contract| contract["path"]}
+      expected_contract_paths = ["home.json", "companies/all.json"]
 
-      expect(contracts).to eq(exected_contracts)
+      expect(contracts_paths).to match_array(expected_contract_paths)
     end
 
   end

@@ -1,5 +1,6 @@
 require "json"
 require 'pathname'
+require 'find'
 
 module Mango
   class MangoService
@@ -26,31 +27,41 @@ module Mango
       read_json(@config_file_path)["projects"]
     end
 
-    def create_project path
-      save_json "#{path}/mango.json", {"contracts" => [
-          {"name"        =>  "home",
-           "description"  => "response for users-service/<user-id>/home",
-           "path"         => "/home.json"}, {
-              "name"         => "companies",
-              "description"  => "response for quote-service/user/<user-id>/company",
-              "path"         => "/companies/all.json"}]}
+    def create_project name, path
+      project = {"name" => name, "contracts" => []}
+      relative_paths = {}
+      Dir["#{path}/*/"].each{|profile|
+        each_json(profile){|file|
+          relative_paths[Pathname.new(file).relative_path_from(Pathname.new profile).to_s] = true
+        }
+      }
+      project["contracts"] = relative_paths.keys.map{|relative_path|
+        {"name" => "", "path" => relative_path}
+      }
+      save_json "#{path}/mango.json", project
     end
 
     def add_project name, path
       config = JSON.parse(File.read(@config_file_path));
       config["projects"].push({"name" => name, "path" => path})
-      File.open(@config_file_path, 'w'){|file|
-        file.write(config.to_json() )
-      }
-      project_settings = "#{path}/mango.json"
-      if(!if_exists project_settings)
-        create_project path
+      save_json @config_file_path, config
+
+      if(!if_exists "#{path}/mango.json")
+        create_project name, path
       end
     end
 
     def contracts(project_name)
       path = projects.find { |p| p["name"] = project_name }["path"]
       read_json("#{path}/mango.json")["contracts"]
+    end
+
+    def each_json path
+      Find.find(path) {|file|
+        if(file.to_s.end_with? ".json")
+          yield(File.new(file).path)
+        end
+      }
     end
   end
 end
