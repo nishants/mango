@@ -14,7 +14,7 @@ RSpec.describe Mango::MangoService do
     before(:each) do
       @test_helper = Mango::TestHelper.new
       @config_file = "#{@test_helper.test_data}/empty-config-file.json"
-      @empty_project_path = "#{@test_helper.test_data}/test/data/new-project";
+      @empty_project_path = "#{@test_helper.test_data}/new-project";
       @service = Mango::MangoService.new(@config_file)
     end
 
@@ -28,6 +28,17 @@ RSpec.describe Mango::MangoService do
 
       @service.add_project(project_name, @empty_project_path)
       expect(@service.projects).to eq([{"name" => project_name, "path" => project_path}])
+
+      contracts = @service.contracts project_name
+      exected_contracts = [
+          {"name"        =>  "home",
+          "description"  => "response for users-service/<user-id>/home",
+          "path"         => "/home.json"}, {
+          "name"         => "companies",
+          "description"  => "response for quote-service/user/<user-id>/company",
+          "path"         => "/companies/all.json"}]
+
+      # expect(contracts).to eq(exected_contracts)
     end
 
   end
