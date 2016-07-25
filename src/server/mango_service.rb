@@ -8,5 +8,8 @@ module Mango
     def projects
       JSON.parse(File.read(@config_file_path))["projects"]
     end
+    def add_project name, path
+      JSON.parse(File.read(@config_file_path))["projects"]
+    end
   end
 end
