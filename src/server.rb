@@ -18,6 +18,10 @@ get '/projects' do
   MangoConfig.projects.to_json
 end
 
+put '/projects/import' do
+  Mango::Profiles.import_project(params[:name], params[:path]).to_json
+end
+
 get '/schema' do
   schema = JSON.parse(File.read("#{PROFILE_HOME}/schema.json"))
   schema["base"] = Pathname.new(PROFILE_HOME).realpath
