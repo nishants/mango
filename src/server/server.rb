@@ -1,8 +1,8 @@
 require 'sinatra'
 require 'pathname'
 
-require_relative 'mango/profiles'
-require_relative 'config'
+require_relative '../mango/profiles'
+require_relative '../config'
 
 PROFILE_HOME = "samples/profiles"
 Profiles = Mango::Profiles.load(PROFILE_HOME)
