@@ -1,6 +1,7 @@
 require './src/server/mango_service'
 require 'tempfile'
 require 'rspec'
+require './test/test_helper'
 
 RSpec.describe Mango::MangoService do
 
@@ -11,8 +12,9 @@ RSpec.describe Mango::MangoService do
     end
 
     before(:each) do
-      @config_file = "test/data/empty-config-file.json"
-      @empty_project_path = absolute_path "test/data/new-project";
+      @test_helper = Mango::TestHelper.new
+      @config_file = "#{@test_helper.test_data}/empty-config-file.json"
+      @empty_project_path = "#{@test_helper.test_data}/test/data/new-project";
       @service = Mango::MangoService.new(@config_file)
     end
 

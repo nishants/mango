@@ -1,6 +1,7 @@
 require './src/mango/profiles'
 require 'tempfile'
 require 'rspec'
+require './test/test_helper'
 
 RSpec.describe Mango::Profiles do
 
@@ -9,12 +10,8 @@ RSpec.describe Mango::Profiles do
       return Pathname.new(path).realpath.to_s
     end
     before(:each) do
-      @TEST_PROFILES_PATH  = "test/data/test-profiles"
-      @profiles_home = Tempfile.new("#{Random.new(212).rand()}").path()
-
-      FileUtils.rm_rf(@profiles_home)
-      FileUtils::mkdir_p @profiles_home
-      FileUtils.copy_entry @TEST_PROFILES_PATH, @profiles_home
+      @test_helper    = Mango::TestHelper.new
+      @profiles_home  = "#{@test_helper.test_data}/test-profiles"
 
       @Profiles       = Mango::Profiles.load(@profiles_home)
       @ace_name       = "Ace"
