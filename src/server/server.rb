@@ -3,10 +3,12 @@ require 'pathname'
 
 require_relative '../mango/profiles'
 require_relative '../config'
+require_relative 'mango_service'
 
 PROFILE_HOME = "samples/profiles"
 Profiles = Mango::Profiles.load(PROFILE_HOME)
 
+service = Mango::MangoService.new
 set :port, 3000
 set :public_folder, 'public'
 
@@ -15,7 +17,7 @@ get '/' do
 end
 
 get '/projects' do
-  MangoConfig.projects.to_json
+  service.projects
 end
 
 put '/projects/import' do
