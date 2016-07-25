@@ -38,7 +38,7 @@ RSpec.describe Mango::MangoService do
           "description"  => "response for quote-service/user/<user-id>/company",
           "path"         => "/companies/all.json"}]
 
-      # expect(contracts).to eq(exected_contracts)
+      expect(contracts).to eq(exected_contracts)
     end
 
   end

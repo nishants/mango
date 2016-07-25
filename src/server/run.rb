@@ -8,7 +8,7 @@ require_relative 'mango_service'
 PROFILE_HOME = "samples/profiles"
 Profiles = Mango::Profiles.load(PROFILE_HOME)
 
-service = Mango::MangoService.new
+service = Mango::MangoService.new "config/projects.json"
 set :port, 3000
 set :public_folder, 'public'
 
@@ -17,7 +17,7 @@ get '/' do
 end
 
 get '/projects' do
-  service.projects
+  service.projects.to_json
 end
 
 put '/projects/import' do
@@ -25,7 +25,7 @@ put '/projects/import' do
 end
 
 get '/schema' do
-  schema = JSON.parse(File.read("#{PROFILE_HOME}/schema.json"))
+  schema = JSON.parse(File.read("#{PROFILE_HOME}/mango.json"))
   schema["base"] = Pathname.new(PROFILE_HOME).realpath
   schema.to_json
 end

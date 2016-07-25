@@ -25,7 +25,7 @@ module Mango
 
     def contracts(project_name)
       path = projects.find { |p| p["name"] = project_name }["path"]
-      read_json "#{path}/schema.json"
+      read_json("#{path}/mango.json")["contracts"]
     end
   end
 end

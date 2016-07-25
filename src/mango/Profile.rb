@@ -6,7 +6,7 @@ class Profile
 
   def initialize path
     @path = path
-    @schema = JSON.parse(File.read("#{@path}/schema.json"))
+    @schema = JSON.parse(File.read("#{@path}/mango.json"))
   end
 
   def all
@@ -24,7 +24,7 @@ class Profile
         result = {}
         result["name"]        = profile_json["name"]
         result["description"] = profile_json["description"]
-        @schema["files"].each{|file|
+        @schema["contracts"].each{|file|
           result[file["name"]] = Document.new(profile_root, file['path'])
         }
         return result
@@ -35,7 +35,7 @@ class Profile
 
   def updateAllFiles(fileName, content)
     each_profile(){|profile, profile_root|
-      path = @schema["files"].select{|file| file["name"] == fileName}[0]["path"]
+      path = @schema["contracts"].select{|file| file["name"] == fileName}[0]["path"]
       document = Document.new(profile_root, path)
       document.content = content;
       document.save;
@@ -59,7 +59,7 @@ class Profile
 
   def updateSchema(fileName, updates)
     each_profile(){|profile, profile_root|
-      path = @schema["files"].select{|file| file["name"] == fileName}[0]["path"]
+      path = @schema["contracts"].select{|file| file["name"] == fileName}[0]["path"]
       document = Document.new(profile_root, path)
       document.updateSchema(updates);
       document.save;

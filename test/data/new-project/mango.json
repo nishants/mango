@@ -1,6 +1,7 @@
 {
-  "name" : "Users",
-  "files": [
+  "name" : "Test Profiles",
+  "description" : "Profiles for test, editing these will make the tests fails.",
+  "contracts": [
     {
     "name"          : "home",
      "description"  : "response for users-service/<user-id>/home",
