@@ -4,9 +4,13 @@ module Mango
     def self.load(path)
       Profile.new(path)
     end
-    def self.import_project(name, path)
-      {"name" => "new-project", "path" => "/Users/dawn/Documents/projects/schemer/test/data/import-new-project", "files" => ["/home.json", "/companies/all.json"]}
+
+    def initialize path
+      @path = path
     end
 
+    def contracts
+      FileExplorer.read_json("#{@path}/mango.json")["contracts"]
+    end
   end
 end
