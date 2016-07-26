@@ -1,9 +1,7 @@
 require_relative 'profile'
 module Mango
   class Project
-    def self.load(path)
-      Profile.new(path)
-    end
+    attr_accessor :project_path
 
     def initialize path
       @project_path = path
@@ -22,6 +20,10 @@ module Mango
 
     def config_file
       "#{@project_path}/mango.json"
+    end
+
+    def self.load(path)
+      Profile.new(path)
     end
   end
 end
