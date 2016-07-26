@@ -9,6 +9,12 @@ window.app.service("projectService", ["$http", function($http){
                 service.list = response.data;
                 return service.list;
             })
+        },
+        select: function (name) {
+            return service.all().then(function () {
+                var selected = service.list[_.findIndex(service.list, function(project) { return project.name == name; })];
+                return service.current = selected;
+            })
         }
     };
     return service;

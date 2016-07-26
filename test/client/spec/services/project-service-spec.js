@@ -19,4 +19,14 @@ describe('projectService', function () {
         });
         backend.flush();
     });
+    it('should select a project by name', function (done) {
+        backend.whenGET("/projects").respond(projects);
+        service.all().then(function (actual) {
+            service.select(service.list[0].name).then(function () {
+                expect(service.current).toEqual(service.list[0]);
+                done();
+            });
+        });
+        backend.flush();
+    });
 });
