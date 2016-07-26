@@ -1,6 +1,6 @@
 require_relative 'profile'
 module Mango
-  class Profiles
+  class Project
     def self.load(path)
       Profile.new(path)
     end

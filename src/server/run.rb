@@ -1,12 +1,12 @@
 require 'sinatra'
 require 'pathname'
 
-require_relative '../mango/profiles'
+require_relative '../mango/project'
 require_relative '../config'
 require_relative 'mango_service'
 
 PROFILE_HOME = "samples/profiles"
-Profiles = Mango::Profiles.load(PROFILE_HOME)
+Profiles = Mango::Project.load(PROFILE_HOME)
 
 service = Mango::MangoService.new "config/projects.json"
 set :port, 3000
@@ -21,7 +21,7 @@ get '/projects' do
 end
 
 put '/projects/import' do
-  Mango::Profiles.import_project(params[:name], params[:path]).to_json
+  Mango::Project.import_project(params[:name], params[:path]).to_json
 end
 
 get '/schema' do

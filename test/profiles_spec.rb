@@ -1,9 +1,9 @@
-require './src/mango/profiles'
+require './src/mango/project'
 require 'tempfile'
 require 'rspec'
 require './test/test_helper'
 
-RSpec.describe Mango::Profiles do
+RSpec.describe Mango::Project do
 
   describe "Profiles" do
     def absolute_path path
@@ -13,7 +13,7 @@ RSpec.describe Mango::Profiles do
       @test_helper    = Mango::TestHelper.new
       @profiles_home  = "#{@test_helper.test_data}/test-profiles"
 
-      @Profiles       = Mango::Profiles.load(@profiles_home)
+      @Profiles       = Mango::Project.load(@profiles_home)
       @ace_name       = "Ace"
       @slot_name      = "Sloth"
 
