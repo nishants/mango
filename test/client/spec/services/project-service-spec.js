@@ -6,12 +6,12 @@ describe('projectService', function () {
         backend;
     
     beforeEach(inject(function (_projectService_, $httpBackend) {
-        service = _projectService_;
         backend = $httpBackend;
+        backend.whenGET("/projects").respond(projects);
+        service = _projectService_;
     }));
 
     it('should load projects', function (done) {
-        backend.whenGET("/projects").respond(projects);
         service.all().then(function (actual) {
             expect(actual).toEqual(projects);
             expect(service.list).toEqual(projects);
@@ -20,7 +20,6 @@ describe('projectService', function () {
         backend.flush();
     });
     it('should select a project by name', function (done) {
-        backend.whenGET("/projects").respond(projects);
         service.all().then(function (actual) {
             service.select(service.list[0].name).then(function () {
                 expect(service.current).toEqual(service.list[0]);
