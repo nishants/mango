@@ -14,5 +14,9 @@ app.controller("uiController", ["$rootScope", "$scope", "profilesService", "sear
     $rootScope.$on('$stateChangeStart', showLoader);
     $rootScope.$on('$stateChangeSuccess',hideLoader);
 
+    projectService.all().then(function () {
+        if(projectService.list.length > 0){projectService.select(projectService.list[0].name);}
+    });
+    
     $scope.ui = ui;
 }]);
