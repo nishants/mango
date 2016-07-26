@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'pathname'
 require 'open-uri'
+require_relative '../mango/file_explorer'
 
 require_relative '../mango/project'
 require_relative '../config'
@@ -23,6 +24,10 @@ end
 
 put '/projects/:project_name/import' do
   path = JSON.parse(request.body.read)["path"]
+  unless Mango::FileExplorer.if_exists(path)
+    status 404
+    return {"error" => "Path not found : #{path}"}.to_json
+  end
   service.import(params[:project_name], path).to_json
 end
 
