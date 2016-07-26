@@ -24,6 +24,7 @@ RSpec.describe Mango::MangoService do
     end
 
     it "should return project by name" do
+      expect(@service.find("not-exists").nil?).to eq(true)
       expect(@service.find("sample")["path"]).to eq("samples/profiles")
     end
 
