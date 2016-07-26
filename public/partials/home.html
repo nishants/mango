@@ -11,7 +11,12 @@
 
 <div class="container-view">
 
-    <table class="table view">
+    <div id="import-project"
+         ng-include="'partials/import-project.html'"
+         ng-if="!ui.projects.current">
+    </div>
+
+    <table class="table view" ng-if="ui.projects.current">
         <thead>
         <tr>
             <th class="select"></th>
