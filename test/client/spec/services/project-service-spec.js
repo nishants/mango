@@ -29,4 +29,17 @@ describe('projectService', function () {
         });
         backend.flush();
     });
+    it('create new project', function (done) {
+        var path = "my-project-path",
+            name = "my-project",
+            expectedUrl = "/projects/:name/import".replace(":name", name);
+
+        backend.expect('PUT', expectedUrl, {path: path}).respond(200, {name: name, path: path});
+
+        service.create(name, "my-project-path").then(function (created) {
+            expect(service.current.name).toEqual(created.name);
+            done();
+        });
+        backend.flush();
+    });
 });

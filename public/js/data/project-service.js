@@ -1,11 +1,10 @@
 window.app.service("projectService", ["$http", function($http){
     
-    var getAll =  $http.get("/projects");
     var service = {
         list: [],
         current : undefined,
         all: function () {
-            return getAll.then(function (response) {
+            return $http.get("/projects").then(function (response) {
                 service.list = response.data;
                 return service.list;
             })
@@ -15,6 +14,12 @@ window.app.service("projectService", ["$http", function($http){
                 var selected = service.list[_.findIndex(service.list, function(project) { return project.name == name; })];
                 return service.current = selected;
             })
+        },
+        create: function (name, path) {
+            var url = "/projects/:name/import".replace(":name", name);
+            return $http.put(url, {path: path}).then(function (response) {
+                return service.current = response.data;
+            });
         }
     };
     return service;
