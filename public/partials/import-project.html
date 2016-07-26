@@ -1,11 +1,13 @@
 <div class="create-project modal-window">
     <div class="modal-content" ng-init="project = {name: 'new-project', path: null}">
-        <h3><i class="fa fa-cog"></i>Full path to project</h3>
+        <h3><i class="fa fa-cog"></i>Enter path to import</h3>
 
         <button class="btn btn-primary"
                 ng-disabled="!project.path"
-                ng-click="ui.projects.create(project)">Add Path</button>
-        <input ng-model="project.path">
+                ng-click="ui.projects.create(project.name, project.path)">Add Path</button>
+
+        <input ng-model="project.path"
+               ng-class="{'error' : ui.projects.error}">
 
     </div>
 </div>

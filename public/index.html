@@ -52,7 +52,7 @@
 
     <div id="import-project"
          ng-include="'partials/import-project.html'"
-         ng-show="!ui.projects.current">
+         ng-class="{'no-display': ui.projects.current}">
     </div>
     <div id="loader" ng-class="{'no-display': !ui.loader.show}"></div>
 </body>
