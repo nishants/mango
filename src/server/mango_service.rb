@@ -1,6 +1,7 @@
 require "json"
 require 'pathname'
 require 'find'
+require './src/mango/contract'
 
 module Mango
   class MangoService
@@ -36,7 +37,7 @@ module Mango
         }
       }
       project["contracts"] = relative_paths.keys.map{|relative_path|
-        {"name" => "", "path" => relative_path}
+        {"name" => Contract.path_to_url(relative_path), "path" => relative_path}
       }
       save_json "#{path}/mango.json", project
     end

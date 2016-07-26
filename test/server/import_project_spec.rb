@@ -21,7 +21,6 @@ RSpec.describe Mango::MangoService do
       @project_path = @empty_project_path
 
       @service.add_project(@project_name, @empty_project_path)
-
     end
 
     it "should add project to existing list of projects" do
@@ -31,6 +30,13 @@ RSpec.describe Mango::MangoService do
     it "should discover contracts in new project" do
       contracts_paths = @service.contracts(@project_name).map{|contract| contract["path"]}
       expected_contract_paths = ["home.json", "companies/all.json"]
+
+      expect(contracts_paths).to match_array(expected_contract_paths)
+    end
+
+    it "should set default names for contracts" do
+      contracts_paths = @service.contracts(@project_name).map{|contract| contract["name"]}
+      expected_contract_paths = ["home", "companies-all"]
 
       expect(contracts_paths).to match_array(expected_contract_paths)
     end
