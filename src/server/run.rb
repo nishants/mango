@@ -24,10 +24,17 @@ end
 
 put '/projects/:project_name/import' do
   path = JSON.parse(request.body.read)["path"]
+  exists = service.projects.find(params[:name])
+
   unless Mango::FileExplorer.if_exists(path)
     status 404
     return {"error" => "Path not found : #{path}"}.to_json
   end
+  unless exists.nil?
+    status 409
+    return {"error" => "Path already exists : #{path}"}.to_json
+  end
+
   service.import(params[:project_name], path).to_json
 end
 
