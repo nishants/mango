@@ -1,6 +1,7 @@
 require './src/mango/contract'
 require './src/mango/file_explorer'
 require './src/mango/workspace'
+require './src/mango/project'
 
 module Mango
   class MangoService

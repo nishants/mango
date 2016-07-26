@@ -17,7 +17,7 @@ module Mango
     end
 
     def find project_name
-      path = projects.find { |p| p["name"] = project_name }["path"]
+      path = projects.find { |p| p["name"] == project_name }["path"]
       Project.new path
     end
 

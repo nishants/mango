@@ -13,18 +13,19 @@ RSpec.describe Mango::MangoService do
 
     before(:each) do
       @test_helper = Mango::TestHelper.new
-      @config_file = "#{@test_helper.test_data}/empty-config-file.json"
+      @config_file = "#{@test_helper.test_data}/sample-config-file.json"
       @empty_project_path = "#{@test_helper.test_data}/new-project";
       @service = Mango::MangoService.new(@config_file)
 
       @project_name = "project-name"
       @project_path = @empty_project_path
+      @existing_project = @test_helper.read_json(@config_file)["projects"][0]
 
       @service.import(@project_name, @empty_project_path)
     end
 
     it "should add project to existing list of projects" do
-      expect(@service.projects).to eq([{"name" => @project_name, "path" => @project_path}])
+      expect(@service.projects).to match_array([@existing_project, {"name" => @project_name, "path" => @project_path}])
     end
 
     it "should discover contracts in new project" do

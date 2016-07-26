@@ -1,3 +1,5 @@
+require './src/mango/file_explorer'
+
 module Mango
   class TestHelper
     attr_accessor :test_data
@@ -13,6 +15,10 @@ module Mango
 
     def test_data
        temp_copy_of "test/data"
+    end
+
+    def read_json file
+       FileExplorer.read_json(file)
     end
   end
 end
