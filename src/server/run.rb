@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'pathname'
+require 'open-uri'
 
 require_relative '../mango/project'
 require_relative '../config'
@@ -18,6 +19,15 @@ end
 
 get '/projects' do
   service.projects.to_json
+end
+
+put '/projects/:project_name/import' do
+  path = JSON.parse(request.body.read)["path"]
+  service.import(params[:project_name], path).to_json
+end
+
+put '/projects/:project_name/contracts' do
+  service.contracts(params[:project_name]).to_json
 end
 
 put '/projects/import' do

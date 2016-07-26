@@ -26,7 +26,7 @@ RSpec.describe Mango::MangoService do
       project_name = "project-name"
       project_path = @empty_project_path
 
-      @service.add_project(project_name, @empty_project_path)
+      @service.import(project_name, @empty_project_path)
       expect(@service.projects).to eq([{"name" => project_name, "path" => project_path}])
 
       contracts_paths = @service.contracts(project_name).map{|contract| contract["path"]}

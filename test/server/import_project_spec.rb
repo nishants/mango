@@ -20,7 +20,7 @@ RSpec.describe Mango::MangoService do
       @project_name = "project-name"
       @project_path = @empty_project_path
 
-      @service.add_project(@project_name, @empty_project_path)
+      @service.import(@project_name, @empty_project_path)
     end
 
     it "should add project to existing list of projects" do

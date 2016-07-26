@@ -1,10 +1,10 @@
 module Mango
   class Contract
-    def self.path_to_url path
-      return path.gsub(File::SEPARATOR, "-").gsub(".json", "")
+    def self.path_to_url(path)
+      path.gsub(File::SEPARATOR, "-").gsub(".json", "")
     end
 
-    def self.scan_profiles_at path
+    def self.scan_profiles_at(path)
       relative_paths = {}
 
       Dir["#{path}/*/"].each{|profile_base|

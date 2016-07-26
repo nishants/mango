@@ -13,7 +13,7 @@ module Mango
       @workspace.projects
     end
 
-    def add_project name, path
+    def import name, path
       @workspace.add_project(name, path)
       Project.new(path)
     end
