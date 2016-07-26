@@ -3,10 +3,14 @@ describe('UIController', function() {
 
     var $controller,
         controller,
+        projectService,
+        profilesService,
         $scope = {};
 
-    beforeEach(inject(function(_$controller_){
+    beforeEach(inject(function(_$controller_, _projectService_, _profilesService_){
         $controller = _$controller_;
+        projectService = _projectService_;
+        profilesService = _profilesService_;
     }));
 
     describe('$scope.grade', function() {
@@ -17,7 +21,8 @@ describe('UIController', function() {
         it('should set services no top scope', function() {
             expect($scope.ui).not.toBeNull();
             expect($scope.ui.schema).not.toBeNull();
-            expect($scope.ui.profiles).not.toBeNull();
+            expect($scope.ui.profiles).toBe(profilesService);
+            expect($scope.ui.projects).toBe(projectService);
         });
     });
 });
