@@ -7,10 +7,18 @@ module Mango
 
     def initialize path
       @path = path
+      @config_file_path = "#{path}/mango.json"
     end
 
     def contracts
-      FileExplorer.read_json("#{@path}/mango.json")["contracts"]
+      FileExplorer.read_json(@config_file_path)["contracts"]
+    end
+
+    def import
+      if(! FileExplorer.if_exists(@config_file_path))
+        contracts = Contract.scan_profiles_at @path
+        FileExplorer.save_json @config_file_path, {"contracts" => contracts}
+      end
     end
   end
 end
