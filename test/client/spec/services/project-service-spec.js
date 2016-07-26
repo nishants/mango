@@ -11,9 +11,10 @@ describe('projectService', function () {
     }));
 
     it('should load projects', function (done) {
-        backend.whenGET("/projects").respond({data: projects});
+        backend.whenGET("/projects").respond(projects);
         service.all().then(function (actual) {
             expect(actual).toEqual(projects);
+            expect(service.list).toEqual(projects);
             done();
         });
         backend.flush();

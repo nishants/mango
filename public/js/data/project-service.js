@@ -2,12 +2,12 @@ window.app.service("projectService", ["$http", function($http){
     
     var getAll =  $http.get("/projects");
     var service = {
-        all: [],
+        list: [],
         current : undefined,
         all: function () {
             return getAll.then(function (response) {
-                service.all = response.data.data;
-                return service.all;
+                service.list = response.data;
+                return service.list;
             })
         }
     };
