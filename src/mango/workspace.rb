@@ -14,7 +14,6 @@ module Mango
       config = FileExplorer.read_json @config_file_path;
       config["projects"].push({"name" => name, "path" => path})
       FileExplorer.save_json @config_file_path, config
-      Project.new path
     end
 
     def find project_name

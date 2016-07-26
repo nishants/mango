@@ -15,7 +15,7 @@ module Mango
 
     def add_project name, path
       project = @workspace.add_project name, path
-      project.import
+      Project.new(path).import
     end
 
     def contracts(project_name)
