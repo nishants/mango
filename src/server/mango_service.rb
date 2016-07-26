@@ -14,8 +14,18 @@ module Mango
       @workspace.projects
     end
 
+    def find project_name
+      project = @workspace.find(project_name)
+      unless project.nil?
+        {"name" => project_name, "path" => project.project_path}
+      end
+    end
+
     def import name, path
-      @workspace.add_project(name, path)
+      exists = @workspace.project_paths.include? path
+      unless exists
+        @workspace.add_project(name, path)
+      end
       Project.new(path).contracts
     end
 

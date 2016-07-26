@@ -17,8 +17,15 @@ module Mango
     end
 
     def find project_name
-      path = projects.find { |p| p["name"] == project_name }["path"]
-      Project.new path
+      project = projects.find { |p| p["name"] == project_name }
+      unless project.nil?
+        path = project["path"]
+        return Project.new(path)
+      end
+    end
+
+    def project_paths
+      projects.map{ |project| project["path"]}
     end
 
   end
