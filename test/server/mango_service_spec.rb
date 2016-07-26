@@ -23,6 +23,10 @@ RSpec.describe Mango::MangoService do
       expect(@service.projects).to eq([{"name"=>"sample", "path"=>"samples/profiles"}])
     end
 
+    it "should return project by name" do
+      expect(@service.find("sample")["path"]).to eq("samples/profiles")
+    end
+
     it "should add new project" do
       project_name = "project-name"
       project_path = @empty_project_path

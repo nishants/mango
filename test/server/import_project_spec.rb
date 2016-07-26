@@ -24,6 +24,12 @@ RSpec.describe Mango::MangoService do
       @service.import(@project_name, @empty_project_path)
     end
 
+
+    it "should not add project if already exists" do
+      @service.import(@project_name, @empty_project_path)
+      expect(@service.projects).to match_array([@existing_project, {"name" => @project_name, "path" => @project_path}])
+    end
+
     it "should add project to existing list of projects" do
       expect(@service.projects).to match_array([@existing_project, {"name" => @project_name, "path" => @project_path}])
     end
