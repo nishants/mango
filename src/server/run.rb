@@ -31,7 +31,7 @@ put '/projects/:project_name/import' do
   service.import(params[:project_name], path).to_json
 end
 
-put '/projects/:project_name/contracts' do
+get '/projects/:project_name/contracts' do
   service.contracts(params[:project_name]).to_json
 end
 
