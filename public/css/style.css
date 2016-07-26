@@ -2247,9 +2247,6 @@ ul.file-explorer {
     -o-transition: opacity 250ms ease;
     transition: opacity 250ms ease; }
 
-.modal-window.danger {
-  border: 1px solid #d9534f; }
-
 .modal-window {
   position: fixed;
   top: 0;
@@ -2283,11 +2280,13 @@ ul.file-explorer {
       width: 100%;
       font-size: large;
       font-weight: 600;
-      border-bottom: 1px solid #d9534f;
-      color: #d9534f;
+      border-bottom: 1px solid transparent;
       font-size: 20px; }
       .modal-window .modal-content h3 .fa {
         margin: 0px 10px; }
+  .modal-window .modal-content.danger h3 {
+    border-bottom: 1px solid #d9534f;
+    color: #d9534f; }
 
 #diff-editor {
   position: relative;
