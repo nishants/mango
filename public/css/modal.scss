@@ -15,7 +15,7 @@
     padding: $padding*2;
     text-align: left;
 
-    button{
+    button, input{
       height: $topBarHeight - 2 * $padding;
       line-height: $topBarHeight - 2 * $padding;
       padding: 0px 2 * $padding;

@@ -2263,7 +2263,7 @@ ul.file-explorer {
     line-height: 1;
     padding: 20px;
     text-align: left; }
-    .modal-window .modal-content button {
+    .modal-window .modal-content button, .modal-window .modal-content input {
       height: 40px;
       line-height: 40px;
       padding: 0px 20px;
@@ -2450,6 +2450,13 @@ ul.file-explorer {
   -webkit-transform: translateX(-100vw);
   -moz-transform: translateX(-100vw);
   transform: translateX(-100vw); }
+
+.create-project.modal-window button {
+  width: 110px;
+  margin-top: 0px; }
+.create-project.modal-window input {
+  margin-top: 0px;
+  width: calc(100% - 110px - 4 * 10px); }
 
 .no-display {
   pointer-events: none;

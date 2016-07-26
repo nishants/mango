@@ -1,0 +1,10 @@
+.create-project.modal-window{
+  button{
+    width: 110px;
+    margin-top: 0px;
+  }
+  input{
+    margin-top: 0px;
+    width: calc(100% - 110px - 4 * #{$padding});
+  }
+}

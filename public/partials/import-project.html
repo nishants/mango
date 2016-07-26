@@ -1,8 +1,11 @@
-<div class="modal-window">
-    <div class="modal-content">
-        <h3><i class="fa fa-cog"></i>Enter a full path</h3>
+<div class="create-project modal-window">
+    <div class="modal-content" ng-init="project = {name: 'new-project', path: null}">
+        <h3><i class="fa fa-cog"></i>Full path to project</h3>
 
-        <button class="btn btn-danger"  ng-click="editor.updateSchemaForFile()">Proceed</button>
-        <button class="btn btn-default" ng-click="editor.closeSchemaDialog()">Cancel</button>
+        <button class="btn btn-primary"
+                ng-disabled="!project.path"
+                ng-click="ui.projects.create(project)">Add Path</button>
+        <input ng-model="project.path">
+
     </div>
 </div>
