@@ -1,10 +1,33 @@
 .create-project.modal-window{
-  button{
-    width: 110px;
-    margin-top: 0px;
-  }
-  input{
-    margin-top: 0px;
-    width: calc(100% - 110px - 4 * #{$padding});
+  .modal-content{
+    position: relative;
+    min-width: 500px;
+    padding-bottom: 3*$padding;
+
+    h3{
+      margin-bottom: 0px;
+    }
+    button{
+      width: 110px;
+      margin-top: 0px;
+      border-radius: 2px;
+    }
+    input{
+      margin-top: 0px;
+      width: calc(100% - 110px - 4 * #{$padding});
+    }
+    input.error{
+      border: 1px solid $red;
+    }
+    .error-message{
+      position: absolute;
+      bottom: -$padding;
+      line-height: 3*$padding;
+      height: 3*$padding;
+      font-size: 13px;
+      text-align: right;
+      padding-left: 2*$padding;
+      color: $red;
+    }
   }
 }

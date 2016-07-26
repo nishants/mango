@@ -1,13 +1,16 @@
-<div class="create-project modal-window">
+<div class="create-project modal-window" ng-if="!ui.projects.current">
     <div class="modal-content" ng-init="project = {name: 'new-project', path: null}">
         <h3><i class="fa fa-cog"></i>Enter path to import</h3>
+        <p class="error-message" ng-show="ui.projects.error" ng-bind="ui.projects.error"></p>
 
-        <button class="btn btn-primary"
-                ng-disabled="!project.path"
-                ng-click="ui.projects.create(project.name, project.path)">Add Path</button>
+       <div>
+           <button class="btn btn-primary"
+                   ng-disabled="!project.path"
+                   ng-click="ui.projects.create(project.name, project.path)">Add Path</button>
 
-        <input ng-model="project.path"
-               ng-class="{'error' : ui.projects.error}">
+           <input ng-model="project.path"
+                  ng-class="{'error' : ui.projects.error}">
 
+       </div>
     </div>
 </div>
