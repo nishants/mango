@@ -5,8 +5,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: "/",
             templateUrl: "partials/home.html",
             resolve: {
-                loadProfile: function(searchService) {
-                    return searchService.profiles.search();
+                loadProfile: function(searchService, projectService) {
+                    return projectService.all().then(function () {
+                        return searchService.profiles.search();
+                    });
                 }
             }
 

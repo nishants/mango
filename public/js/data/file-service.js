@@ -6,7 +6,7 @@ window.app.service("fileService", ["$http", function($http){
         updateSchema : function(){
             var self = this;
             return $http.get("/schema").then(function(response){
-                self.files = response.data.files;
+                self.files = response.data.contracts;
                 self.root  = response.data.base;
                 return self.files;
             });
