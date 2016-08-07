@@ -61,8 +61,9 @@ window.app.service("projectService", ["$http", function($http){
         },
         getFile: function(projectName, profileId, contractName){
             var url = "/projects/:name/profiles/:profile_id/contracts/:contract_name".replace(":name", projectName).replace(":profile_id", profileId).replace(":contract_name", contractName);
-            $http.get(url).then(function(){});
-            return {'name' : 'is Lakhan'}
+            return $http.get(url).then(function(response){
+                return response.data;
+            });
         }
     };
     return service;

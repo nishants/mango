@@ -100,6 +100,12 @@ RSpec.describe Mango::MangoService do
                             {"name" => "home"     , "present" => true}]
       expect(profile["contracts"]).to match_array(expected_contracts)
     end
+
+    it "should get a contract file" do
+      contract_file  = @service.contract_file("sample", "profile-ace", "companies")
+      expected = {"data" => {"companies" => [{"name" => "ABC"},{"name" => "XYZ"}]}}
+      expect(contract_file).to eq(expected)
+    end
   end
 
 end
