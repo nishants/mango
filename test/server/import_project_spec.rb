@@ -21,17 +21,17 @@ RSpec.describe Mango::MangoService do
       @project_path = @empty_project_path
       @existing_project = @test_helper.read_json(@config_file)["projects"][0]
 
-      @service.import(@project_name, @empty_project_path)
+      @service.import(@project_name, @empty_project_path, "some-description")
     end
 
 
     it "should not add project if already exists" do
-      @service.import(@project_name, @empty_project_path)
-      expect(@service.projects).to match_array([@existing_project, {"name" => @project_name, "path" => @project_path}])
+      @service.import(@project_name, @empty_project_path, "some-description")
+      expect(@service.projects).to match_array([@existing_project, {"name" => @project_name, "path" => @project_path, "description"=>"some-description"}])
     end
 
     it "should add project to existing list of projects" do
-      expect(@service.projects).to match_array([@existing_project, {"name" => @project_name, "path" => @project_path}])
+      expect(@service.projects).to match_array([@existing_project, {"name" => @project_name, "path" => @project_path, "description"=>"some-description"}])
     end
 
     it "should discover contracts in new project" do

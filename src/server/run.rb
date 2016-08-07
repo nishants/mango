@@ -35,7 +35,7 @@ put '/projects/:project_name/import' do
     return {"error" => "Path already exists : #{path}"}.to_json
   end
 
-  service.import(params[:project_name], path).to_json
+  service.import(params[:project_name], path, params[:description]).to_json
 end
 
 get '/projects/:project_name/contracts' do

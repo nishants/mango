@@ -31,14 +31,29 @@ RSpec.describe Mango::MangoService do
     it "should add new project" do
       project_name = "project-name"
       project_path = @empty_project_path
+      description  = ""
 
-      @service.import(project_name, @empty_project_path)
-      expect(@service.projects).to eq([@existing_project, {"name" => project_name, "path" => project_path}])
+      @service.import(project_name, @empty_project_path, description)
+      expect(@service.projects).to eq([@existing_project, {"name" => project_name, "path" => project_path,"description"=>""}])
 
       contracts_paths = @service.contracts(project_name).map{|contract| contract["path"]}
       expected_contract_paths = ["home.json", "companies/all.json"]
 
       expect(contracts_paths).to match_array(expected_contract_paths)
+    end
+
+    it "should update name and description for a project" do
+      project_name  = @service.find("sample")["name"];\
+      update = {
+          "name" => "new-name",
+          "description" => "new-description"
+      }
+
+      @service.update(project_name, update)
+
+      updated = @service.find("new-name")
+      expect(updated["description"]).to eq("new-description")
+      # expect(@service.find("sample")).to eq(nil)
     end
 
   end
