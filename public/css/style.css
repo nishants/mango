@@ -2465,26 +2465,40 @@ ul.file-explorer {
 .projects.container-view .no-projects {
   text-align: center; }
 
-table tr:hover td {
-  background-color: rgba(33, 150, 243, 0.09); }
-table td, table th {
-  border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  height: 45px; }
-  table td input, table th input {
-    padding-left: 5px;
-    border: 1px solid;
-    display: block;
-    text-overflow: ellipsis; }
-  table td input:not(:focus), table th input:not(:focus) {
-    border: 1px solid transparent; }
-table td.select {
-  position: relative; }
-table tr.no-data {
-  text-align: center; }
-  table tr.no-data td {
-    color: rgba(0, 0, 0, 0.34);
-    background: rgba(0, 0, 0, 0.05); }
+table {
+  width: 100%;
+  table-layout: fixed; }
+  table tr:hover td {
+    background-color: rgba(33, 150, 243, 0.09); }
+  table td, table th {
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    height: 45px;
+    padding-left: 10px;
+    padding-right: 10px; }
+    table td input, table th input {
+      padding-left: 5px;
+      border: 1px solid;
+      display: inline-block;
+      text-overflow: ellipsis;
+      width: 100%; }
+    table td input:not(:focus), table th input:not(:focus) {
+      border: 1px solid transparent; }
+  table th.select, table td.select {
+    width: 45px;
+    text-align: center; }
+  table th.name, table td.name {
+    width: 150px;
+    text-align: center; }
+    table th.name input, table td.name input {
+      text-align: inherit; }
+  table th.description, table td.description {
+    width: 450px; }
+  table tr.no-data {
+    text-align: center; }
+    table tr.no-data td {
+      color: rgba(0, 0, 0, 0.34);
+      background: rgba(0, 0, 0, 0.05); }
 
 .no-display {
   pointer-events: none;

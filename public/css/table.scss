@@ -1,6 +1,12 @@
-$tableRowHeight: 45px;
+$tableRowHeight : 45px;
+$selectColWidth : 45px;
+$nameColWidth   : 150px;
+$descriptionColWidth   : 450px;
 
 table{
+  width: 100%;
+  table-layout: fixed;
+
   tr:hover {
     td{
       background-color: rgba(33, 150, 243, 0.09);
@@ -10,18 +16,33 @@ table{
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     height: $tableRowHeight;
+    padding-left: $padding;
+    padding-right: $padding;
     input{
       padding-left: $padding/2;
       border: 1px solid;
-      display: block;
+      display: inline-block;
       text-overflow: ellipsis;
+      width: 100%;
     }
     input:not(:focus){
       border: 1px solid transparent;
     }
   }
-  td.select{
-    position: relative;
+
+  th.select, td.select{
+    width: $selectColWidth;
+    text-align: center;
+  }
+  th.name, td.name{
+    width: $nameColWidth;
+    text-align: center;
+    input{
+      text-align: inherit;
+    }
+  }
+  th.description, td.description{
+    width: $descriptionColWidth;
   }
 
   tr.no-data{

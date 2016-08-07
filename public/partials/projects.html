@@ -12,13 +12,14 @@
 
     <div class="projects container-view">
         <h3 class="no-projects" ng-if="!ui.projects.list.length">No Projects</h3>
-        <table class="table view" ng-if="ui.projects.list.length">
+        <table class="view" ng-if="ui.projects.list.length">
             <thead>
             <tr>
                 <th class="select"></th>
-                <th>Name</th>
-                <th>Description</th>
+                <th class="name">Name</th>
+                <th class="description">Description</th>
                 <th>Path</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -29,15 +30,16 @@
                        ui-sref="projects.profiles({project: project.name})">
                     </a>
                 </td>
-                <td>
+                <td class="name">
                     <input ng-model="form.name"
                            press-enter="workspace.update(project, form)">
                 </td>
-                <td >
+                <td class="description">
                     <input ng-model="form.description"
                            press-enter="workspace.update(project, form)">
                 </td>
                 <td ng-bind="project.path"></td>
+                <td></td>
             </tr>
             <tr class="no-data" ng-hide="ui.search.projects.results.length">
                 <td colspan="4"> No Projects found matching <q>{{ui.search.projects.key}}</q></td>

@@ -13,12 +13,13 @@
 </div>
 
 <div class="container-view">
-    <table class="table view">
+    <table class="view">
         <thead>
         <tr>
             <th class="select"></th>
-            <th>Name</th>
-            <th>Description</th>
+            <th class="name">Name</th>
+            <th class="description">Description</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -31,14 +32,15 @@
                 </a>
             </td>
 
-            <td>
+            <td class="name">
                 <input ng-model="form.name"
                        press-enter="profiles.update(profile, form)">
             </td>
-            <td>
+            <td class="description">
                 <input ng-model="form.description"
                        press-enter="profiles.update(profile, form)">
             </td>
+            <td></td>
         </tr>
         </tbody>
     </table>
