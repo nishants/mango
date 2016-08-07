@@ -47,10 +47,11 @@ window.app.service("projectService", ["$http", function($http){
                 return response.data;
             });
         },
-        updateProfile : function(projectName, profileName, params){
-            var url = "/projects/:name/profiles".replace(":name", projectName);
-            console.log(projectName + ">> renaming "+ profileName+" to " + params.name)
-
+        updateProfile : function(projectName, profileId, params){
+            var url = "/projects/:name/profiles/:id".replace(":name", projectName).replace(":id", profileId);
+            return $http.put(url, params).then(function (response) {
+                return response.data;
+            });
         }
     };
     return service;
