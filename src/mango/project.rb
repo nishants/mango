@@ -1,5 +1,6 @@
 require_relative 'profile'
 require_relative 'profile_data'
+require_relative 'contract'
 
 module Mango
   class Project
@@ -12,15 +13,23 @@ module Mango
       @description = description
       @name = name
       @config_file_path = "#{path}/mango.json"
-      FileExplorer.if_exists(config_file) or update
+      FileExplorer.if_exists(config_file) or save_contracts(Contract.scan_profiles_at @project_path)
     end
 
     def contracts
-      FileExplorer.read_json(config_file)["contracts"]
+      contracts  = FileExplorer.read_json(config_file)["contracts"]
+      scanned_contracts = Mango::Contract.scan_profiles_at(@project_path)
+      scanned_contracts.each{|scanned_contract|
+        isNew = contracts.find{|contract| contract["path"] == scanned_contract["path"]}.nil?
+        if isNew
+          contracts.push(scanned_contract)
+        end
+      }
+      save_contracts contracts
+      contracts
     end
 
-    def update
-      contracts = Contract.scan_profiles_at @project_path
+    def save_contracts contracts
       FileExplorer.save_json(config_file, {"contracts" => contracts})
     end
 

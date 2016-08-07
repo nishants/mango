@@ -9,7 +9,9 @@ module Mango
 
       Dir["#{path}/*/"].each{|profile_base|
         FileExplorer.each_json(profile_base){|file|
-          relative_paths[Pathname.new(file).relative_path_from(Pathname.new profile_base).to_s] = true
+          if File.basename(file) != "profile.json"
+            relative_paths[Pathname.new(file).relative_path_from(Pathname.new profile_base).to_s] = true
+          end
         }
       }
       relative_paths.keys.map{|relative_path|
