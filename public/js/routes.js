@@ -21,16 +21,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
                 }
             }
         })
-        .state('projects.view', {
-            url: "/:project",
-            templateUrl: "partials/contracts-and-profiles.html",
-            controller:  "listProfilesController",
-            resolve: {
-                profiles: function($stateParams, projectService) {
-                    return projectService.profilesOf($stateParams.project);
-                }
-            }
-        })
         .state('projects.profiles', {
             url: "/profiles/:project",
             templateUrl: "partials/list-profiles.html",
