@@ -16,6 +16,7 @@
             <th class="select"></th>
             <th>Name</th>
             <th>Description</th>
+            <th>Path</th>
         </tr>
         </thead>
         <tbody>
@@ -27,6 +28,7 @@
             <td >
                 <input ng-model="form.description" ng-blur="ui.projects.update(project, form)" press-enter="ui.projects.update(project, form)">
             </td>
+            <td ng-bind="project.path"></td>
         </tr>
         </tbody>
     </table>
