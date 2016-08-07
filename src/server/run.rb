@@ -52,6 +52,10 @@ put '/projects/:project_name/remove' do
   {}
 end
 
+get '/projects/:project_name/profiles' do
+  service.profiles_of(params[:project_name]).to_json
+end
+
 # *******************************************************
 put '/projects/import' do
   Mango::Project.import_project(params[:name], params[:path]).to_json
