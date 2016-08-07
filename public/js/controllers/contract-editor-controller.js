@@ -55,7 +55,6 @@ app.controller("contractEditorController", ["$scope", "fetchFile", "fileService"
         editor.codeChanged();
       };
 
-  fileService.setFile($stateParams.file);
 
   $scope.codeView = codeView = {
     options: {

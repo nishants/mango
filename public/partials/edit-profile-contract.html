@@ -37,7 +37,7 @@
                             <li ng-repeat="file in profile.contracts  track by $index"
                                 ng-show="file.present"
                                 ng-class="{'current' : file.name == ui.state.contract}" >
-                                <a ui-sref="profile.edit({file: file.name, name: profile.name})">
+                                <a ui-sref="projects.profiles.contract({profile: profile.id, contract: file.name})">
                                     <i class="file-icon fa fa-file-text"></i>
                                     <span ng-bind="file.name"></span>
                                 </a>
