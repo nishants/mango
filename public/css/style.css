@@ -2464,8 +2464,6 @@ ul.file-explorer {
 
 .create-project.error {
   border: 1px solid #d9534f; }
-  .create-project.error input {
-    color: #d9534f; }
 
 .no-display {
   pointer-events: none;
