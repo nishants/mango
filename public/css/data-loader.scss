@@ -1,5 +1,5 @@
 $progressBarHeight : 2px;
-$maxWaitingTime : 1s;
+$maxWaitingTime : 5s;
 
 #loader{
   position: fixed;
@@ -24,6 +24,7 @@ $maxWaitingTime : 1s;
   animation-name: loading;
   animation-duration: $maxWaitingTime;
   @include transformOrigin(0 50%);
+  @include transform(scaleX(0.95))
 }
 
 #loader.waiting{
@@ -32,7 +33,5 @@ $maxWaitingTime : 1s;
 
 @keyframes loading {
   0%   {@include transform(scaleX(0));}
-  5%  {@include transform(scaleX(0.5));}
-  15%  {@include transform(scaleX(0.9));}
-  100% {@include transform(scaleX(1));}
+  100% {@include transform(scaleX(0.95));}
 }

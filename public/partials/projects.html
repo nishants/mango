@@ -1,4 +1,4 @@
-<div>
+<div ui-view>
     <div class="top-bar">
         <div class="back-button no-display fa fa-arrow-left"></div>
         <h1>Projects</h1>
@@ -10,7 +10,7 @@
         </div>
     </div>
 
-    <div class="projects container-view" ui-view>
+    <div class="projects container-view">
         <h3 class="no-projects" ng-if="!ui.projects.list.length">No Projects</h3>
         <table class="table view" ng-if="ui.projects.list.length">
             <thead>

@@ -1,4 +1,18 @@
-<div>
+<div class="top-bar">
+    <div class="back-button no-display fa fa-arrow-left"></div>
+    <div class="contract-and-profiles">
+        <a class=""><button>Contracts</button></a>
+        <a class="" ui-sref="projects.profiles({project: ui.state.project})"><button ng-disabled="true">Profiles</button></a>
+    </div>
+    <div class="search-input">
+        <input class="search"
+               ng-change="ui.search.profiles.search()"
+               ng-model="ui.search.profiles.key">
+        <span class="icon fa fa-search"></span>
+    </div>
+</div>
+
+<div class="container-view">
     <table class="table view">
         <thead>
         <tr>
@@ -9,7 +23,11 @@
         </thead>
         <tbody>
         <tr ng-repeat="profile in profiles.search.results track by $index">
-            <td><a ui-sref="profile({name: profile.name})" class="fa fa-pencil"></a></td>
+            <td class="select" ng-class="{'show-options' : __expand}">
+                <a class="btn btn-default fa fa-chevron-right"
+                   ui-sref="projects.profiles({project: project.name})">
+                </a>
+            </td>
             <td><a ui-sref="profile({name: profile.name})" ng-bind="profile.name"></a></td>
             <td ng-bind="profile.description"></td>
         </tr>
