@@ -12,6 +12,34 @@ table{
       background-color: rgba(33, 150, 243, 0.09);
     }
   }
+
+  tbody:not(.expand){
+    .select {
+      .collapse-row {
+        display: none;
+      }
+    }
+  }
+
+  tbody.expand{
+    tr:not(.expandible-row){
+      > td{
+        border-bottom: 1px solid transparent;
+      }
+    }
+    .select {
+      .expand-row {
+        display: none;
+      }
+    }
+  }
+
+  tbody:not(.expand){
+    tr.expandible-row{
+      display: none;
+    }
+  }
+
   td, th{
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);

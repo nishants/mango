@@ -62,6 +62,10 @@ put '/projects/:project_name/profiles/:profile_id' do
   {}
 end
 
+get '/projects/:project_name/profiles/:profile_id/contracts' do
+  service.profile_contracts(params[:project_name], params[:profile_id])["contracts"].to_json
+end
+
 # *******************************************************
 put '/projects/import' do
   Mango::Project.import_project(params[:name], params[:path]).to_json

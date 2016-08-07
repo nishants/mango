@@ -1,0 +1,41 @@
+
+ul.contracts.token-list{
+  list-style: none;
+  display: block;
+  padding: 0px 45px;
+  margin: 0px;
+
+  > li {
+    padding: $padding/2 $padding;
+    display: inline-block;
+    margin: 0px $padding/2;
+    background-color: $themeFluroscentColor;
+  }
+  > li:not(.missing){
+    .add-contract{display: none}
+  }
+  > li.missing{
+    position: relative;
+    overflow: visible;
+    text-decoration: line-through;;
+    opacity: 0.5;
+    .add-contract{
+      padding: 0px $padding/2 0px $padding;
+    }
+  }
+  > li.missing:after{
+    content: "add contract";
+    position: absolute;
+    z-index: $modalLayer -1;
+    background-color: black;
+    color: white;
+    padding: $padding/2;
+    top: calc(-50% - 10px);
+    right: calc(-50% - 10px);
+    display: none;
+    border-radius: 2px;
+  }
+  li.missing:hover:after{
+    display: block;
+  }
+}

@@ -2465,11 +2465,52 @@ ul.file-explorer {
 .projects.container-view .no-projects {
   text-align: center; }
 
+ul.contracts.token-list {
+  list-style: none;
+  display: block;
+  padding: 0px 45px;
+  margin: 0px; }
+  ul.contracts.token-list > li {
+    padding: 5px 10px;
+    display: inline-block;
+    margin: 0px 5px;
+    background-color: #ffcf00; }
+  ul.contracts.token-list > li:not(.missing) .add-contract {
+    display: none; }
+  ul.contracts.token-list > li.missing {
+    position: relative;
+    overflow: visible;
+    text-decoration: line-through;
+    opacity: 0.5; }
+    ul.contracts.token-list > li.missing .add-contract {
+      padding: 0px 5px 0px 10px; }
+  ul.contracts.token-list > li.missing:after {
+    content: "add contract";
+    position: absolute;
+    z-index: 10 -1;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    top: calc(-50% - 10px);
+    right: calc(-50% - 10px);
+    display: none;
+    border-radius: 2px; }
+  ul.contracts.token-list li.missing:hover:after {
+    display: block; }
+
 table {
   width: 100%;
   table-layout: fixed; }
   table tr:hover td {
     background-color: rgba(33, 150, 243, 0.09); }
+  table tbody:not(.expand) .select .collapse-row {
+    display: none; }
+  table tbody.expand tr:not(.expandible-row) > td {
+    border-bottom: 1px solid transparent; }
+  table tbody.expand .select .expand-row {
+    display: none; }
+  table tbody:not(.expand) tr.expandible-row {
+    display: none; }
   table td, table th {
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);

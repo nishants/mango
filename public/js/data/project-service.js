@@ -52,6 +52,12 @@ window.app.service("projectService", ["$http", function($http){
             return $http.put(url, params).then(function (response) {
                 return response.data;
             });
+        },
+        getContracts: function(projectName, profileId){
+            var url = "/projects/:name/profiles/:id/contracts".replace(":name", projectName).replace(":id", profileId);
+            return $http.get(url).then(function (response) {
+                return response.data;
+            });
         }
     };
     return service;
