@@ -18,9 +18,7 @@ module Mango
 
     def find project_name
       project = projects.find { |p| p["name"] == project_name }
-      unless project.nil?
-        return Project.parse(project)
-      end
+      Project.parse(project)
     end
 
     def project_paths

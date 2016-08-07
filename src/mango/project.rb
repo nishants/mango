@@ -29,6 +29,9 @@ module Mango
     end
 
     def self.parse(json)
+      if(json.nil?)
+        return nil
+      end
       Project.new(json["name"], json["path"], json["description"])
     end
 
