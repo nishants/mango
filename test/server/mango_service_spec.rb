@@ -14,18 +14,25 @@ RSpec.describe Mango::MangoService do
     before(:each) do
       @test_helper = Mango::TestHelper.new
       @config_file = "#{@test_helper.test_data}/sample-config-file.json"
+
+      config = JSON.parse(File.read(@config_file))
+      sample_project_path = config["projects"][0]["path"]
+      @sample_project_path = File.absolute_path(sample_project_path)
+      config["projects"][0]["path"] = @sample_project_path
+      @test_helper.save_json(@config_file, config)
+
       @empty_project_path = "#{@test_helper.test_data}/new-project";
       @existing_project = @test_helper.read_json(@config_file)["projects"][0]
       @service = Mango::MangoService.new(@config_file)
     end
 
     it "should return all projects" do
-      expect(@service.projects).to eq([{"name"=>"sample", "path"=>"samples/profiles"}])
+      expect(@service.projects).to eq([{"name"=>"sample", "path"=>@sample_project_path}])
     end
 
     it "should return project by name" do
       expect(@service.find("not-exists").nil?).to eq(true)
-      expect(@service.find("sample")["path"]).to eq("samples/profiles")
+      expect(@service.find("sample")["path"]).to eq(@sample_project_path)
     end
 
     it "should add new project" do

@@ -20,5 +20,9 @@ module Mango
     def read_json file
        FileExplorer.read_json(file)
     end
+
+    def save_json file, json
+       FileExplorer.save_json(file, json)
+    end
   end
 end
