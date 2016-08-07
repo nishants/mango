@@ -21,6 +21,20 @@ app.config(function($stateProvider, $urlRouterProvider) {
                 }
             }
         })
+        .state('projects.profiles', {
+            url: "/profiles/:project",
+            templateUrl: "partials/profile.html",
+            controller: "viewProfileController",
+            resolve: {
+                loadProfile: function($stateParams, profilesService, searchService, fileService) {
+                    return fileService.updateSchema().then(function () {
+                        return searchService.files.search().then(function () {
+                            return profilesService.findByName($stateParams.name);
+                        });
+                    });
+                }
+            }
+        })
         .state('powermode', {
             url: "/power",
             templateUrl: "partials/powermode.html",

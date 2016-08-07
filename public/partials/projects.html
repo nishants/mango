@@ -1,74 +1,76 @@
-<div class="top-bar">
-    <div class="back-button no-display fa fa-arrow-left"></div>
-    <h1>Projects</h1>
-    <div class="search-input">
-        <input class="search"
-               ng-change="ui.search.projects.search()"
-               ng-model="ui.search.projects.key">
-        <span class="icon fa fa-search"></span>
+<div ui-view>
+    <div class="top-bar">
+        <div class="back-button no-display fa fa-arrow-left"></div>
+        <h1>Projects</h1>
+        <div class="search-input">
+            <input class="search"
+                   ng-change="ui.search.projects.search()"
+                   ng-model="ui.search.projects.key">
+            <span class="icon fa fa-search"></span>
+        </div>
     </div>
-</div>
 
-<div class="projects container-view">
-    <h3 class="no-projects" ng-if="!ui.projects.list.length">No Projects</h3>
-    <table class="table view" ng-if="ui.projects.list.length">
-        <thead>
-        <tr>
-            <th class="select"></th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Path</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="project in ui.search.projects.results track by project.name"
-            ng-init="form = {name: project.name,description: project.description}">
-            <td class="select" ng-class="{'show-options' : __expand}">
-                <button class="btn btn-default show-options fa fa-chevron-circle-down" ng-click="__expand = !__expand"></button>
-                <div class="options" ng-mouseleave="__expand = false">
-                    <a class="btn btn-default">
-                        <i class="fa fa-users"></i>
-                        Profiles
-                    </a>
-                    <a class="btn btn-default">
-                        <i class="fa fa-file-o"></i>
-                        Contracts
-                    </a>
-                    <a class="btn btn-default" ng-click="workspace.remove(project)">
-                        <i class="fa fa-remove"></i>
-                        Remove
-                    </a>
+    <div class="projects container-view">
+        <h3 class="no-projects" ng-if="!ui.projects.list.length">No Projects</h3>
+        <table class="table view" ng-if="ui.projects.list.length">
+            <thead>
+            <tr>
+                <th class="select"></th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Path</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="project in ui.search.projects.results track by project.name"
+                ng-init="form = {name: project.name,description: project.description}">
+                <td class="select" ng-class="{'show-options' : __expand}">
+                    <button class="btn btn-default show-options fa fa-chevron-circle-down" ng-click="__expand = !__expand"></button>
+                    <div class="options" ng-mouseleave="__expand = false">
+                        <a class="btn btn-default" ui-sref="projects.profiles({project: project.name})">
+                            <i class="fa fa-users"></i>
+                            Profiles
+                        </a>
+                        <a class="btn btn-default">
+                            <i class="fa fa-file-o"></i>
+                            Contracts
+                        </a>
+                        <a class="btn btn-default" ng-click="workspace.remove(project)">
+                            <i class="fa fa-remove"></i>
+                            Remove
+                        </a>
+                    </div>
+                </td>
+                <td>
+                    <input ng-model="form.name"
+                           press-enter="workspace.update(project, form)">
+                </td>
+                <td >
+                    <input ng-model="form.description"
+                           press-enter="workspace.update(project, form)">
+                </td>
+                <td ng-bind="project.path"></td>
+            </tr>
+            <tr class="empty-table" ng-hide="ui.search.projects.results.length">
+                <td colspan="4"> No Projects found matching <q>{{ui.search.projects.key}}</q></td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="form create-project" ng-class="{'error' : ui.projects.error}">
+            <p class="error-message"  ng-bind="ui.projects.error"></p>
+            <div class="input-group">
+                <input class="form-control"
+                       placeholder="full path"
+                       press-enter="workspace.newProject.add()"
+                       ng-model="workspace.newProject.path">
+                <div class="input-group-btn">
+                    <button class="btn btn-default"
+                            ng-disabled="!workspace.newProject.path"
+                            ng-click="workspace.newProject.add()">Import Path</button>
                 </div>
-            </td>
-            <td>
-                <input ng-model="form.name"
-                       press-enter="workspace.update(project, form)">
-            </td>
-            <td >
-                <input ng-model="form.description"
-                       press-enter="workspace.update(project, form)">
-            </td>
-            <td ng-bind="project.path"></td>
-        </tr>
-        <tr class="empty-table" ng-hide="ui.search.projects.results.length">
-            <td colspan="4"> No Projects found matching <q>{{ui.search.projects.key}}</q></td>
-        </tr>
-        </tbody>
-    </table>
-    <div class="form create-project" ng-class="{'error' : ui.projects.error}">
-        <p class="error-message"  ng-bind="ui.projects.error"></p>
-        <div class="input-group">
-            <input class="form-control"
-                   placeholder="full path"
-                   press-enter="workspace.newProject.add()"
-                   ng-model="workspace.newProject.path">
-            <div class="input-group-btn">
-                <button class="btn btn-default"
-                        ng-disabled="!workspace.newProject.path"
-                        ng-click="workspace.newProject.add()">Import Path</button>
+
             </div>
 
         </div>
-
     </div>
 </div>
