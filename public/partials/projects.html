@@ -21,16 +21,19 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="project in ui.search.projects.results track by $index" ng-init="form = {name: project.name,description: project.description}">
+        <tr ng-repeat="project in ui.search.projects.results track by project.name"
+            ng-init="form = {name: project.name,description: project.description}">
             <td>
-                <a ui-sref="projects({project: project.name})" class="fa fa-pencil"></a>
+                <a class="fa fa-pencil"></a>
                 <a class="fa fa-remove" ng-click="ui.projects.remove(project)"></a>
             </td>
             <td>
-                <input ng-model="form.name" ng-blur="ui.projects.update(project, form)" press-enter="ui.projects.update(project, form)">
+                <input ng-model="form.name"
+                       press-enter="workspace.update(project, form)">
             </td>
             <td >
-                <input ng-model="form.description" ng-blur="ui.projects.update(project, form)" press-enter="ui.projects.update(project, form)">
+                <input ng-model="form.description"
+                       press-enter="workspace.update(project, form)">
             </td>
             <td ng-bind="project.path"></td>
         </tr>
