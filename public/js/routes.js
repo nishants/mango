@@ -11,6 +11,15 @@ app.config(function($stateProvider, $urlRouterProvider) {
             }
 
         })
+        .state('projects', {
+            url: "/projects",
+            templateUrl: "partials/projects.html",
+            resolve: {
+                projects: function(projectService) {
+                    return projectService.all();
+                }
+            }
+        })
         .state('powermode', {
             url: "/power",
             templateUrl: "partials/powermode.html",
