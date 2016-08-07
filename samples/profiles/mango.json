@@ -4,11 +4,11 @@
     {
     "name"          : "home",
      "description"  : "response for users-service/<user-id>/home",
-     "path"         : "/home.json"
+     "path"         : "home.json"
     },{
     "name"        : "companies",
     "description" : "response for quote-service/user/<user-id>/company",
-    "path"        : "/companies/all.json"
+    "path"        : "companies/all.json"
     }
   ],
   "attributes"  : [{
