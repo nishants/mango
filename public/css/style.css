@@ -2473,7 +2473,9 @@ table td, table th {
   height: 45px; }
   table td input, table th input {
     padding-left: 5px;
-    border: 1px solid; }
+    border: 1px solid;
+    display: block;
+    text-overflow: ellipsis; }
   table td input:not(:focus), table th input:not(:focus) {
     border: 1px solid transparent; }
 table td.select {

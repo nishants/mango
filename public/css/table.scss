@@ -13,6 +13,8 @@ table{
     input{
       padding-left: $padding/2;
       border: 1px solid;
+      display: block;
+      text-overflow: ellipsis;
     }
     input:not(:focus){
       border: 1px solid transparent;
