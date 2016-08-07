@@ -49,7 +49,7 @@ RSpec.describe Mango::MangoService do
     end
 
     it "should update name and description for a project" do
-      project_name  = @service.find("sample")["name"];\
+      project_name  = @service.find("sample")["name"];
       update = {
           "name" => "new-name",
           "description" => "new-description"
@@ -89,6 +89,13 @@ RSpec.describe Mango::MangoService do
 
       expect(updated["name"]).to eq("new-profile-name")
       expect(updated["description"]).to eq("new-profile-desc")
+    end
+
+    it "should get contracts from a profile" do
+      profile  = @service.get_profile("sample", "ace-profile")
+      expected_contracts = [{"name" => "companies", "present" => true},
+                            {"name" => "home"     , "present" => true}]
+      expect(profile["contracts"]).to eq(expected_contracts)
     end
   end
 

@@ -48,10 +48,20 @@ module Mango
     end
 
     def update_profile(project_name, profile_id, params)
-      profile = @workspace.find(project_name).profiles.find{|p|
+      profile = find_profile(project_name, profile_id)
+      profile.update(params)
+    end
+
+    def find_profile(project_name, profile_id)
+      @workspace.find(project_name).profiles.find{|p|
         p.id == profile_id
       }
-      profile.update(params)
+    end
+
+    def get_profile(project_name, profile_id)
+
+      {"contracts" => [{"name" => "companies", "present" => true},
+                      {"name" => "home"     , "present" => true}]}
     end
 
   end
