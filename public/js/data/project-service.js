@@ -40,6 +40,12 @@ window.app.service("projectService", ["$http", function($http){
             }, function (response) {
                 console.error(response);
             });
+        },
+        profilesOf : function(projectName){
+            var url = "/projects/:name/profiles".replace(":name", projectName);
+            return $http.get(url).then(function (response) {
+                return response.data;
+            });
         }
     };
     return service;

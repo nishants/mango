@@ -13,7 +13,7 @@ class ProfileData
   def self.load path
     config_file = "#{path}profile.json"
     if !Mango::FileExplorer.if_exists(config_file)
-      Mango::FileExplorer.save_json(config_file, {"name" => "", "description" => "", "contracts" => []})
+      Mango::FileExplorer.save_json(config_file, {"name" => "untitled", "description" => "", "contracts" => []})
     end
     ProfileData.new(path)
   end

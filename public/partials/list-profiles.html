@@ -1,0 +1,29 @@
+<div class="top-bar">
+    <div class="back-button no-display fa fa-arrow-left"></div>
+    <h1>Profiles</h1>
+    <div class="search-input">
+        <input class="search"
+               ng-change="ui.search.profiles.search()"
+               ng-model="ui.search.profiles.key">
+        <span class="icon fa fa-search"></span>
+    </div>
+</div>
+
+<div class="container-view">
+    <table class="table view">
+        <thead>
+        <tr>
+            <th class="select"></th>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="profile in profiles.search.results track by $index">
+            <td><a ui-sref="profile({name: profile.name})" class="fa fa-pencil"></a></td>
+            <td><a ui-sref="profile({name: profile.name})" ng-bind="profile.name"></a></td>
+            <td ng-bind="profile.description"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>

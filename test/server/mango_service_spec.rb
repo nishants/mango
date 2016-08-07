@@ -66,7 +66,7 @@ RSpec.describe Mango::MangoService do
       expected_profiles = [
           {"id" => "profile-sloth"   ,"name" => "Sloth", "description" => "Represent the profile of a sloth user"},
           {"id" => "profile-ace" ,"name" => "Ace",   "description" => "Represent the profile of an ace user"},
-          {"id" => "no-profile"    ,"name" => "",      "description" => ""}
+          {"id" => "no-profile"    ,"name" => "untitled",      "description" => ""}
       ]
       profiles  = @service.profiles_of("sample");
       expect(profiles).to match_array(expected_profiles)

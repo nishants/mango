@@ -23,15 +23,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
         })
         .state('projects.profiles', {
             url: "/profiles/:project",
-            templateUrl: "partials/profile.html",
-            controller: "viewProfileController",
+            templateUrl: "partials/list-profiles.html",
+            controller:  "listProfilesController",
             resolve: {
-                loadProfile: function($stateParams, profilesService, searchService, fileService) {
-                    return fileService.updateSchema().then(function () {
-                        return searchService.files.search().then(function () {
-                            return profilesService.findByName($stateParams.name);
-                        });
-                    });
+                profiles: function($stateParams, projectService) {
+                    return projectService.profilesOf($stateParams.project);
                 }
             }
         })
