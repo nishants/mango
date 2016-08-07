@@ -2473,8 +2473,8 @@ td.select {
   position: relative; }
   td.select .options {
     position: absolute;
-    left: 0px;
-    top: 0px;
+    left: 10px;
+    top: 10px;
     display: none;
     background: white;
     padding: 10px;
