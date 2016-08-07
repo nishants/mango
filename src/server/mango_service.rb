@@ -47,9 +47,9 @@ module Mango
       }
     end
 
-    def update_profile(project_name, profile_name, params)
+    def update_profile(project_name, profile_id, params)
       profile = @workspace.find(project_name).profiles.find{|p|
-        p.name == profile_name
+        p.id == profile_id
       }
       profile.update(params)
     end

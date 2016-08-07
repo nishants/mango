@@ -84,7 +84,7 @@ RSpec.describe Mango::MangoService do
       profile  = @service.profiles_of(project_name)[0]
       params   = {"name" => "new-profile-name", "description" => "new-profile-desc"}
 
-      @service.update_profile(project_name, profile["name"], params)
+      @service.update_profile(project_name, profile["id"], params)
       updated = @service.profiles_of(project_name)[0]
 
       expect(updated["name"]).to eq("new-profile-name")

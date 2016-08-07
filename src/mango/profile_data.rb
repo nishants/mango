@@ -29,6 +29,10 @@ class ProfileData
     JSON.parse(File.read(@config))["name"]
   end
 
+  def id
+    File.basename(@path)
+  end
+
   def to_json
     config = JSON.parse(File.read(@config))
     {

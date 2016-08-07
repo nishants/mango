@@ -56,9 +56,9 @@ get '/projects/:project_name/profiles' do
   service.profiles_of(params[:project_name]).to_json
 end
 
-put '/projects/:project_name/profiles/:profile_name' do
+put '/projects/:project_name/profiles/:profile_id' do
   update_params = JSON.parse(request.body.read);
-  service.update_profile(params[:project_name], params[:profile_name], update_params)
+  service.update_profile(params[:project_name], params[:profile_id], update_params)
   {}
 end
 
