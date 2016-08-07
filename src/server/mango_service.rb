@@ -41,5 +41,9 @@ module Mango
       @workspace.update_project(project_name, params)
     end
 
+    def profiles_of(project_name)
+      @workspace.find(project_name).profiles
+    end
+
   end
 end

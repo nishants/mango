@@ -62,6 +62,16 @@ RSpec.describe Mango::MangoService do
       expect(@service.find(project_name)).to eq(nil)
     end
 
+    it "should project profiles" do
+      expected_profiles = [
+          {"id" => "profile-sloth"   ,"name" => "Sloth", "description" => "Represent the profile of a sloth user"},
+          {"id" => "profile-ace" ,"name" => "Ace",   "description" => "Represent the profile of an ace user"},
+          {"id" => "no-profile"    ,"name" => "",      "description" => ""}
+      ]
+      profiles  = @service.profiles_of("sample");
+      expect(profiles).to match_array(expected_profiles)
+    end
+
   end
 
 end

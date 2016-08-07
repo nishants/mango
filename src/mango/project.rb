@@ -1,4 +1,6 @@
 require_relative 'profile'
+require_relative 'profile_data'
+
 module Mango
   class Project
     attr_accessor :project_path
@@ -32,6 +34,12 @@ module Mango
 
     def self.load(path)
       Profile.new(path)
+    end
+
+    def profiles
+      Dir["#{@project_path}/*/"].map{|profile_path|
+        ProfileData.load(profile_path).to_json
+      }
     end
   end
 end
