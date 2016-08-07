@@ -5,7 +5,9 @@ app.controller("projectsController", ["$scope", "projects", "projectService", "s
       path: "",
       name: "untitled",
       add : function(){
+        var self = this;
         projectService.create(this.name, this.path).then(function(){
+          self.path = null;
           searchService.projects.search();
         });
       }
