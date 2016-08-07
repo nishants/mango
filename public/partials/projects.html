@@ -1,4 +1,4 @@
-<div ui-view>
+<div>
     <div class="top-bar">
         <div class="back-button no-display fa fa-arrow-left"></div>
         <h1>Projects</h1>
@@ -10,7 +10,7 @@
         </div>
     </div>
 
-    <div class="projects container-view">
+    <div class="projects container-view" ui-view>
         <h3 class="no-projects" ng-if="!ui.projects.list.length">No Projects</h3>
         <table class="table view" ng-if="ui.projects.list.length">
             <thead>
@@ -27,7 +27,7 @@
                 <td class="select" ng-class="{'show-options' : __expand}">
                     <button class="btn btn-default show-options fa fa-chevron-circle-down" ng-click="__expand = !__expand"></button>
                     <div class="options" ng-mouseleave="__expand = false">
-                        <a class="btn btn-default" ui-sref="projects.profiles({project: project.name})">
+                        <a class="btn btn-default" ui-sref="projects.view({project: project.name})">
                             <i class="fa fa-users"></i>
                             Profiles
                         </a>
