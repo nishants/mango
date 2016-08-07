@@ -28,7 +28,9 @@ module Mango
     end
 
     def remove name
-
+      config = FileExplorer.read_json @config_file_path;
+      config["projects"] = config["projects"].select{|project| project["name"] != name}
+      FileExplorer.save_json @config_file_path, config
     end
 
     def update_project name, params

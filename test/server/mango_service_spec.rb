@@ -53,7 +53,7 @@ RSpec.describe Mango::MangoService do
 
       updated = @service.find("new-name")
       expect(updated["description"]).to eq("new-description")
-      # expect(@service.find("sample")).to eq(nil)
+      expect(@service.find("sample")).to eq(nil)
     end
 
   end
