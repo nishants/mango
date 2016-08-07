@@ -41,6 +41,15 @@ app.config(function($stateProvider, $urlRouterProvider) {
                 }
             }
         })
+         .state('projects.profiles.contract.diff', {
+            url: "/diff",
+            templateUrl: "partials/editor/diff.html",
+            resolve: {
+                fetchFile: function($stateParams, projectService) {
+                    return projectService.getFile($stateParams.project, $stateParams.profile, $stateParams.contract);
+                }
+            }
+        })
        // .state('powermode', {
        //     url: "/power",
        //     templateUrl: "partials/powermode.html",

@@ -1,4 +1,4 @@
-app.controller("contractEditorController", ["$scope", "fetchFile", "fileService", "$stateParams", "diffService", "$state", function ($scope, fetchFile, fileService, $stateParams, diffService, $state) {
+app.controller("contractEditorController", ["$scope", "fetchFile", "fileService", "$stateParams", "diffService", "$state", "projectService", function ($scope, fetchFile, fileService, $stateParams, diffService, $state, projectService) {
 
   var editor = {
         canSave     : false,
@@ -18,7 +18,7 @@ app.controller("contractEditorController", ["$scope", "fetchFile", "fileService"
           editor.showSchemaDialog = false;
         },
         confirmSave : function () {
-          $state.go("profile.edit.diff");
+          $state.go("projects.profiles.contract.diff");
         },
         confirmSchemaUpdate: function () {
           editor.showSchemaDialog = true;
@@ -42,8 +42,8 @@ app.controller("contractEditorController", ["$scope", "fetchFile", "fileService"
         },
         save: function () {
           editor.canSave      = false;
-          $state.go("profile.edit");
-          fileService.save($stateParams.name, $stateParams.file, editor.content).then(function () {
+          $state.go("projects.profiles.contract");
+          projectService.saveFile($stateParams.project, $stateParams.profile, $stateParams.contract, editor.content).then(function () {
             editor.savedContent = diffService.create(editor.content);
             editor.schemaDiff   = editor.savedContent.schemaDiff(editor.content);
           }, function (err) {
