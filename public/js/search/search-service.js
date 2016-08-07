@@ -1,4 +1,4 @@
-window.app.service("searchService", ["profilesService", "filterService","fileService", function (profilesService, filterService, fileService) {
+window.app.service("searchService", ["profilesService", "filterService","fileService", "projectService", function (profilesService, filterService, fileService, projectService) {
     var defaultKey = ".*";
 
     var
@@ -30,7 +30,22 @@ window.app.service("searchService", ["profilesService", "filterService","fileSer
                     });
                 }
 
+            },
+            projects: {
+                key    : null,
+                results: [],
+                search : function () {
+                    var noKey   = !this.key || !this.key.length,
+                        key     = noKey ? defaultKey : this.key;
+                    return projectService.all().then(function (projects) {
+                        service.projects.results = [];
+                        service.projects.results = filterService.filterFiles(key, projects);
+                        return projects;
+                    });
+                }
+
             }
+
         }
     return service;
 }]);

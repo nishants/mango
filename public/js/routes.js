@@ -16,8 +16,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: "partials/projects.html",
             controller: "projectsController",
             resolve: {
-                projects: function(projectService) {
-                    return projectService.all();
+                projects: function(searchService) {
+                    return searchService.projects.search();
                 }
             }
         })

@@ -3,8 +3,8 @@
     <h1>Projects</h1>
     <div class="search-input">
         <input class="search"
-               ng-change="ui.search.profiles.search()"
-               ng-model="ui.search.profiles.key">
+               ng-change="ui.search.projects.search()"
+               ng-model="ui.search.projects.key">
         <span class="icon fa fa-search"></span>
     </div>
 </div>
@@ -21,7 +21,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="project in ui.projects.list track by $index" ng-init="form = {name: project.name,description: project.description}">
+        <tr ng-repeat="project in ui.search.projects.results track by $index" ng-init="form = {name: project.name,description: project.description}">
             <td>
                 <a ui-sref="projects({project: project.name})" class="fa fa-pencil"></a>
                 <a class="fa fa-remove" ng-click="ui.projects.remove(project)"></a>
