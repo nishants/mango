@@ -2469,6 +2469,24 @@ ul.file-explorer {
 .projects.container-view .no-projects {
   text-align: center; }
 
+td.select {
+  position: relative; }
+  td.select .options {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    display: none;
+    background: white;
+    padding: 10px;
+    z-index: 9;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 3px 1px rgba(0, 0, 0, 0.5); }
+
+td.select.show-options {
+  position: relative; }
+  td.select.show-options .options {
+    display: block; }
+
 .no-display {
   pointer-events: none;
   opacity: 0; }
