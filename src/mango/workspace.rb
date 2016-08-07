@@ -17,8 +17,8 @@ module Mango
     end
 
     def find project_name
-      project = projects.find { |p| p["name"] == project_name }
-      Project.parse(project)
+      json = projects.find { |p| p["name"] == project_name }
+      Project.parse(json)
     end
 
     def project_paths
