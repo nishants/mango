@@ -9,8 +9,9 @@
     </div>
 </div>
 
-<div class="container-view">
-    <table class="table view">
+<div class="projects container-view">
+    <h3 class="no-projects" ng-if="!ui.projects.list.length">No Projects</h3>
+    <table class="table view" ng-if="ui.projects.list.length">
         <thead>
         <tr>
             <th class="select"></th>
@@ -21,7 +22,10 @@
         </thead>
         <tbody>
         <tr ng-repeat="project in ui.projects.list track by $index" ng-init="form = {name: project.name,description: project.description}">
-            <td><a ui-sref="projects({project: project.name})" class="fa fa-pencil"></a></td>
+            <td>
+                <a ui-sref="projects({project: project.name})" class="fa fa-pencil"></a>
+                <a class="fa fa-remove" ng-click="ui.projects.remove(project)"></a>
+            </td>
             <td>
                 <input ng-model="form.name" ng-blur="ui.projects.update(project, form)" press-enter="ui.projects.update(project, form)">
             </td>

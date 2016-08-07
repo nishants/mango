@@ -56,6 +56,12 @@ RSpec.describe Mango::MangoService do
       expect(@service.find("sample")).to eq(nil)
     end
 
+    it "should delete a project" do
+      project_name  = @service.find("sample")["name"];
+      @service.remove(project_name)
+      expect(@service.find(project_name)).to eq(nil)
+    end
+
   end
 
 end

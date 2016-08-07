@@ -49,13 +49,9 @@
     <title>Mango</title>
 </head>
 <body ng-app="mango" ng-controller="uiController">
-    <div ng-if="ui.projects.current" class="main-container" ui-view></div>
+    <div class="main-container" ui-view></div>
     <div class="deferred-load" ng-include="'partials/deferred-load.html'"></div>
 
-    <div id="import-project"
-         ng-include="'partials/import-project.html'"
-         ng-class="{'no-display': ui.projects.current}">
-    </div>
     <div id="loader" ng-class="{'no-display': !ui.loader.show}"></div>
 </body>
 </html>

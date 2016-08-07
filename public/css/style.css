@@ -2466,6 +2466,9 @@ ul.file-explorer {
 .create-project.error {
   border: 1px solid #d9534f; }
 
+.projects.container-view .no-projects {
+  text-align: center; }
+
 .no-display {
   pointer-events: none;
   opacity: 0; }

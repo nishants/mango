@@ -32,6 +32,14 @@ window.app.service("projectService", ["$http", function($http){
             }, function (response) {
                 console.error(response);
             });
+        },
+        remove: function(project){
+            var url = "/projects/:name/remove".replace(":name", project.name);
+            return $http.put(url).then(function (response) {
+                return service.all();
+            }, function (response) {
+                console.error(response);
+            });
         }
     };
     return service;

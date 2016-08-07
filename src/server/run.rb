@@ -47,6 +47,11 @@ put '/projects/:project_name' do
   service.update(params[:project_name], update_params).to_json
 end
 
+put '/projects/:project_name/remove' do
+  service.remove(params[:project_name])
+  {}
+end
+
 # *******************************************************
 put '/projects/import' do
   Mango::Project.import_project(params[:name], params[:path]).to_json

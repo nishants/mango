@@ -14,6 +14,10 @@ module Mango
       @workspace.projects
     end
 
+    def remove(project_name)
+      @workspace.remove(project_name)
+    end
+
     def find project_name
       project = @workspace.find(project_name)
       unless project.nil?
