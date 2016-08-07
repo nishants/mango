@@ -47,7 +47,8 @@
                     <ul class="contracts token-list">
                         <li ng-class="{'missing' : !contract.present}"
                             ng-repeat="contract in profile.contracts">
-                            <a class="btn">
+                            <a class="btn"
+                               href="#/projects/profiles/{{ui.state.project}}/{{profile.id}}/contracts/{{contract.name}}">
                                 <span ng-bind="contract.name"></span>
                                 <i class="add-contract fa fa-plus"></i>
                             </a>

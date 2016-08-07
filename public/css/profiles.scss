@@ -2,7 +2,7 @@
 ul.contracts.token-list{
   list-style: none;
   display: block;
-  padding: 0px 45px;
+  padding: $padding 45px;
   margin: 0px;
 
   > li {  display: inline-block;  }
@@ -10,7 +10,7 @@ ul.contracts.token-list{
   > li > a{
     padding: $padding/2 $padding;
     display: block;
-    margin: 0px $padding/2;
+    margin:  0px $padding $padding 0px;
     background-color: $themeFluroscentColor;
   }
   > li:not(.missing) > a {
@@ -32,10 +32,11 @@ ul.contracts.token-list{
     background-color: black;
     color: white;
     padding: $padding/2;
-    top: calc(-50% - 10px);
-    right: calc(-50% - 10px);
+    bottom: calc(100% - 10px);
+    left: calc(100% - 10px);
     display: none;
     border-radius: 2px;
+    opacity: 1;
   }
   li.missing:hover > a:after{
     display: block;
