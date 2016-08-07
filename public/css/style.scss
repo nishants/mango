@@ -30,24 +30,7 @@ body{
   overflow: auto;
 }
 
-table.table.view{
-  tr:hover {
-    td{
-      background-color: rgba(33, 150, 243, 0.09);
-    }
-  }
-  td, th{
-    border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    input{
-      padding-left: $padding/2;
-      border: 1px solid;
-    }
-    input:not(:focus){
-      border: 1px solid transparent;
-    }
-  }
-}
+
 
 .search-input{
   float: right;

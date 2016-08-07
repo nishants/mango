@@ -1,33 +1,33 @@
-td.select{
-  position: relative;
-  .options{
-    position: absolute;
-    left: $padding;
-    top: $padding;
-    display: none;
+$tableRowHeight: 45px;
 
-    background: white;
-    padding: $padding;
-    z-index: $modalLayer - 1;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 1px 3px 1px rgba(0, 0, 0, 0.5);
+table{
+  tr:hover {
+    td{
+      background-color: rgba(33, 150, 243, 0.09);
+    }
   }
-  .show-options{
+  td, th{
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    height: $tableRowHeight;
+    input{
+      padding-left: $padding/2;
+      border: 1px solid;
+    }
+    input:not(:focus){
+      border: 1px solid transparent;
+    }
+  }
+  td.select{
+    position: relative;
+  }
 
+  tr.no-data{
+    text-align: center;
+    td{
+      color: rgba(0, 0, 0, 0.34);
+      background: rgba(0,0,0,0.05);
+    }
   }
-}
 
-td.select.show-options{
-  position: relative;
-  .options{
-    display: block;
-  }
-}
-
-tr.empty-table{
-  text-align: center;
-  td{
-    color: rgba(0, 0, 0, 0.34);
-    background: rgba(0,0,0,0.05);
-  }
 }

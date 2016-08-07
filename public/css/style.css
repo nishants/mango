@@ -2469,27 +2469,22 @@ ul.file-explorer {
 .projects.container-view .no-projects {
   text-align: center; }
 
-td.select {
+table tr:hover td {
+  background-color: rgba(33, 150, 243, 0.09); }
+table td, table th {
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  height: 45px; }
+  table td input, table th input {
+    padding-left: 5px;
+    border: 1px solid; }
+  table td input:not(:focus), table th input:not(:focus) {
+    border: 1px solid transparent; }
+table td.select {
   position: relative; }
-  td.select .options {
-    position: absolute;
-    left: 10px;
-    top: 10px;
-    display: none;
-    background: white;
-    padding: 10px;
-    z-index: 9;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 1px 3px 1px rgba(0, 0, 0, 0.5); }
-
-td.select.show-options {
-  position: relative; }
-  td.select.show-options .options {
-    display: block; }
-
-tr.empty-table {
+table tr.no-data {
   text-align: center; }
-  tr.empty-table td {
+  table tr.no-data td {
     color: rgba(0, 0, 0, 0.34);
     background: rgba(0, 0, 0, 0.05); }
 
@@ -2502,17 +2497,6 @@ tr.empty-table {
   margin-top: 60px;
   height: calc(100vh - 60px);
   overflow: auto; }
-
-table.table.view tr:hover td {
-  background-color: rgba(33, 150, 243, 0.09); }
-table.table.view td, table.table.view th {
-  border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
-  table.table.view td input, table.table.view th input {
-    padding-left: 5px;
-    border: 1px solid; }
-  table.table.view td input:not(:focus), table.table.view th input:not(:focus) {
-    border: 1px solid transparent; }
 
 .search-input {
   float: right;

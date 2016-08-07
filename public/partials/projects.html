@@ -25,21 +25,9 @@
             <tr ng-repeat="project in ui.search.projects.results track by project.name"
                 ng-init="form = {name: project.name,description: project.description}">
                 <td class="select" ng-class="{'show-options' : __expand}">
-                    <button class="btn btn-default show-options fa fa-chevron-circle-down" ng-click="__expand = !__expand"></button>
-                    <div class="options" ng-mouseleave="__expand = false">
-                        <a class="btn btn-default" ui-sref="projects.view({project: project.name})">
-                            <i class="fa fa-users"></i>
-                            Profiles
-                        </a>
-                        <a class="btn btn-default">
-                            <i class="fa fa-file-o"></i>
-                            Contracts
-                        </a>
-                        <a class="btn btn-default" ng-click="workspace.remove(project)">
-                            <i class="fa fa-remove"></i>
-                            Remove
-                        </a>
-                    </div>
+                    <a class="btn btn-default fa fa-chevron-right"
+                       ui-sref="projects.view({project: project.name})">
+                    </a>
                 </td>
                 <td>
                     <input ng-model="form.name"
@@ -51,7 +39,7 @@
                 </td>
                 <td ng-bind="project.path"></td>
             </tr>
-            <tr class="empty-table" ng-hide="ui.search.projects.results.length">
+            <tr class="no-data" ng-hide="ui.search.projects.results.length">
                 <td colspan="4"> No Projects found matching <q>{{ui.search.projects.key}}</q></td>
             </tr>
             </tbody>
