@@ -33,8 +33,8 @@ class ProfileData
     File.basename(@path)
   end
 
-  def contracts(contracts)
-    contracts.map{|contract|
+  def contracts(project_contracts)
+    project_contracts.map{|contract|
       exists = Mango::FileExplorer.if_exists("#{@path}/#{contract["path"]}")
       {"name" => contract["name"], "present" => exists}
     }
