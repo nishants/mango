@@ -37,6 +37,13 @@ table.table.view{
   td, th{
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    input{
+      padding-left: $padding/2;
+      border: 1px solid;
+    }
+    input:not(:focus){
+      border: 1px solid transparent;
+    }
   }
 }
 

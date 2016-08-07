@@ -23,6 +23,9 @@ window.app.service("projectService", ["$http", function($http){
             }, function (response) {
                 return service.error = response.data.error;
             });
+        },
+        rename: function(name, renameTo){
+            console.log("renamined" + name + ", to " + renameTo);
         }
     };
     return service;

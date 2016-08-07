@@ -2481,6 +2481,11 @@ table.table.view tr:hover td {
 table.table.view td, table.table.view th {
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+  table.table.view td input, table.table.view th input {
+    padding-left: 5px;
+    border: 1px solid; }
+  table.table.view td input:not(:focus), table.table.view th input:not(:focus) {
+    border: 1px solid transparent; }
 
 .search-input {
   float: right;
