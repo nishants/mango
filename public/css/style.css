@@ -2487,6 +2487,12 @@ td.select.show-options {
   td.select.show-options .options {
     display: block; }
 
+tr.empty-table {
+  text-align: center; }
+  tr.empty-table td {
+    color: rgba(0, 0, 0, 0.34);
+    background: rgba(0, 0, 0, 0.05); }
+
 .no-display {
   pointer-events: none;
   opacity: 0; }

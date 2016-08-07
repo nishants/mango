@@ -50,6 +50,9 @@
             </td>
             <td ng-bind="project.path"></td>
         </tr>
+        <tr class="empty-table" ng-hide="ui.search.projects.results.length">
+            <td colspan="4"> No Projects found matching <q>{{ui.search.projects.key}}</q></td>
+        </tr>
         </tbody>
     </table>
     <div class="form create-project" ng-class="{'error' : ui.projects.error}">
