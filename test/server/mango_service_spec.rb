@@ -92,7 +92,10 @@ RSpec.describe Mango::MangoService do
     end
 
     it "should get contracts from a profile" do
-      profile  = @service.get_profile("sample", "ace-profile")
+      project_name = "sample"
+      profile_id  = @service.profiles_of(project_name)[0]["id"]
+      profile  = @service.profile_contracts("sample", profile_id)
+
       expected_contracts = [{"name" => "companies", "present" => true},
                             {"name" => "home"     , "present" => true}]
       expect(profile["contracts"]).to eq(expected_contracts)

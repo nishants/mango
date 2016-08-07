@@ -33,6 +33,11 @@ class ProfileData
     File.basename(@path)
   end
 
+  def contracts(contracts)
+    [{"name" => "companies", "present" => true},
+     {"name" => "home"     , "present" => true}]
+  end
+
   def to_json
     config = JSON.parse(File.read(@config))
     {

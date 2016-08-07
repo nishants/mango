@@ -58,10 +58,9 @@ module Mango
       }
     end
 
-    def get_profile(project_name, profile_id)
-
-      {"contracts" => [{"name" => "companies", "present" => true},
-                      {"name" => "home"     , "present" => true}]}
+    def profile_contracts(project_name, profile_id)
+      profile = find_profile(project_name, profile_id)
+      {"contracts" => profile.contracts([])}
     end
 
   end
