@@ -16,8 +16,7 @@ RSpec.describe Mango::MangoService do
       @config_file = "#{@test_helper.test_data}/sample-config-file.json"
 
       config = JSON.parse(File.read(@config_file))
-      sample_project_path = config["projects"][0]["path"]
-      @sample_project_path = File.absolute_path(sample_project_path)
+      @sample_project_path = "#{@test_helper.test_data}/samples/profiles"
       config["projects"][0]["path"] = @sample_project_path
       @test_helper.save_json(@config_file, config)
 
@@ -69,7 +68,7 @@ RSpec.describe Mango::MangoService do
       expect(@service.find(project_name)).to eq(nil)
     end
 
-    it "should project profiles" do
+    it "should get project profiles" do
       expected_profiles = [
           {"id" => "profile-sloth"   ,"name" => "Sloth", "description" => "Represent the profile of a sloth user"},
           {"id" => "profile-ace" ,"name" => "Ace",   "description" => "Represent the profile of an ace user"},
@@ -81,15 +80,15 @@ RSpec.describe Mango::MangoService do
 
 
     it "should update name and description for a profile in a project" do
-      # project_name = "sample"
-      # profile  = @service.profiles_of(project_name)[0]
-      # params   = {"name" => "new-profile-name", "description" => "new-profile-desc"}
-      #
-      # @service.update_profile(project_name, profile["name"], params)
-      # updated = @service.profiles_of(project_name)[0]
-      #
-      # expect(updated["name"]).to eq("new-profile-name")
-      # expect(updated["description"]).to eq("new-profile-desc")
+      project_name = "sample"
+      profile  = @service.profiles_of(project_name)[0]
+      params   = {"name" => "new-profile-name", "description" => "new-profile-desc"}
+
+      @service.update_profile(project_name, profile["name"], params)
+      updated = @service.profiles_of(project_name)[0]
+
+      expect(updated["name"]).to eq("new-profile-name")
+      expect(updated["description"]).to eq("new-profile-desc")
     end
   end
 
