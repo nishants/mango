@@ -21,7 +21,7 @@ window.app.service("projectService", ["$http", function($http){
             return $http.put(url, {path: path}).then(function (response) {
                 return service.current = response.data;
             }, function (response) {
-                service.error = response.data.error
+                return service.error = response.data.error;
             });
         }
     };

@@ -1,5 +1,6 @@
 .create-project{
   padding: $padding;
+  border: 1px solid transparent;
 
   .error-message{
     line-height: 3*$padding;

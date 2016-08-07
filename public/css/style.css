@@ -2452,7 +2452,8 @@ ul.file-explorer {
   transform: translateX(-100vw); }
 
 .create-project {
-  padding: 10px; }
+  padding: 10px;
+  border: 1px solid transparent; }
   .create-project .error-message {
     line-height: 30px;
     height: 30px;

@@ -45,4 +45,19 @@ describe('projectService', function () {
         });
         backend.flush();
     });
+
+    it('should set error if failed', function (done) {
+        var path = "my-project-path",
+            name = "my-project",
+            expectedUrl = "/projects/:name/import".replace(":name", name);
+        backend.whenGET("/projects").respond(projects);
+
+        backend.expect('PUT', expectedUrl, {path: path}).respond(409, {error: "error from server"});
+
+        service.create(name, "my-project-path").then(function (created) {
+            expect(service.error).toEqual("error from server");
+            done();
+        });
+        backend.flush();
+    });
 });
