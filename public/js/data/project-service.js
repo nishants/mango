@@ -19,7 +19,6 @@ window.app.service("projectService", ["$http", function($http){
             var url = "/projects/:name/import".replace(":name", name);
             service.error = null;
             return $http.put(url, {path: path}).then(function (response) {
-                service.all();
                 return service.current = response.data;
             }, function (response) {
                 service.error = response.data.error
