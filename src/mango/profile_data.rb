@@ -34,8 +34,10 @@ class ProfileData
   end
 
   def contracts(contracts)
-    [{"name" => "companies", "present" => true},
-     {"name" => "home"     , "present" => true}]
+    contracts.map{|contract|
+      exists = Mango::FileExplorer.if_exists("#{@path}/#{contract["path"]}")
+      {"name" => contract["name"], "present" => exists}
+    }
   end
 
   def to_json

@@ -59,8 +59,11 @@ module Mango
     end
 
     def profile_contracts(project_name, profile_id)
+      project = @workspace.find(project_name)
+      contracts = project.contracts
       profile = find_profile(project_name, profile_id)
-      {"contracts" => profile.contracts([])}
+
+      {"contracts" => profile.contracts(contracts)}
     end
 
   end

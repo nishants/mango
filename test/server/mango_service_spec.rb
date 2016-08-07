@@ -98,7 +98,7 @@ RSpec.describe Mango::MangoService do
 
       expected_contracts = [{"name" => "companies", "present" => true},
                             {"name" => "home"     , "present" => true}]
-      expect(profile["contracts"]).to eq(expected_contracts)
+      expect(profile["contracts"]).to match_array(expected_contracts)
     end
   end
 
