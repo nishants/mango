@@ -22,9 +22,11 @@
         <tr ng-repeat="project in ui.projects.list track by $index" ng-init="form = {name: project.name,description: project.description}">
             <td><a ui-sref="projects({project: project.name})" class="fa fa-pencil"></a></td>
             <td>
-                <input ng-model="form.name" ng-blur="ui.projects.update(project, form)">
+                <input ng-model="form.name" ng-blur="ui.projects.update(project, form)" press-enter="ui.projects.update(project, form)">
             </td>
-            <td ng-bind="project.description"></td>
+            <td >
+                <input ng-model="form.description" ng-blur="ui.projects.update(project, form)" press-enter="ui.projects.update(project, form)">
+            </td>
         </tr>
         </tbody>
     </table>
