@@ -19,12 +19,18 @@ window.app.service("filterService", [function () {
     var filesConfig = {
         fields: ["name", "path"]
     };
+    var projectsConfig = {
+        fields: ["name", "path", "description"]
+    };
     return {
         filterProfiles : function (key, profiles) {
             return filter(key, profiles, profilesConfig)
         },
         filterFiles   : function (key, files) {
             return filter(key, files, filesConfig)
+        },
+        filterProjects   : function (key, projects) {
+            return filter(key, projects, projectsConfig)
         }
     };
 }]);

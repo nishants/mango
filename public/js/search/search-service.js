@@ -39,7 +39,7 @@ window.app.service("searchService", ["profilesService", "filterService","fileSer
                         key     = noKey ? defaultKey : this.key;
                     return projectService.all().then(function (projects) {
                         service.projects.results = [];
-                        service.projects.results = filterService.filterFiles(key, projects);
+                        service.projects.results = filterService.filterProjects(key, projects);
                         return projects;
                     });
                 }
