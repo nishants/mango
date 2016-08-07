@@ -2101,7 +2101,8 @@ ul.undo-list, ul.file-explorer ul, ul.file-explorer, .file-editor-view ul.editor
   pointer-events: none; }
 
 ul.file-explorer {
-  height: 100%;
+  height: calc(100% - 35px);
+  overflow: auto;
   font-size: 15px;
   line-height: 25px;
   border: 1px solid rgba(255, 165, 0, 0.18);
@@ -2471,20 +2472,22 @@ ul.contracts.token-list {
   padding: 0px 45px;
   margin: 0px; }
   ul.contracts.token-list > li {
+    display: inline-block; }
+  ul.contracts.token-list > li > a {
     padding: 5px 10px;
-    display: inline-block;
+    display: block;
     margin: 0px 5px;
     background-color: #ffcf00; }
-  ul.contracts.token-list > li:not(.missing) .add-contract {
+  ul.contracts.token-list > li:not(.missing) > a .add-contract {
     display: none; }
-  ul.contracts.token-list > li.missing {
+  ul.contracts.token-list > li.missing > a {
     position: relative;
     overflow: visible;
     text-decoration: line-through;
     opacity: 0.5; }
-    ul.contracts.token-list > li.missing .add-contract {
+    ul.contracts.token-list > li.missing > a .add-contract {
       padding: 0px 5px 0px 10px; }
-  ul.contracts.token-list > li.missing:after {
+  ul.contracts.token-list > li.missing > a:after {
     content: "add contract";
     position: absolute;
     z-index: 10 -1;
@@ -2495,7 +2498,7 @@ ul.contracts.token-list {
     right: calc(-50% - 10px);
     display: none;
     border-radius: 2px; }
-  ul.contracts.token-list li.missing:hover:after {
+  ul.contracts.token-list li.missing:hover > a:after {
     display: block; }
 
 table {

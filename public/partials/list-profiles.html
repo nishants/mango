@@ -1,57 +1,61 @@
-<div class="top-bar">
-    <div class="back-button no-display fa fa-arrow-left"></div>
-    <div class="contract-and-profiles">
-        <a class=""><button>Contracts</button></a>
-        <a class="" ui-sref="projects.profiles({project: ui.state.project})"><button ng-disabled="true">Profiles</button></a>
-    </div>
-    <div class="search-input">
-        <input class="search"
-               ng-change="ui.search.profiles.search()"
-               ng-model="ui.search.profiles.key">
-        <span class="icon fa fa-search"></span>
-    </div>
-</div>
+<div ui-view>
 
-<div class="container-view">
-    <table class="view">
-        <thead>
-        <tr>
-            <th class="select"></th>
-            <th class="name">Name</th>
-            <th class="description">Description</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody ng-repeat="profile in profiles.search.results track by $index" ng-class="{'expand' : __expand}"
-               ng-init="form = {name: profile.name,description: profile.description};__expand = false;">
-        <tr >
-            <td class="select" ng-class="{'show-options' : __expand}">
-                <a class="expand-row btn btn-default fa fa-chevron-right" ng-click="__expand = true;"></a>
-                <a class="collapse-row btn btn-default fa fa-chevron-down"  ng-click="__expand = false;"></a>
-            </td>
+    <div class="top-bar">
+        <div class="back-button no-display fa fa-arrow-left"></div>
+        <div class="contract-and-profiles">
+            <a class=""><button>Contracts</button></a>
+            <a class="" ui-sref="projects.profiles({project: ui.state.project})"><button ng-disabled="true">Profiles</button></a>
+        </div>
+        <div class="search-input">
+            <input class="search"
+                   ng-change="ui.search.profiles.search()"
+                   ng-model="ui.search.profiles.key">
+            <span class="icon fa fa-search"></span>
+        </div>
+    </div>
 
-            <td class="name">
-                <input ng-model="form.name"
-                       press-enter="profiles.update(profile, form)">
-            </td>
-            <td class="description">
-                <input ng-model="form.description"
-                       press-enter="profiles.update(profile, form)">
-            </td>
-            <td></td>
-        </tr>
-        <tr class="expandible-row">
-            <td colspan="4">
-                <ul class="contracts token-list">
-                    <li class="btn"
-                        ng-class="{'missing' : !contract.present}"
-                        ng-repeat="contract in profile.contracts">
-                        <span ng-bind="contract.name"></span>
-                        <i class="add-contract fa fa-plus"></i>
-                    </li>
-                </ul>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="container-view">
+        <table class="view">
+            <thead>
+            <tr>
+                <th class="select"></th>
+                <th class="name">Name</th>
+                <th class="description">Description</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody ng-repeat="profile in profiles.search.results track by $index" ng-class="{'expand' : __expand}"
+                   ng-init="form = {name: profile.name,description: profile.description};__expand = false;">
+            <tr >
+                <td class="select" ng-class="{'show-options' : __expand}">
+                    <a class="expand-row btn btn-default fa fa-chevron-right" ng-click="__expand = true;"></a>
+                    <a class="collapse-row btn btn-default fa fa-chevron-down"  ng-click="__expand = false;"></a>
+                </td>
+
+                <td class="name">
+                    <input ng-model="form.name"
+                           press-enter="profiles.update(profile, form)">
+                </td>
+                <td class="description">
+                    <input ng-model="form.description"
+                           press-enter="profiles.update(profile, form)">
+                </td>
+                <td></td>
+            </tr>
+            <tr class="expandible-row">
+                <td colspan="4">
+                    <ul class="contracts token-list">
+                        <li ng-class="{'missing' : !contract.present}"
+                            ng-repeat="contract in profile.contracts">
+                            <a class="btn">
+                                <span ng-bind="contract.name"></span>
+                                <i class="add-contract fa fa-plus"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

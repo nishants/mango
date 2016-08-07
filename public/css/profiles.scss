@@ -5,16 +5,18 @@ ul.contracts.token-list{
   padding: 0px 45px;
   margin: 0px;
 
-  > li {
+  > li {  display: inline-block;  }
+
+  > li > a{
     padding: $padding/2 $padding;
-    display: inline-block;
+    display: block;
     margin: 0px $padding/2;
     background-color: $themeFluroscentColor;
   }
-  > li:not(.missing){
+  > li:not(.missing) > a {
     .add-contract{display: none}
   }
-  > li.missing{
+  > li.missing > a{
     position: relative;
     overflow: visible;
     text-decoration: line-through;;
@@ -23,7 +25,7 @@ ul.contracts.token-list{
       padding: 0px $padding/2 0px $padding;
     }
   }
-  > li.missing:after{
+  > li.missing > a:after{
     content: "add contract";
     position: absolute;
     z-index: $modalLayer -1;
@@ -35,7 +37,7 @@ ul.contracts.token-list{
     display: none;
     border-radius: 2px;
   }
-  li.missing:hover:after{
+  li.missing:hover > a:after{
     display: block;
   }
 }

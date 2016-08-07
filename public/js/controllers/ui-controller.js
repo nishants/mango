@@ -13,6 +13,6 @@ app.controller("uiController", ["$rootScope", "$scope", "profilesService", "sear
     
     $rootScope.$on('$stateChangeStart', showLoader);
     $rootScope.$on('$stateChangeSuccess',hideLoader);
-    
+
     $scope.ui = ui;
 }]);

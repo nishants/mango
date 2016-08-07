@@ -1,7 +1,9 @@
 $childOffset : 15px;
 
 ul.file-explorer {
-  height: 100%;
+  height: calc(100% - 35px);
+  overflow: auto;
+
   font-size: 15px;
   line-height: 25px;
   border: 1px solid $veryLightContrastColor;
