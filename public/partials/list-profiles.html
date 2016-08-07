@@ -34,7 +34,11 @@
             <td>
                 <input ng-model="form.name"
                        press-enter="profiles.update(profile, form)">
-            <td ng-bind="profile.description"></td>
+            </td>
+            <td>
+                <input ng-model="form.description"
+                       press-enter="profiles.update(profile, form)">
+            </td>
         </tr>
         </tbody>
     </table>
