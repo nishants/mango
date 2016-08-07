@@ -26,4 +26,19 @@
         </tr>
         </tbody>
     </table>
+    <div class="form create-project" ng-class="{'error' : ui.projects.error}">
+        <p class="error-message"  ng-bind="ui.projects.error"></p>
+        <div class="input-group">
+            <input class="form-control"
+                   placeholder="full path"
+                   ng-model="project.path">
+            <div class="input-group-btn">
+                <button class="btn btn-default"
+                        ng-disabled="!project.path"
+                        ng-click="ui.projects.create(project.name, project.path)">Add</button>
+            </div>
+
+        </div>
+
+    </div>
 </div>
