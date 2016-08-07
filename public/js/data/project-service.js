@@ -56,7 +56,7 @@ window.app.service("projectService", ["$http", function($http){
         getContracts: function(projectName, profileId){
             var url = "/projects/:name/profiles/:id/contracts".replace(":name", projectName).replace(":id", profileId);
             return $http.get(url).then(function (response) {
-                return response.data;
+                return _.sortBy(response.data, function(contract) { return contract.present ? 0 : 1; });
             });
         }
     };
