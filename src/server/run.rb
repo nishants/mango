@@ -42,6 +42,12 @@ get '/projects/:project_name/contracts' do
   service.contracts(params[:project_name]).to_json
 end
 
+put '/projects/:project_name' do
+  update_params = JSON.parse(request.body.read);
+  service.update(params[:project_name], update_params).to_json
+end
+
+# *******************************************************
 put '/projects/import' do
   Mango::Project.import_project(params[:name], params[:path]).to_json
 end

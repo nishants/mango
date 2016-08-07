@@ -22,7 +22,7 @@
         <tr ng-repeat="project in ui.projects.list track by $index" ng-init="inline_edit = {name: project.name}">
             <td><a ui-sref="projects({project: project.name})" class="fa fa-pencil"></a></td>
             <td>
-                <input ng-model="inline_edit.name" ng-change="ui.projects.rename(project.name, inline_edit.name)">
+                <input ng-model="inline_edit.name" ng-blur="ui.projects.rename(project.name, inline_edit.name)">
             </td>
             <td ng-bind="project.description"></td>
         </tr>
