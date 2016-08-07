@@ -46,6 +46,11 @@ window.app.service("projectService", ["$http", function($http){
             return $http.get(url).then(function (response) {
                 return response.data;
             });
+        },
+        updateProfile : function(projectName, profileName, params){
+            var url = "/projects/:name/profiles".replace(":name", projectName);
+            console.log(projectName + ">> renaming "+ profileName+" to " + params.name)
+
         }
     };
     return service;

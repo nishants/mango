@@ -22,13 +22,18 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="profile in profiles.search.results track by $index">
+        <tr ng-repeat="profile in profiles.search.results track by $index"
+            ng-init="form = {name: profile.name,description: profile.description}">
+
             <td class="select" ng-class="{'show-options' : __expand}">
                 <a class="btn btn-default fa fa-chevron-right"
                    ui-sref="projects.profiles({project: project.name})">
                 </a>
             </td>
-            <td><a ui-sref="profile({name: profile.name})" ng-bind="profile.name"></a></td>
+
+            <td>
+                <input ng-model="form.name"
+                       press-enter="profiles.update(profile, form)">
             <td ng-bind="profile.description"></td>
         </tr>
         </tbody>
