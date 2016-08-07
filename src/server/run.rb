@@ -70,6 +70,12 @@ get '/projects/:project_name/profiles/:profile_id/contracts/:contract_id' do
   service.contract_file(params[:project_name], params[:profile_id], params[:contract_id]).to_json
 end
 
+put '/projects/:project_name/profiles/:profile_id/contracts/:contract_id' do
+  contract = JSON.parse(request.body.read);
+  service.save_contract_file(params[:project_name], params[:profile_id], params[:contract_id], contract).to_json
+  {}
+end
+
 # *******************************************************
 put '/projects/import' do
   Mango::Project.import_project(params[:name], params[:path]).to_json

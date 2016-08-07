@@ -66,13 +66,20 @@ module Mango
       {"contracts" => profile.contracts(contracts)}
     end
 
-    def contract_file(project_name, profile_id, contract_name)
-      profile = find_profile(project_name, profile_id)
-      project_contracts = contracts(project_name)
-      contract          = project_contracts.find{|contract|
+    def get_contract (project_name, contract_name)
+     contracts(project_name).find{|contract|
         contract["name"] == contract_name
       }
-      profile.read_contract(contract["path"])
+    end
+
+    def contract_file(project_name, profile_id, contract_name)
+      contract = get_contract(project_name, contract_name)
+      find_profile(project_name, profile_id).read_contract(contract["path"])
+    end
+
+    def save_contract_file(project_name, profile_id, contract_name, json)
+      contract = get_contract(project_name, contract_name)
+      find_profile(project_name, profile_id).save_contract(contract["path"], json)
     end
   end
 end

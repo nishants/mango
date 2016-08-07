@@ -34,7 +34,7 @@ class ProfileData
   end
 
   def read_contract(relative_path)
-    contract_path = "#{@path}#{relative_path}"
+    contract_path = full_contract_path(relative_path)
     if Mango::FileExplorer.if_exists(contract_path)
       Mango::FileExplorer.read_json(contract_path)
     end
@@ -45,6 +45,14 @@ class ProfileData
       exists = Mango::FileExplorer.if_exists("#{@path}/#{contract["path"]}")
       {"name" => contract["name"], "present" => exists}
     }
+  end
+
+  def full_contract_path(relative_path)
+    "#{@path}#{relative_path}"
+  end
+
+  def save_contract(path, json)
+    Mango::FileExplorer.save_json(full_contract_path(path), json)
   end
 
   def to_json

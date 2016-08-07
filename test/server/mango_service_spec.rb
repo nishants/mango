@@ -106,6 +106,12 @@ RSpec.describe Mango::MangoService do
       expected = {"data" => {"companies" => [{"name" => "ABC"},{"name" => "XYZ"}]}}
       expect(contract_file).to eq(expected)
     end
+
+    it "should save a contract file" do
+      expected = {"data" => "about-to-replace-contents"}
+      @service.save_contract_file("sample", "profile-ace", "companies", expected)
+      expect(@service.contract_file("sample", "profile-ace", "companies")).to eq(expected)
+    end
   end
 
 end
