@@ -38,7 +38,7 @@ module Mango
 
     def profiles
       Dir["#{@project_path}/*/"].map{|profile_path|
-        ProfileData.load(profile_path).to_json
+        ProfileData.load(profile_path)
       }
     end
   end

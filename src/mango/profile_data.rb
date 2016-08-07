@@ -18,6 +18,17 @@ class ProfileData
     ProfileData.new(path)
   end
 
+  def update params
+    config = JSON.parse(File.read(@config))
+    config["name"]        = params["name"]
+    config["description"] = params["description"]
+    Mango::FileExplorer.save_json(@config, config)
+  end
+
+  def name
+    JSON.parse(File.read(@config))["name"]
+  end
+
   def to_json
     config = JSON.parse(File.read(@config))
     {

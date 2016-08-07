@@ -42,7 +42,16 @@ module Mango
     end
 
     def profiles_of(project_name)
-      @workspace.find(project_name).profiles
+      @workspace.find(project_name).profiles.map{|profile|
+        profile.to_json
+      }
+    end
+
+    def update_profile(project_name, profile_name, params)
+      profile = @workspace.find(project_name).profiles.find{|p|
+        p.name == profile_name
+      }
+      profile.update(params)
     end
 
   end

@@ -68,10 +68,22 @@ RSpec.describe Mango::MangoService do
           {"id" => "profile-ace" ,"name" => "Ace",   "description" => "Represent the profile of an ace user"},
           {"id" => "no-profile"    ,"name" => "untitled",      "description" => ""}
       ]
-      profiles  = @service.profiles_of("sample");
+      profiles  = @service.profiles_of("sample")
       expect(profiles).to match_array(expected_profiles)
     end
 
+
+    it "should update name and description for a profile in a project" do
+      # project_name = "sample"
+      # profile  = @service.profiles_of(project_name)[0]
+      # params   = {"name" => "new-profile-name", "description" => "new-profile-desc"}
+      #
+      # @service.update_profile(project_name, profile["name"], params)
+      # updated = @service.profiles_of(project_name)[0]
+      #
+      # expect(updated["name"]).to eq("new-profile-name")
+      # expect(updated["description"]).to eq("new-profile-desc")
+    end
   end
 
 end
