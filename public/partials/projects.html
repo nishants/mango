@@ -31,11 +31,11 @@
         <div class="input-group">
             <input class="form-control"
                    placeholder="full path"
-                   ng-model="project.path">
+                   ng-model="workspace.newProject.path">
             <div class="input-group-btn">
                 <button class="btn btn-default"
-                        ng-disabled="!project.path"
-                        ng-click="ui.projects.create(project.name, project.path)">Add</button>
+                        ng-disabled="!workspace.newProject.path"
+                        ng-click="workspace.newProject.add()">Add</button>
             </div>
 
         </div>
