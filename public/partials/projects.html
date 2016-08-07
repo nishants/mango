@@ -19,10 +19,10 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="project in ui.projects.list track by $index" ng-init="inline_edit = {name: project.name}">
+        <tr ng-repeat="project in ui.projects.list track by $index" ng-init="form = {name: project.name,description: project.description}">
             <td><a ui-sref="projects({project: project.name})" class="fa fa-pencil"></a></td>
             <td>
-                <input ng-model="inline_edit.name" ng-blur="ui.projects.rename(project.name, inline_edit.name)">
+                <input ng-model="form.name" ng-blur="ui.projects.update(project, form)">
             </td>
             <td ng-bind="project.description"></td>
         </tr>
