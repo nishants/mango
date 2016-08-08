@@ -77,10 +77,9 @@ put '/projects/:project_name/profiles/:profile_id/contracts/:contract_id' do
 end
 
 put '/projects/:project_name/contracts/:contract_id/update-schema' do
-  udpates =  JSON.parse request.body.read
-  project = service.find(params[:project_name])
-
-  Mango::Project.load(project["path"]).updateSchema(params[:contract_id], udpates)
+  updates =  JSON.parse request.body.read
+  project = service.update_contract_schema(params[:project_name], params[:contract_id], updates)
+  {}
 end
 
 # *******************************************************
@@ -113,11 +112,6 @@ put '/profiles/:name/files/:file' do
   document.content = file_content
   document.save
   Profiles.find(params[:name])[params[:file]].content.to_json
-end
-
-put '/profiles/files/:file/update-schema' do
-  udpates =  JSON.parse request.body.read
-  Profiles.updateSchema(params[:file], udpates)
 end
 
 

@@ -28,7 +28,7 @@ app.controller("contractEditorController", ["$scope", "fetchFile", "fileService"
           editor.canSave = true;
         },
         updateSchemaForFile: function () {
-          fileService.updateSchemaFor($stateParams.file, editor.schemaDiff.changes).then(function () {
+          projectService.updateContractSchema($stateParams.project, $stateParams.contract, editor.schemaDiff.changes).then(function () {
             editor.canSave      = false;
             editor.savedContent = diffService.create(editor.content);
             editor.schemaDiff   = editor.savedContent.schemaDiff(editor.content);

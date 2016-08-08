@@ -107,6 +107,35 @@ RSpec.describe Mango::MangoService do
       @service.save_contract_file("sample", "profile-ace", "companies", expected)
       expect(@service.contract_file("sample", "profile-ace", "companies")).to eq(expected)
     end
+    
+    it "should update contract schema" do
+      updates  = [{"field" => "data.companies", "renameTo" => "my-companies"},
+                  {"insert" => "data.status"  , "value"    => "inserted"}]
+
+      expected_profile_ace = {
+          "data" => {
+              "status"        =>"inserted",
+              "my-companies"  => [{"name" => "ABC"},{"name" => "XYZ"}]
+      }}
+
+      expected_profile_sloth = {
+          "data" => {
+              "status"        =>"inserted",
+              "my-companies"  => [{"name" => "246"},{"name" => "135"}]
+      }}
+
+      @service.update_contract_schema("sample", "companies", updates)
+
+      actual_profile_ace          =  @service.contract_file("sample", "profile-ace",          "companies")
+      actual_profiles_sloth       = @service.contract_file("sample" , "profile-sloth",        "companies")
+      actual_profile_missing_file = @service.contract_file("sample" , "no-contracts-profile", "companies")
+
+      expect(actual_profile_ace["data"]["companies"]).to be_nil
+      expect(actual_profile_ace).to include(expected_profile_ace)
+      expect(actual_profiles_sloth).to include(expected_profile_sloth)
+      expect(actual_profile_missing_file).to be_nil
+    end
+
   end
 
 end

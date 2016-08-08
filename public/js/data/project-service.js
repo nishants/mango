@@ -70,6 +70,12 @@ window.app.service("projectService", ["$http", function($http){
             return $http.put(url, json).then(function(response){
                 return response.data;
             });
+        },
+        updateContractSchema: function(projectName, contractName, updates){
+            var url = "/projects/:name/contracts/:contract_name/update-schema".replace(":name", projectName).replace(":contract_name", contractName);
+            return $http.put(url, updates).then(function(response){
+                return response.data;
+            });
         }
     };
     return service;

@@ -81,5 +81,10 @@ module Mango
       contract = get_contract(project_name, contract_name)
       find_profile(project_name, profile_id).save_contract(contract["path"], json)
     end
+
+    def update_contract_schema(project_name, contract_name, updates)
+      project = find(project_name)
+      Mango::Project.load(project["path"]).updateSchema(contract_name, updates)
+    end
   end
 end
