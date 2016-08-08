@@ -126,14 +126,16 @@ RSpec.describe Mango::MangoService do
 
       @service.update_contract_schema("sample", "companies", updates)
 
-      actual_profile_ace          =  @service.contract_file("sample", "profile-ace",          "companies")
+      actual_profile_ace          = @service.contract_file("sample", "profile-ace",           "companies")
       actual_profiles_sloth       = @service.contract_file("sample" , "profile-sloth",        "companies")
       actual_profile_missing_file = @service.contract_file("sample" , "no-contracts-profile", "companies")
+      actual_no_profile           = @service.contract_file("sample" , "no-profile",           "companies")
 
       expect(actual_profile_ace["data"]["companies"]).to be_nil
       expect(actual_profile_ace).to include(expected_profile_ace)
       expect(actual_profiles_sloth).to include(expected_profile_sloth)
       expect(actual_profile_missing_file).to be_nil
+      expect(actual_no_profile).to eq({})
     end
 
   end

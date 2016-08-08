@@ -6,7 +6,7 @@ class Document
 
   def initialize (profile_root, relative_path)
     @file     = "#{profile_root}#{relative_path}"
-    @content  = "{}"
+    @content  = {}
     if Pathname.new(@file).exist?
       @content  = JSON.parse(File.read(@file))
     end
@@ -28,6 +28,10 @@ class Document
       isInsert && SchemaUpdates.insert(update["insert"], update["value"]    , @content)
       isRemove && SchemaUpdates.remove(update["remove"], @content)
     }
+  end
+
+  def exists?
+    Pathname.new(@file).exist?
   end
 end
 
