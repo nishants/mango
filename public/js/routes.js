@@ -22,7 +22,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
             }
         })
         .state('projects.profiles', {
-            url: "/profiles/:project",
+            url: "/:project/profiles",
             templateUrl: "partials/list-profiles.html",
             controller:  "listProfilesController",
             resolve: {
