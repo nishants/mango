@@ -61,8 +61,10 @@ class Profile
     each_profile(){|profile, profile_root|
       path = @schema["contracts"].select{|file| file["name"] == fileName}[0]["path"]
       document = Document.new(profile_root, path)
-      document.updateSchema(updates);
-      document.save;
+      if document.exists?
+        document.updateSchema(updates);
+        document.save;
+      end
     }
   end
 
