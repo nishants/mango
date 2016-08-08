@@ -112,17 +112,13 @@ RSpec.describe Mango::MangoService do
       updates  = [{"field" => "data.companies", "renameTo" => "my-companies"},
                   {"insert" => "data.status"  , "value"    => "inserted"}]
 
-      expected_profile_ace = {
-          "data" => {
+      expected_profile_ace = {"data" => {
               "status"        =>"inserted",
-              "my-companies"  => [{"name" => "ABC"},{"name" => "XYZ"}]
-      }}
+              "my-companies"  => [{"name" => "ABC"},{"name" => "XYZ"}]}}
 
-      expected_profile_sloth = {
-          "data" => {
+      expected_profile_sloth = {"data" => {
               "status"        =>"inserted",
-              "my-companies"  => [{"name" => "246"},{"name" => "135"}]
-      }}
+              "my-companies"  => [{"name" => "246"},{"name" => "135"}]}}
 
       @service.update_contract_schema("sample", "companies", updates)
 

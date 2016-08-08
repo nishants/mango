@@ -33,7 +33,7 @@ app.controller("contractEditorController", ["$scope", "fetchFile", "fileService"
             editor.savedContent = diffService.create(editor.content);
             editor.schemaDiff   = editor.savedContent.schemaDiff(editor.content);
             editor.showSchemaDialog = false;
-            fileService.getFile($stateParams.name, $stateParams.file).then(function (data) {
+            projectService.getFile($stateParams.project, $stateParams.profile, $stateParams.contract).then(function (data) {
               editor.content = data;
             });
           }, function (err) {
