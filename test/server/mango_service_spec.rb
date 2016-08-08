@@ -72,7 +72,8 @@ RSpec.describe Mango::MangoService do
       expected_profiles = [
           {"id" => "profile-sloth"   ,"name" => "Sloth", "description" => "Represent the profile of a sloth user"},
           {"id" => "profile-ace" ,"name" => "Ace",   "description" => "Represent the profile of an ace user"},
-          {"id" => "no-profile"    ,"name" => "untitled",      "description" => ""}
+          {"id" => "no-profile"    ,"name" => "untitled",      "description" => ""},
+          {"id"=>"no-contracts-profile", "name"=>"untitled", "description"=>""}
       ]
       profiles  = @service.profiles_of("sample")
       expect(profiles).to match_array(expected_profiles)
@@ -80,22 +81,16 @@ RSpec.describe Mango::MangoService do
 
 
     it "should update name and description for a profile in a project" do
-      project_name = "sample"
-      profile  = @service.profiles_of(project_name)[0]
       params   = {"name" => "new-profile-name", "description" => "new-profile-desc"}
-
-      @service.update_profile(project_name, profile["id"], params)
-      updated = @service.profiles_of(project_name)[0]
+      @service.update_profile("sample", "no-profile", params)
+      updated = @service.find_profile("sample", "no-profile").to_json
 
       expect(updated["name"]).to eq("new-profile-name")
       expect(updated["description"]).to eq("new-profile-desc")
     end
 
     it "should get contracts from a profile" do
-      project_name = "sample"
-      profile_id  = @service.profiles_of(project_name)[0]["id"]
-      profile  = @service.profile_contracts("sample", profile_id)
-
+      profile  = @service.profile_contracts("sample", "no-profile")
       expected_contracts = [{"name" => "companies", "present" => true},
                             {"name" => "home"     , "present" => true}]
       expect(profile["contracts"]).to match_array(expected_contracts)
