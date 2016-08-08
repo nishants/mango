@@ -76,6 +76,13 @@ put '/projects/:project_name/profiles/:profile_id/contracts/:contract_id' do
   {}
 end
 
+put '/projects/:project_name/contracts/:contract_id/update-schema' do
+  udpates =  JSON.parse request.body.read
+  project = service.find(params[:project_name])
+
+  Mango::Project.load(project["path"]).updateSchema(params[:contract_id], udpates)
+end
+
 # *******************************************************
 put '/projects/import' do
   Mango::Project.import_project(params[:name], params[:path]).to_json
