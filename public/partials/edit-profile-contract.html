@@ -23,7 +23,7 @@
                 <ul class="file-explorer" ng-controller="explorerController">
 
                     <li ng-repeat="profile in profiles.list  track by $index"
-                        ng-class="{'expand' : profile.__expand, 'selected' : profile.name == ui.state.profile}">
+                        ng-class="{'expand' : profile.__expand || profile.id == ui.state.profile, 'selected' : profile.id == ui.state.profile}">
                         <div class="profile" ng-click="explorer.toggle(profile)">
                             <a>
                                 <i class= "opened fa fa-plus"></i>
