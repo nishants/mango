@@ -1,6 +1,7 @@
 require "json"
 require 'pathname'
 require 'find'
+require 'fileutils'
 
 module Mango
   class FileExplorer
@@ -17,6 +18,12 @@ module Mango
     end
 
     def self.save_json file , content
+      dir = File.dirname(file)
+
+      unless File.directory?(dir)
+        FileUtils.mkdir_p(dir)
+      end
+
       File.open(file, 'w'){|file|
         file.write(content.to_json)
       }

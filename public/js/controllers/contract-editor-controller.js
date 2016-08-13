@@ -43,7 +43,7 @@ app.controller("contractEditorController", ["$scope", "fetchFile", "fileService"
         save: function () {
           editor.canSave      = false;
           $state.go("projects.profiles.contract");
-          projectService.saveFile($stateParams.project, $stateParams.profile, $stateParams.contract, editor.content).then(function () {
+          return projectService.saveFile($stateParams.project, $stateParams.profile, $stateParams.contract, editor.content).then(function () {
             editor.savedContent = diffService.create(editor.content);
             editor.schemaDiff   = editor.savedContent.schemaDiff(editor.content);
           }, function (err) {
