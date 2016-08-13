@@ -62,7 +62,7 @@ window.app.service("projectService", ["$http", function($http){
         getFile: function(projectName, profileId, contractName){
             var url = "/projects/:name/profiles/:profile_id/contracts/:contract_name".replace(":name", projectName).replace(":profile_id", profileId).replace(":contract_name", contractName);
             return $http.get(url).then(function(response){
-                return response.data;
+                return response.data == "null" ? {} : response.data;
             });
         },
         saveFile: function(projectName, profileId, contractName, json){
